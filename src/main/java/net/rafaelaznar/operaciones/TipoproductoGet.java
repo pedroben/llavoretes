@@ -13,12 +13,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.rafaelaznar.bean.ProductoBean;
+import net.rafaelaznar.bean.TipoproductoBean;
 import com.google.gson.Gson;
-import net.rafaelaznar.dao.ProductoDao_Mysql;
+import net.rafaelaznar.dao.TipoproductoDao_Mysql;
 import net.rafaelaznar.helper.Conexion;
 
-public class ProductoGet implements GenericOperation {
+public class TipoproductoGet implements GenericOperation {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -27,15 +27,15 @@ public class ProductoGet implements GenericOperation {
             if (request.getParameter("id") == null) {
                 data = "{\"error\":\"id is mandatory\"}";
             } else {
-                ProductoDao_Mysql oProductoDAO = new ProductoDao_Mysql(Conexion.getConection());
-                ProductoBean oProducto = new ProductoBean();
-                oProducto.setId(Integer.parseInt(request.getParameter("id")));
-                oProductoDAO.get(oProducto);
-                data = new Gson().toJson(oProducto);
+                TipoproductoDao_Mysql oTipoproductoDAO = new TipoproductoDao_Mysql(Conexion.getConection());
+                TipoproductoBean oTipoproducto = new TipoproductoBean();
+                oTipoproducto.setId(Integer.parseInt(request.getParameter("id")));
+                oTipoproductoDAO.get(oTipoproducto);
+                data = new Gson().toJson(oTipoproducto);
             }
             return data;
         } catch (Exception e) {
-            throw new ServletException("ProductoGetJson: View Error: " + e.getMessage());
+            throw new ServletException("TipoproductoGetJson: View Error: " + e.getMessage());
         }
     }
 }

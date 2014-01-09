@@ -151,7 +151,17 @@ var vista = function(objeto, ContextPath) {
                 tabla += '<tr>';
 
                 $.each(objeto.getFieldNames(), function(index, valor) {
-                    tabla += '<td>' + value[valor] + '</td>';
+                    if (/id_/.test(valor)) {
+                        $.when(ajaxCallSync(ContextPath + '/json?ob=' + valor.split("_")[1] + '&op=get&id=' + value[valor], 'GET', '')).done(function(data) {
+                            contador=0;
+                            for (key in data) {
+                                if (contador==1) tabla += '<td>' + data[key] + '</td>';
+                                contador++;
+                            }   
+                        });
+                    } else {
+                        tabla += '<td>' + value[valor] + '</td>';
+                    }
                 });
                 tabla += '<td><div class="btn-toolbar"><div class="btn-group">';
 

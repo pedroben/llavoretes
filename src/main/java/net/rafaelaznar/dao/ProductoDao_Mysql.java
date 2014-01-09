@@ -78,12 +78,7 @@ public class ProductoDao_Mysql implements ProductoDao {
                     oProductoBean.setCodigo(oMysql.getOne("producto", "codigo", oProductoBean.getId()));
                     oProductoBean.setDescripcion(oMysql.getOne("producto", "descripcion", oProductoBean.getId()));
                     oProductoBean.setPrecio(Double.parseDouble(oMysql.getOne("producto", "precio", oProductoBean.getId())));
-                    String intId_producto = oMysql.getOne("producto", "id_tipoproducto", oProductoBean.getId());
-                    if (intId_producto != null) {
-                        oProductoBean.getTipoProducto().setId(Integer.parseInt(intId_producto));
-                        TipoproductoDao_Mysql oTipoproductoDao = new TipoproductoDao_Mysql(enumTipoConexion);
-                        oProductoBean.setTipoProducto(oTipoproductoDao.get(oProductoBean.getTipoProducto()));
-                    }
+                    oProductoBean.setId_tipoProducto(Integer.parseInt(oMysql.getOne("producto", "id_tipoproducto", oProductoBean.getId())));
                 }
             } catch (Exception e) {
                 throw new Exception("ProductoDao.getProducto: Error: " + e.getMessage());
@@ -106,13 +101,8 @@ public class ProductoDao_Mysql implements ProductoDao {
             }
             oMysql.updateOne(oProductoBean.getId(), "producto", "codigo", oProductoBean.getCodigo());
             oMysql.updateOne(oProductoBean.getId(), "producto", "descripcion", oProductoBean.getDescripcion());
-            oMysql.updateOne(oProductoBean.getId(), "producto", "precio", oProductoBean.getPrecio().toString());
-            Integer id_Tipoproducto = oProductoBean.getTipoProducto().getId();
-            if (id_Tipoproducto > 0) {
-                oMysql.updateOne(oProductoBean.getId(), "producto", "id_tipoproducto", id_Tipoproducto.toString());
-            } else {
-                oMysql.setNull(oProductoBean.getId(), "producto", "id_tipoproducto");
-            }
+            oMysql.updateOne(oProductoBean.getId(), "producto", "precio", oProductoBean.getPrecio().toString());            
+            oMysql.updateOne(oProductoBean.getId(), "producto", "id_tipoproducto", oProductoBean.getId_tipoProducto().toString());                       
             oMysql.commitTrans();
         } catch (Exception e) {
             oMysql.rollbackTrans();

@@ -119,10 +119,10 @@
                     $('#indexContenido').empty().append(clienteView.getEmptyList());
                     
                     var clienteControl = controlClientes();
-                    clienteControl.inicia(clienteView, 1, null, null, 10, null, null, null, null);
+                    clienteControl.inicia(clienteView, 1, null, null, 10, null, null, null, callbackSearchCliente);
                     return false;
                 });
-                                $('#lnkProducto').unbind('click');
+                $('#lnkProducto').unbind('click');
                 $('#lnkProducto').click(function() {
                     var producto = objeto('producto', '<%=request.getContextPath()%>');
                     var productoView = vista(producto, '<%=request.getContextPath()%>'); 
@@ -131,12 +131,14 @@
                     $('#indexContenido').empty().append(productoView.getEmptyList());
                     
                     var productoControl = controlProductos();
-                    productoControl.inicia(productoView, 1, null, null, 10, null, null, null, null);
+                    productoControl.inicia(productoView, 1, null, null, 10, null, null, null, callbackSearchCliente);
                     return false;
                 });
             });
             function callbackSearchCliente(id){
             alert($(this).attr('id'));
+            
+            
             }
         </script>
     </body>
