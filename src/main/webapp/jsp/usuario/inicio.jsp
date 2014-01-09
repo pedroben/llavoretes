@@ -1,6 +1,6 @@
 <div class="hero-unit">
     <h1>Bienvenidos a ajax stock</h1>
-    <h3>Versión (SM v.01) de 9/1/2014</h3>
+    <h3>Versión (v.01) de 9/1/2014</h3>
     <h5>Desarrollo de aplicaciones web. CPIFP Ausiàs March. Curso 2013-2014.</h5>    
 </div>
 <div class="row-fluid">
