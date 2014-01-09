@@ -4,7 +4,10 @@
  */
 package net.rafaelaznar.control;
 
+import com.google.gson.Gson;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -28,8 +31,14 @@ public class ControlJson extends HttpServlet {
 //            Thread.currentThread().interrupt();
 //        }
         //control de autenticación
-        if (request.getSession().getAttribute("usuarioBean") == null) {            
-            //pte mensaje de error
+        if (request.getSession().getAttribute("usuarioBean") == null) {
+            Gson gson = new Gson();
+            Map<String, String> data = new HashMap<>();
+            data.put("status", "401");
+            data.put("message", "error de autenticación");
+            String resultado = gson.toJson(data);
+            request.setAttribute("contenido", resultado);
+            getServletContext().getRequestDispatcher("/jsp/messageAjax.jsp").forward(request, response);
         } else {
             String op = request.getParameter("op");
             String ob = request.getParameter("ob");

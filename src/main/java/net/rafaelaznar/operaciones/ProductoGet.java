@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -13,12 +13,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.rafaelaznar.bean.ClienteBean;
-import net.rafaelaznar.dao.ClienteDao_Mysql;
+import net.rafaelaznar.bean.ProductoBean;
 import com.google.gson.Gson;
+import net.rafaelaznar.dao.ProductoDao_Mysql;
 import net.rafaelaznar.helper.Conexion;
 
-public class ClienteGet implements GenericOperation {
+public class ProductoGet implements GenericOperation {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -27,11 +27,11 @@ public class ClienteGet implements GenericOperation {
             if (request.getParameter("id") == null) {
                 data = "{\"error\":\"id is mandatory\"}";
             } else {
-                ClienteDao_Mysql oClienteDAO = new ClienteDao_Mysql(Conexion.getConection());
-                ClienteBean oCliente = new ClienteBean();
-                oCliente.setId(Integer.parseInt(request.getParameter("id")));
-                oClienteDAO.get(oCliente);
-                data = new Gson().toJson(oCliente);
+                ProductoDao_Mysql oProductoDAO = new ProductoDao_Mysql(Conexion.getConection());
+                ProductoBean oProducto = new ProductoBean();
+                oProducto.setId(Integer.parseInt(request.getParameter("id")));
+                oProductoDAO.get(oProducto);
+                data = new Gson().toJson(oProducto);
             }
             return data;
         } catch (Exception e) {

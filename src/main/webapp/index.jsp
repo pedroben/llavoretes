@@ -13,7 +13,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Ajax stock</title>
+        <title>Ajax Stock</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -46,7 +46,7 @@
                         <span class="icon-bar"></span> 
                         <span class="icon-bar"></span>
                     </a> 
-                    <a class="brand" href="jsp">Ajax Stock SM 2014</a>                   
+                    <a class="brand" href="jsp">Ajax Stock</a>                   
                     <div class="nav-collapse collapse">
                         <%if (user != null) {%>
                         <jsp:include page="jsp/menuSuperior.jsp" />   
@@ -71,11 +71,14 @@
                 <%
                     if (user != null) {
                         out.print("<div class=\"span10\">");
+                        out.print("<div id=\"indexContenido\"></div>");
                     } else {
                         out.print("<div class=\"span12\">");
                     }
                 %>
-                <jsp:include page='<%=(String) request.getAttribute("contenido")%>' />
+                <div id="indexContenidoJsp">
+                <jsp:include page='<%=(String) request.getAttribute("contenido")%>' />                
+                </div>
                 <%
                     out.print("</div>");
                 %>    
@@ -104,5 +107,37 @@
 
         <script src="js/util.js"></script>
         <script src="js/main.js"></script>
+
+        <script>
+            $(document).ready(function() {
+                $('#lnkCliente').unbind('click');
+                $('#lnkCliente').click(function() {
+                    var cliente = objeto('cliente', '<%=request.getContextPath()%>');
+                    var clienteView = vista(cliente, '<%=request.getContextPath()%>'); 
+                    
+                    $('#indexContenidoJsp').empty();
+                    $('#indexContenido').empty().append(clienteView.getEmptyList());
+                    
+                    var clienteControl = controlClientes();
+                    clienteControl.inicia(clienteView, 1, null, null, 10, null, null, null, null);
+                    return false;
+                });
+                                $('#lnkProducto').unbind('click');
+                $('#lnkProducto').click(function() {
+                    var producto = objeto('producto', '<%=request.getContextPath()%>');
+                    var productoView = vista(producto, '<%=request.getContextPath()%>'); 
+                    
+                    $('#indexContenidoJsp').empty();
+                    $('#indexContenido').empty().append(productoView.getEmptyList());
+                    
+                    var productoControl = controlProductos();
+                    productoControl.inicia(productoView, 1, null, null, 10, null, null, null, null);
+                    return false;
+                });
+            });
+            function callbackSearchCliente(id){
+            alert($(this).attr('id'));
+            }
+        </script>
     </body>
 </html>

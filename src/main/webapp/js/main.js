@@ -174,6 +174,12 @@ var vista = function(objeto, ContextPath) {
             tabla += '</table>';
             return tabla;
         },
+        getEmptyList: function() {
+            $.when(ajaxCallSync(urlDatos + '&op=list&mode=1', 'GET', '')).done(function(data) {
+                form = data;
+            });
+            return form;
+        },
         getEmptyForm: function() {
             $.when(ajaxCallSync(urlDatos + '&op=form&mode=1', 'GET', '')).done(function(data) {
                 form = data;

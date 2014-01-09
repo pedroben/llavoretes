@@ -11,7 +11,7 @@
     ClienteDao_Mysql oClienteDao_Mysql = new ClienteDao_Mysql(Conexion.getConection());
     ArrayList<String> alColumnsNames = (ArrayList<String>) oClienteDao_Mysql.getColumnsNames();
     Iterator<String> oIterador = alColumnsNames.listIterator();
-    String strNombreMantenimiento = "Cliente";
+    String strNombreMantenimiento = "Producto";
 %>
 <div class="span12">
     <div class="row-fluid">
@@ -94,7 +94,7 @@
 <script>
 
 
-    var controlClientes = function() {
+    var controlProductos = function() {
         //contexto privado
         function cargaBotoneraMantenimiento() {
             var botonera = [

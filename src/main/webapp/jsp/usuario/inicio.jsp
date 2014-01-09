@@ -1,6 +1,6 @@
 <div class="hero-unit">
-    <h1>Bienvenidos a ajax stock SM</h1>
-    <h3>Versión (SM v.03) de 6/1/2014. (SM = simple maintenances)</h3>
+    <h1>Bienvenidos a ajax stock</h1>
+    <h3>Versión (SM v.01) de 9/1/2014</h3>
     <h5>Desarrollo de aplicaciones web. CPIFP Ausiàs March. Curso 2013-2014.</h5>    
 </div>
 <div class="row-fluid">
@@ -12,7 +12,7 @@
                     aplicaciones AJAX. Se trata de un proyecto que  
                     construimos durante la segunda evaluación de los módulos DES-DEC 
                     del ciclo formativo DAW. Está pensado para soportar mantenimientos 
-                    CRUDL simples (SM).</p>
+                    CRUDL (create remove update delete list).</p>
             </div>
             <div class="span6">
                 <h3>¿Para qué sirve?</h3>
@@ -46,8 +46,8 @@
             <li>Cliente desarrollado sobre Bootstrap responsivo</li>
             <li>Acceso a datos (base de datos MySQL) mediante clases de negocio y DAO</li>
             <li>Mantenimientos paginados</li>
-            <li>Ajax Stock SM No soporta Relaciones 1:M</li>
-            <li>Ajax Stock SM No soporta Relaciones M:M</li>
+            <li>Ajax Stock soporta Relaciones 1:M</li>
+            <li>Ajax Stock soporta Relaciones M:M</li>
         </ul>
     </div>
 </div>
