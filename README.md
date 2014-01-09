@@ -1,4 +1,4 @@
-ajax-stock-sm
-=============
+ajax-stock
+==========
 
-Ajax Stock SM
+Ajax Stock
