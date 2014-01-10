@@ -214,7 +214,7 @@
 
                 //muestra la botonera de páginas
 
-                $(prefijo_div + " #pagination").empty().append(view.getLoading()).html(view.getPageLinks(pag, rpp, filter, filteroperator, filtervalue));
+                $(prefijo_div + " #pagination").empty().append(view.getLoading()).html(view.getPageLinks(pag, rpp, filter, filteroperator, filtervalue));                
 
                 //muestra el listado principal
 

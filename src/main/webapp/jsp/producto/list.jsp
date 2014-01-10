@@ -154,7 +154,7 @@
 
 
                 var tipoproductoControl = control_tipoproducto_list();
-                tipoproductoControl.inicia(tipoproductoView, 1, null, null, 10, null, null, null, callbackSearchTipoproducto,'tipoproducto_list');
+                tipoproductoControl.inicia(tipoproductoView, 1, null, null, 10, null, null, null, callbackSearchTipoproducto,'#tipoproducto_list');
 
 
                 function callbackSearchTipoproducto(id) {
