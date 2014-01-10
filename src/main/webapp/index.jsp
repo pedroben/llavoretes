@@ -118,8 +118,8 @@
                     $('#indexContenidoJsp').empty();
                     $('#indexContenido').empty().append(clienteView.getEmptyList());
                     
-                    var clienteControl = controlClientes();
-                    clienteControl.inicia(clienteView, 1, null, null, 10, null, null, null, callbackSearchCliente);
+                    var clienteControl = control_cliente_list();
+                    clienteControl.inicia(clienteView, 1, null, null, 10, null, null, null, null);
                     return false;
                 });
                 $('#lnkProducto').unbind('click');
@@ -130,16 +130,12 @@
                     $('#indexContenidoJsp').empty();
                     $('#indexContenido').empty().append(productoView.getEmptyList());
                     
-                    var productoControl = controlProductos();
-                    productoControl.inicia(productoView, 1, null, null, 10, null, null, null, callbackSearchCliente);
+                    var productoControl = control_producto_list();
+                    productoControl.inicia(productoView, 1, null, null, 10, null, null, null, null);
                     return false;
                 });
             });
-            function callbackSearchCliente(id){
-            alert($(this).attr('id'));
-            
-            
-            }
+
         </script>
     </body>
 </html>

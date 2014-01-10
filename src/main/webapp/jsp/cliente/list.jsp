@@ -13,6 +13,7 @@
     Iterator<String> oIterador = alColumnsNames.listIterator();
     String strNombreMantenimiento = "Cliente";
 %>
+<div id="cliente_list">
 <div class="span12">
     <div class="row-fluid">
         <div class="span7">       
@@ -91,10 +92,11 @@
     <div class="modal-body"></div>
     <div class="modal-footer"></div>
 </div>
+</div>
 <script>
 
 
-    var controlClientes = function() {
+    var control_cliente_list = function() {
         //contexto privado
         function cargaBotoneraMantenimiento() {
             var botonera = [
@@ -200,7 +202,7 @@
             }
         }
         return {
-            inicia: function(view, pag, order, ordervalue, rpp, filter, filteroperator, filtervalue, callback) {
+            inicia: function(view, pag, order, ordervalue, rpp, filter, filteroperator, filtervalue, callback,prefijo_div) {
 
                 var thisObject = this;
 

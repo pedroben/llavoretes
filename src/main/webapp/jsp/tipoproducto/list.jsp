@@ -4,16 +4,16 @@
     Author     : rafa
 --%>
 <%@page import="net.rafaelaznar.helper.Conexion"%>
-<%@page import="net.rafaelaznar.dao.ProductoDao_Mysql"%>
+<%@page import="net.rafaelaznar.dao.TipoproductoDao_Mysql"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Iterator"%>
 <%
-    ProductoDao_Mysql oProductoDao_Mysql = new ProductoDao_Mysql(Conexion.getConection());
-    ArrayList<String> alColumnsNames = (ArrayList<String>) oProductoDao_Mysql.getColumnsNames();
+    TipoproductoDao_Mysql oTipoproductoDao_Mysql = new TipoproductoDao_Mysql(Conexion.getConection());
+    ArrayList<String> alColumnsNames = (ArrayList<String>) oTipoproductoDao_Mysql.getColumnsNames();
     Iterator<String> oIterador = alColumnsNames.listIterator();
-    String strNombreMantenimiento = "Producto";
+    String strNombreMantenimiento = "Tipoproducto";
 %>
-<div id="producto_list">
+<div id="tipoproducto_list">
     <div class="span12">
         <div class="row-fluid">
             <div class="span7">       
@@ -81,7 +81,6 @@
         <div id="datos"></div>
         <div id="datos2"></div>
     </div>
-
     <!-- Modales -->
     <div id="modal01" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-header"></div>
@@ -97,7 +96,7 @@
 <script>
 
 
-    var control_producto_list = function() {
+    var control_tipoproducto_list = function() {
         //contexto privado
         function cargaBotoneraMantenimiento() {
             var botonera = [
@@ -140,32 +139,8 @@
                 $('#id').val('0').attr("disabled", true);
                 //$('#nombre').focus();
             }
-            $('#id_tipoproducto_button').unbind('click');
-            $('#id_tipoproducto_button').click(function() {
-
-                var tipoproducto = objeto('tipoproducto', '<%=request.getContextPath()%>');
-                var tipoproductoView = vista(tipoproducto, '<%=request.getContextPath()%>');
-
-                cabecera = "<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">×</button>" + "<h3 id=\"myModalLabel\">Elección</h3>";
-                pie = "<button class=\"btn btn-primary\" data-dismiss=\"modal\" aria-hidden=\"true\">Cerrar</button>";
-                listado = tipoproductoView.getEmptyList();
-                loadForm('#modal02', cabecera, listado, pie, true);
-
-
-
-                var tipoproductoControl = control_tipoproducto_list();
-                tipoproductoControl.inicia(tipoproductoView, 1, null, null, 10, null, null, null, callbackSearchTipoproducto,'tipoproducto_list');
-
-
-                function callbackSearchTipoproducto(id) {
-                    alert($(this).attr('id'));
-                }
-                return false;
-
-            });
             $('#submitForm').unbind('click');
             $('#submitForm').click(function() {
-                //validaciones...
                 enviarDatosUpdateForm(view, id);
                 return false;
             });
@@ -227,7 +202,7 @@
             }
         }
         return {
-            inicia: function(view, pag, order, ordervalue, rpp, filter, filteroperator, filtervalue, callback) {
+            inicia: function(view, pag, order, ordervalue, rpp, filter, filteroperator, filtervalue, callback,prefijo_div) {
 
                 var thisObject = this;
 
@@ -239,125 +214,125 @@
 
                 //muestra la botonera de páginas
 
-                $("#pagination").empty().append(view.getLoading()).html(view.getPageLinks(pag, rpp, filter, filteroperator, filtervalue));
+                $(prefijo_div + " #pagination").empty().append(view.getLoading()).html(view.getPageLinks(pag, rpp, filter, filteroperator, filtervalue));
 
                 //muestra el listado principal
 
                 if (callback) {
-                    $("#datos").empty().append(view.getLoading()).html(view.getPageTable(pag, order, ordervalue, rpp, filter, filteroperator, filtervalue, cargaBotoneraBuscando()));
+                    $(prefijo_div + " #datos").empty().append(view.getLoading()).html(view.getPageTable(pag, order, ordervalue, rpp, filter, filteroperator, filtervalue, cargaBotoneraBuscando()));
                 } else {
-                    $("#datos").empty().append(view.getLoading()).html(view.getPageTable(pag, order, ordervalue, rpp, filter, filteroperator, filtervalue, cargaBotoneraMantenimiento()));
+                    $(prefijo_div + " #datos").empty().append(view.getLoading()).html(view.getPageTable(pag, order, ordervalue, rpp, filter, filteroperator, filtervalue, cargaBotoneraMantenimiento()));
                 }
 
                 //muestra la frase con el número de registros de la consulta
 
-                $("#registers").empty().append(view.getLoading()).html(view.getRegistersInfo(filter, filteroperator, filtervalue));
+                $(prefijo_div + " #registers").empty().append(view.getLoading()).html(view.getRegistersInfo(filter, filteroperator, filtervalue));
 
                 //muestra la frase de estado de la ordenación de la tabla
 
-                $("#order").empty().append(view.getLoading()).html(view.getOrderInfo(order, ordervalue));
+                $(prefijo_div + " #order").empty().append(view.getLoading()).html(view.getOrderInfo(order, ordervalue));
 
                 //muestra la frase de estado del filtro de la tabla aplicado
 
-                $("#filter").empty().append(view.getLoading()).html(view.getFilterInfo(filter, filteroperator, filtervalue));
+                $(prefijo_div + " #filter").empty().append(view.getLoading()).html(view.getFilterInfo(filter, filteroperator, filtervalue));
 
                 //asignación eventos de la botonera de cada línea del listado principal
                 if (callback) {
-                    $('.btn.btn-mini.action01').unbind('click');
-                    $('.btn.btn-mini.action01').click(callback);
+                    $(prefijo_div + ' .btn.btn-mini.action01').unbind('click');
+                    $(prefijo_div + ' .btn.btn-mini.action01').click(callback);
                 } else {
-                    $('.btn.btn-mini.action01').unbind('click');
-                    $('.btn.btn-mini.action01').click(function() {
-                        loadDivView(view, '#datos2', $(this).attr('id'));
+                    $(prefijo_div + ' .btn.btn-mini.action01').unbind('click');
+                    $(prefijo_div + ' .btn.btn-mini.action01').click(function() {
+                        loadDivView(view, prefijo_div + ' #datos2', $(this).attr('id'));
                     });
 
-                    $('.btn.btn-mini.action02').unbind('click');
-                    $('.btn.btn-mini.action02').click(function() {
-                        loadModalView(view, '#modal01', $(this).attr('id'));
+                    $(prefijo_div + ' .btn.btn-mini.action02').unbind('click');
+                    $(prefijo_div + ' .btn.btn-mini.action02').click(function() {
+                        loadModalView(view, prefijo_div + ' #modal01', $(this).attr('id'));
                     });
 
-                    $('.btn.btn-mini.action03').unbind('click');
-                    $('.btn.btn-mini.action03').click(function() {
-                        loadModalForm(view, '#modal01', $(this).attr('id'), "edit");
+                    $(prefijo_div + ' .btn.btn-mini.action03').unbind('click');
+                    $(prefijo_div + ' .btn.btn-mini.action03').click(function() {
+                        loadModalForm(view, prefijo_div + ' #modal01', $(this).attr('id'), "edit");
                     });
 
-                    $('.btn.btn-mini.action04').unbind('click');
-                    $('.btn.btn-mini.action04').click(function() {
-                        removeConfirmationModalForm(view, '#modal01', $(this).attr('id'));
+                    $(prefijo_div + ' .btn.btn-mini.action04').unbind('click');
+                    $(prefijo_div + ' .btn.btn-mini.action04').click(function() {
+                        removeConfirmationModalForm(view, prefijo_div + ' #modal01', $(this).attr('id'));
                     });
                 }
 
                 //asignación de evento del enlace para quitar el orden en el listado principal
 
-                $('#linkQuitarOrden').unbind('click');
-                $('#linkQuitarOrden').click(function() {
-                    thisObject.inicia(view, pag, null, null, rpp, filter, filteroperator, filtervalue, callback);
+                $(prefijo_div + ' #linkQuitarOrden').unbind('click');
+                $(prefijo_div + ' #linkQuitarOrden').click(function() {
+                    thisObject.inicia(view, pag, null, null, rpp, filter, filteroperator, filtervalue, callback,null);
                 });
 
                 //asignación de evento del enlace para quitar el filtro en el listado principal
 
-                $('#linkQuitarFiltro').unbind('click');
-                $('#linkQuitarFiltro').click(function() {
-                    thisObject.inicia(view, pag, order, ordervalue, rpp, null, null, null, callback);
+                $(prefijo_div + ' #linkQuitarFiltro').unbind('click');
+                $(prefijo_div + ' #linkQuitarFiltro').click(function() {
+                    thisObject.inicia(view, pag, order, ordervalue, rpp, null, null, null, callback,null);
                 });
 
                 //asignación de eventos de la ordenación por columnas del listado principal
 
                 $.each(view.getObject().getFieldNames(), function(index, valor) {
-                    $('.orderAsc').unbind('click');
-                    $('.orderAsc' + index).click(function() {
-                        rpp = $("#rpp option:selected").text();
-                        thisObject.inicia(view, pag, valor, "asc", rpp, filter, filteroperator, filtervalue, callback);
+                    $(prefijo_div + ' .orderAsc').unbind('click');
+                    $(prefijo_div + ' .orderAsc' + index).click(function() {
+                        rpp = $(prefijo_div + " #rpp option:selected").text();
+                        thisObject.inicia(view, pag, valor, "asc", rpp, filter, filteroperator, filtervalue, callback,null);
                     });
-                    $('.orderDesc').unbind('click');
-                    $('.orderDesc' + index).click(function() {
-                        rpp = $("#rpp option:selected").text();
-                        thisObject.inicia(view, pag, valor, "desc", rpp, filter, filteroperator, filtervalue, callback);
+                    $(prefijo_div + ' .orderDesc').unbind('click');
+                    $(prefijo_div + ' .orderDesc' + index).click(function() {
+                        rpp = $(prefijo_div + " #rpp option:selected").text();
+                        thisObject.inicia(view, pag, valor, "desc", rpp, filter, filteroperator, filtervalue, callback,null);
                     });
 
                 });
 
                 //asignación del evento de click para cambiar de página en la botonera de paginación
 
-                $('.pagination_link').unbind('click');
-                $('.pagination_link').click(function() {
+                $(prefijo_div + ' .pagination_link').unbind('click');
+                $(prefijo_div + ' .pagination_link').click(function() {
                     var id = $(this).attr('id');
-                    rpp = $("#rpp option:selected").text();
-                    thisObject.inicia(view, id, order, ordervalue, rpp, filter, filteroperator, filtervalue, callback);
+                    rpp = $(prefijo_div + " #rpp option:selected").text();
+                    thisObject.inicia(view, id, order, ordervalue, rpp, filter, filteroperator, filtervalue, callback,null);
                     return false;
                 });
 
-                $('#crear').unbind('click');
-                $('#crear').click(function() {
-                    loadModalForm(view, '#modal01', $(this).attr('id'));
+                $(prefijo_div + ' #crear').unbind('click');
+                $(prefijo_div + ' #crear').click(function() {
+                    loadModalForm(view, prefijo_div + ' #modal01', $(this).attr('id'));
                 });
 
                 //asignación del evento de filtrado al boton
 
-                $('#btnFiltrar').unbind('click');
-                $("#btnFiltrar").click(function() {
-                    filter = $("#selectFilter option:selected").text();
-                    filteroperator = $("#selectFilteroperator option:selected").text();
-                    filtervalue = $("#inputFiltervalue").val();
-                    thisObject.inicia(view, pag, order, ordervalue, rpp, filter, filteroperator, filtervalue, callback);
+                $(prefijo_div + ' #btnFiltrar').unbind('click');
+                $(prefijo_div + " #btnFiltrar").click(function() {
+                    filter = $(prefijo_div + " #selectFilter option:selected").text();
+                    filteroperator = $(prefijo_div + " #selectFilteroperator option:selected").text();
+                    filtervalue = $(prefijo_div + " #inputFiltervalue").val();
+                    thisObject.inicia(view, pag, order, ordervalue, rpp, filter, filteroperator, filtervalue, callback,null);
                     return false;
                 });
 
                 //asigación de evento de refresco de la tabla cuando volvemos de una operación en ventana modal
 
-                $('#modal01').unbind('hidden');
-                $('#modal01').on('hidden', function() {
+                $(prefijo_div + ' #modal01').unbind('hidden');
+                $(prefijo_div + ' #modal01').on('hidden', function() {
 
-                    rpp = $("#rpp option:selected").text();
-                    thisObject.inicia(view, pag, order, ordervalue, rpp, filter, filteroperator, filtervalue, callback);
+                    rpp = $(prefijo_div + " #rpp option:selected").text();
+                    thisObject.inicia(view, pag, order, ordervalue, rpp, filter, filteroperator, filtervalue, callback,null);
                 });
 
                 //asignación del evento de cambio del numero de regs por página
 
-                $('#rpp').unbind('change');
-                $('#rpp').on('change', function() {
-                    rpp = $("#rpp option:selected").text();
-                    thisObject.inicia(view, pag, order, ordervalue, rpp, filter, filteroperator, filtervalue, callback);
+                $(prefijo_div + ' #rpp').unbind('change');
+                $(prefijo_div + ' #rpp').on('change', function() {
+                    rpp = $(prefijo_div + " #rpp option:selected").text();
+                    thisObject.inicia(view, pag, order, ordervalue, rpp, filter, filteroperator, filtervalue, callback,null);
                 });
             }
         };
