@@ -80,7 +80,7 @@ var control_producto_list = function(path) {
                 'display': 'block'
             });
 
-            var tipoproductoControl = control_tipoproducto_list();
+            var tipoproductoControl = control_tipoproducto_list(path);
             tipoproductoControl.inicia(tipoproductoView, 1, null, null, 10, null, null, null, callbackSearchTipoproducto);
 
             function callbackSearchTipoproducto(id) {

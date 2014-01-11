@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-var control_cliente_list = function() {
+var control_cliente_list = function(path) {
     //contexto privado
 
     var prefijo_div = "cliente_list";
@@ -117,13 +117,13 @@ var control_cliente_list = function() {
 
     function cargaComprasDeCliente(id_cliente) {
 
-        var compra = objeto('compra', '<%=request.getContextPath()%>');
-        var compraView = vista(compra, '<%=request.getContextPath()%>');
+        var compra = objeto('compra', path);
+        var compraView = vista(compra, path);
 
         $('#indexContenidoJsp').empty();
         $('#indexContenido').empty().append(compraView.getEmptyList());
 
-        var compraControl = control_compra_list('<%=request.getContextPath()%>');
+        var compraControl = control_compra_list(path);
         compraControl.inicia(compraView, 1, null, null, 10, null, null, null, null);
         return false;
 

@@ -114,6 +114,7 @@
         <script src="js/control/cliente.js" charset="UTF-8"></script>
         <script src="js/control/producto.js" charset="UTF-8"></script>
         <script src="js/control/tipoproducto.js" charset="UTF-8"></script>
+        <script src="js/control/compra.js" charset="UTF-8"></script>
 
         <script>
             //para solucionar el bug de la autollamada recursiva 
@@ -133,7 +134,7 @@
                     $('#indexContenidoJsp').empty();
                     $('#indexContenido').empty().append(clienteView.getEmptyList());
 
-                    var clienteControl = control_cliente_list();
+                    var clienteControl = control_cliente_list('<%=request.getContextPath()%>');
                     clienteControl.inicia(clienteView, 1, null, null, 10, null, null, null, null);
                     return false;
                 });

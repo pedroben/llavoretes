@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-var control_tipoproducto_list = function() {
+var control_tipoproducto_list = function(path) {
     //contexto privado
 
     var prefijo_div = "#tipoproducto_list";

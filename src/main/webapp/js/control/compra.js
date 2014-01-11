@@ -80,7 +80,7 @@ var control_compra_list = function(path) {
                 'display': 'block'
             });
 
-            var compraControl = control_compra_list();
+            var compraControl = control_compra_list(path);
             compraControl.inicia(compraView, 1, null, null, 10, null, null, null, callbackSearchCompra);
 
             function callbackSearchCompra(id) {
