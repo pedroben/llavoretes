@@ -3,15 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-var control_cliente_list = function() {
+var control_compra_list = function(path) {
     //contexto privado
 
-    var prefijo_div = "cliente_list";
+    var prefijo_div = "compra_list";
 
     function cargaBotoneraMantenimiento() {
         var botonera = [
-            {"class": "btn btn-mini action05", "icon": "", "text": "compras"},
             {"class": "btn btn-mini action01", "icon": "icon-eye-open", "text": ""},
             {"class": "btn btn-mini action02", "icon": "icon-zoom-in", "text": ""},
             {"class": "btn btn-mini action03", "icon": "icon-pencil", "text": ""},
@@ -49,10 +47,57 @@ var control_cliente_list = function() {
             view.doFillForm(id);
         } else {
             $('#id').val('0').attr("disabled", true);
-            //$('#nombre').focus();
+            $('#codigo').focus();
         }
+        $('#id_compra_desc').empty().html(objeto('compra', path).getOne($('#id_compra').val()).descripcion);
+//            $('#modal01').css({
+//                'right': '20%',
+//                'left': '20%',
+//                'width': 'auto',
+//                'margin': '0'                
+//            });
+
+//        $('#modal01').css({
+//            'width': '612px'
+//        });
+        //en desarrollo: tratamiento de las claves ajenas ...
+        $('#id_compra_button').unbind('click');
+        $('#id_compra_button').click(function() {
+
+            var compra = objeto('compra', path);
+            var compraView = vista(compra, path);
+
+            cabecera = '<button id="full-width" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>" + "<h3 id="myModalLabel">Elección</h3>';
+            pie = '<button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Cerrar</button>';
+            listado = compraView.getEmptyList();
+            loadForm('#modal02', cabecera, listado, pie, true);
+
+            $('#modal02').css({
+                'right': '20px',
+                'left': '20px',
+                'width': 'auto',
+                'margin': '0',
+                'display': 'block'
+            });
+
+            var compraControl = control_compra_list();
+            compraControl.inicia(compraView, 1, null, null, 10, null, null, null, callbackSearchCompra);
+
+            function callbackSearchCompra(id) {
+                $('#modal02').modal('hide');
+                $('#modal02').data('modal', null);
+                $('#id_compra').val($(this).attr('id'));
+                $('#id_compra_desc').empty().html(objeto('compra', path).getOne($('#id_compra').val()).descripcion);
+                return false;
+            }
+
+            return false;
+
+        });
+
         $('#submitForm').unbind('click');
-        $('#submitForm').click(function() {
+        $('#submitForm').click(function(event) {
+            //validaciones...
             enviarDatosUpdateForm(view, id);
             return false;
         });
@@ -106,31 +151,15 @@ var control_cliente_list = function() {
         pie = "<button class=\"btn btn-primary\" data-dismiss=\"modal\" aria-hidden=\"true\">Cerrar</button>";
         resultado = view.getObject().saveOne(jsonfile);
         if (resultado["status"] = "200") {
-            mensaje = 'valores actualizados correctamente para el cliente con id=' + resultado["message"];
+            mensaje = 'valores actualizados correctamente para el registro con id=' + resultado["message"];
             loadForm('#modal02', cabecera, "Código: " + resultado["status"] + "<br />" + mensaje + "<br />" + view.getObjectTable(resultado["message"]), pie, true);
         } else {
             mensaje = 'el servidor ha retornado el mensaje de error=' + resultado["message"];
             loadForm('#modal02', cabecera, "Código: " + resultado["status"] + "<br />" + mensaje + "<br />" + view.getObjectTable(resultado["message"]), pie, true);
         }
-
     }
-
-    function cargaComprasDeCliente(id_cliente) {
-
-        var compra = objeto('compra', '<%=request.getContextPath()%>');
-        var compraView = vista(compra, '<%=request.getContextPath()%>');
-
-        $('#indexContenidoJsp').empty();
-        $('#indexContenido').empty().append(compraView.getEmptyList());
-
-        var compraControl = control_compra_list('<%=request.getContextPath()%>');
-        compraControl.inicia(compraView, 1, null, null, 10, null, null, null, null);
-        return false;
-
-    }
-    
     return {
-        inicia: function(view, pag, order, ordervalue, rpp, filter, filteroperator, filtervalue, callback, prefijo_div) {
+        inicia: function(view, pag, order, ordervalue, rpp, filter, filteroperator, filtervalue, callback) {
 
             var thisObject = this;
 
@@ -165,6 +194,7 @@ var control_cliente_list = function() {
             $("#filter").empty().append(view.getLoading()).html(view.getFilterInfo(filter, filteroperator, filtervalue));
 
             //asignación eventos de la botonera de cada línea del listado principal
+
             if (callback) {
                 $('.btn.btn-mini.action01').unbind('click');
                 $('.btn.btn-mini.action01').click(callback);
@@ -188,12 +218,6 @@ var control_cliente_list = function() {
                 $('.btn.btn-mini.action04').click(function() {
                     removeConfirmationModalForm(view, '#modal01', $(this).attr('id'));
                 });
-
-                $('.btn.btn-mini.action05').unbind('click');
-                $('.btn.btn-mini.action05').click(function() {
-                    cargaComprasDeCliente($(this).attr('id'));
-                });
-
             }
 
             //asignación de evento del enlace para quitar el orden en el listado principal
@@ -229,23 +253,28 @@ var control_cliente_list = function() {
             //asignación del evento de click para cambiar de página en la botonera de paginación
 
             $('.pagination_link').unbind('click');
-            $('.pagination_link').click(function() {
+            $('.pagination_link').click(function(event) {
                 var id = $(this).attr('id');
                 rpp = $("#rpp option:selected").text();
                 thisObject.inicia(view, id, order, ordervalue, rpp, filter, filteroperator, filtervalue, callback);
                 return false;
+
             });
 
             //boton de crear un nuevo elemento
+
             $('#crear').unbind('click');
             $('#crear').click(function() {
                 loadModalForm(view, '#modal01', $(this).attr('id'));
             });
 
+
+
+
             //asignación del evento de filtrado al boton
 
             $('#btnFiltrar').unbind('click');
-            $("#btnFiltrar").click(function() {
+            $("#btnFiltrar").click(function(event) {
                 filter = $("#selectFilter option:selected").text();
                 filteroperator = $("#selectFilteroperator option:selected").text();
                 filtervalue = $("#inputFiltervalue").val();
@@ -257,9 +286,9 @@ var control_cliente_list = function() {
 
             $('#modal01').unbind('hidden');
             $('#modal01').on('hidden', function() {
-
                 rpp = $("#rpp option:selected").text();
                 thisObject.inicia(view, pag, order, ordervalue, rpp, filter, filteroperator, filtervalue, callback);
+
             });
 
             //asignación del evento de cambio del numero de regs por página
@@ -272,4 +301,3 @@ var control_cliente_list = function() {
         }
     };
 };
-
