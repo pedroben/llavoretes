@@ -24,6 +24,7 @@
             }
         </style>
         <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+
         <link rel="stylesheet" href="css/main.css">
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -77,7 +78,7 @@
                     }
                 %>
                 <div id="indexContenidoJsp">
-                <jsp:include page='<%=(String) request.getAttribute("contenido")%>' />                
+                    <jsp:include page='<%=(String) request.getAttribute("contenido")%>' />                
                 </div>
                 <%
                     out.print("</div>");
@@ -105,19 +106,33 @@
         <script src="js/vendor/bootstrap-carousel.js"></script>
         <script src="js/vendor/bootstrap-typeahead.js"></script>    
 
-        <script src="js/util.js"></script>
-        <script src="js/main.js"></script>
+
+
+        <script src="js/util.js" charset="UTF-8"></script>
+        <script src="js/main.js" charset="UTF-8"></script>
+
+        <script src="js/control/cliente.js" charset="UTF-8"></script>
+        <script src="js/control/producto.js" charset="UTF-8"></script>
+        <script src="js/control/tipoproducto.js" charset="UTF-8"></script>
 
         <script>
+            //para solucionar el bug de la autollamada recursiva 
+            //muy dificil de encontrar y depurar
+            //dos modales a la vez se pasan el foco de una a la otra
+            //https://github.com/twbs/bootstrap/issues/4781
+            //https://github.com/makeusabrew/bootbox/issues/60
+            $(document).on('show', '.modal', function() {
+                $(document).off('focusin.modal');
+            });
             $(document).ready(function() {
                 $('#lnkCliente').unbind('click');
                 $('#lnkCliente').click(function() {
                     var cliente = objeto('cliente', '<%=request.getContextPath()%>');
-                    var clienteView = vista(cliente, '<%=request.getContextPath()%>'); 
-                    
+                    var clienteView = vista(cliente, '<%=request.getContextPath()%>');
+
                     $('#indexContenidoJsp').empty();
                     $('#indexContenido').empty().append(clienteView.getEmptyList());
-                    
+
                     var clienteControl = control_cliente_list();
                     clienteControl.inicia(clienteView, 1, null, null, 10, null, null, null, null);
                     return false;
@@ -125,12 +140,12 @@
                 $('#lnkProducto').unbind('click');
                 $('#lnkProducto').click(function() {
                     var producto = objeto('producto', '<%=request.getContextPath()%>');
-                    var productoView = vista(producto, '<%=request.getContextPath()%>'); 
-                    
+                    var productoView = vista(producto, '<%=request.getContextPath()%>');
+
                     $('#indexContenidoJsp').empty();
                     $('#indexContenido').empty().append(productoView.getEmptyList());
-                    
-                    var productoControl = control_producto_list();
+
+                    var productoControl = control_producto_list('<%=request.getContextPath()%>');
                     productoControl.inicia(productoView, 1, null, null, 10, null, null, null, null);
                     return false;
                 });

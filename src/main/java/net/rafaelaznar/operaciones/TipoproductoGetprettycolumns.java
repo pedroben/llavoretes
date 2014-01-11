@@ -21,7 +21,7 @@ public class TipoproductoGetprettycolumns implements GenericOperation {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         try {
-            String data = "{\"data\": [\"id\", \"nombre\", \"primer apellido\", \"segundo apellido\", \"email\"]}";
+            String data = "{\"data\": [\"id\", \"descripción\"]}";
             return data;
         } catch (Exception e) {
             throw new ServletException("TipoproductoGetpagesJson: View Error: " + e.getMessage());
