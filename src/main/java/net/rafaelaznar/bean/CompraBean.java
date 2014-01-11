@@ -4,25 +4,19 @@ import java.util.Date;
 
 public class CompraBean {
 
-    private int id = 0;
-    private ClienteBean cliente = null;
-    private ProductoBean producto = null;
+    private Integer id = 0;
+    private Integer id_cliente = 0;
+    private Integer id_producto = 0;
     private Integer cantidad = 0;
     private Date fecha = new Date();
+    private Integer id_factura = 0;
 
     public CompraBean() {
-        this.cliente = new ClienteBean();
-        this.cliente.setId(0);
-        this.producto = new ProductoBean();
-        this.producto.setId(0);
+
     }
 
     public CompraBean(Integer intId) {
         this.id = intId;
-        this.cliente = new ClienteBean();
-        this.cliente.setId(0);
-        this.producto = new ProductoBean();
-        this.producto.setId(0);
     }
 
     public int getId() {
@@ -33,20 +27,20 @@ public class CompraBean {
         this.id = id;
     }
 
-    public ClienteBean getCliente() {
-        return cliente;
+    public Integer getId_cliente() {
+        return id_cliente;
     }
 
-    public void setCliente(ClienteBean cliente) {
-        this.cliente = cliente;
+    public void setId_cliente(Integer id_cliente) {
+        this.id_cliente = id_cliente;
     }
 
-    public ProductoBean getProducto() {
-        return producto;
+    public Integer getId_producto() {
+        return id_producto;
     }
 
-    public void setProducto(ProductoBean producto) {
-        this.producto = producto;
+    public void setId_producto(Integer id_producto) {
+        this.id_producto = id_producto;
     }
 
     public Integer getCantidad() {
@@ -63,6 +57,14 @@ public class CompraBean {
 
     public void setFecha(Date fecha) {
         this.fecha = fecha;
+    }
+
+    public Integer getId_factura() {
+        return id_factura;
+    }
+
+    public void setId_factura(Integer id_factura) {
+        this.id_factura = id_factura;
     }
 
 }

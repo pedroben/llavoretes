@@ -47,13 +47,22 @@ var control_producto_list = function(path) {
             view.doFillForm(id);
         } else {
             $('#id').val('0').attr("disabled", true);
-            $('#nombre').focus();
+            $('#codigo').focus();
         }
+        $('#id_tipoproducto_desc').empty().html(objeto('tipoproducto', path).getOne($('#id_tipoproducto').val()).descripcion);
+//            $('#modal01').css({
+//                'right': '20%',
+//                'left': '20%',
+//                'width': 'auto',
+//                'margin': '0'                
+//            });
 
-
+//        $('#modal01').css({
+//            'width': '612px'
+//        });
         //en desarrollo: tratamiento de las claves ajenas ...
         $('#id_tipoproducto_button').unbind('click');
-        $('#id_tipoproducto_button').click(function(event) {
+        $('#id_tipoproducto_button').click(function() {
 
             var tipoproducto = objeto('tipoproducto', path);
             var tipoproductoView = vista(tipoproducto, path);
@@ -71,35 +80,26 @@ var control_producto_list = function(path) {
                 'display': 'block'
             });
 
- 
-
             var tipoproductoControl = control_tipoproducto_list();
             tipoproductoControl.inicia(tipoproductoView, 1, null, null, 10, null, null, null, callbackSearchTipoproducto);
 
-
             function callbackSearchTipoproducto(id) {
-                
                 $('#modal02').modal('hide');
                 $('#modal02').data('modal', null);
                 $('#id_tipoproducto').val($(this).attr('id'));
-                $('#id_tipoproducto_desc').empty().html(tipoproducto.getOne($(this).attr('id')).descripcion);
+                $('#id_tipoproducto_desc').empty().html(objeto('tipoproducto', path).getOne($('#id_tipoproducto').val()).descripcion);
                 return false;
             }
-            
+
             return false;
-        
 
         });
-
-
-
 
         $('#submitForm').unbind('click');
         $('#submitForm').click(function(event) {
             //validaciones...
             enviarDatosUpdateForm(view, id);
             return false;
-      
         });
     }
 
@@ -194,6 +194,7 @@ var control_producto_list = function(path) {
             $("#filter").empty().append(view.getLoading()).html(view.getFilterInfo(filter, filteroperator, filtervalue));
 
             //asignación eventos de la botonera de cada línea del listado principal
+
             if (callback) {
                 $('.btn.btn-mini.action01').unbind('click');
                 $('.btn.btn-mini.action01').click(callback);
@@ -257,14 +258,18 @@ var control_producto_list = function(path) {
                 rpp = $("#rpp option:selected").text();
                 thisObject.inicia(view, id, order, ordervalue, rpp, filter, filteroperator, filtervalue, callback);
                 return false;
-                
+
             });
 
             //boton de crear un nuevo elemento
+
             $('#crear').unbind('click');
             $('#crear').click(function() {
                 loadModalForm(view, '#modal01', $(this).attr('id'));
             });
+
+
+
 
             //asignación del evento de filtrado al boton
 
@@ -274,7 +279,6 @@ var control_producto_list = function(path) {
                 filteroperator = $("#selectFilteroperator option:selected").text();
                 filtervalue = $("#inputFiltervalue").val();
                 thisObject.inicia(view, pag, order, ordervalue, rpp, filter, filteroperator, filtervalue, callback);
-                
                 return false;
             });
 
@@ -282,10 +286,9 @@ var control_producto_list = function(path) {
 
             $('#modal01').unbind('hidden');
             $('#modal01').on('hidden', function() {
-
                 rpp = $("#rpp option:selected").text();
                 thisObject.inicia(view, pag, order, ordervalue, rpp, filter, filteroperator, filtervalue, callback);
-                
+
             });
 
             //asignación del evento de cambio del numero de regs por página

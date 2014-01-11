@@ -31,16 +31,21 @@
         </div>           
         <div class="control-group">
             <label class="control-label" for="id_tipoproducto">Tipo de producto: </label> 
-            <div class="controls">                
+            <div class="controls"> 
+                <!-- <span id="id_tipoproducto" class="alert alert-info"></span> -->
                 <input readonly="true" id="id_tipoproducto" class="input-mini"
-                       name="id_tipoproducto" type="text" size="5" maxlength="5"/>  
+                       name="id_tipoproducto" type="text" size="5" maxlength="5" />  
                 <a class="btn btn-mini" id="id_tipoproducto_button" href="#"><i class="icon-search"></i></a>
+            </div>
+            </div>
+            <div class="control-group">
+            <div class="controls">
                 <span id="id_tipoproducto_desc" class="alert alert-success"></span>                                       
             </div>
         </div>             
         <div class="control-group">
             <div class="controls">
-                <input type="submit" name="enviar"  />
+               <button type="submit" id="submitForm" class="btn submitForm">Submit</button>
             </div>
         </div>
     </fieldset>
