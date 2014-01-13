@@ -33,7 +33,7 @@ var objeto = function(clase, ContextPath) {
             });
             return fieldNames;
         },
-        getPage: function(pagina, order, ordervalue, rpp, filter, filteroperator, filtervalue) {
+        getPage: function(pagina, order, ordervalue, rpp, filter, filteroperator, filtervalue, systemfilter, systemfilteroperator, systemfiltervalue) {
             if (order) {
                 orderParams = '&order=' + order + '&ordervalue=' + ordervalue;
             } else {
@@ -44,29 +44,44 @@ var objeto = function(clase, ContextPath) {
             } else {
                 filterParams = "";
             }
-            $.when(ajaxCallSync(urlDatos + '&op=getpage' + filterParams + '&rpp=' + rpp + orderParams + '&page=' + pagina, 'GET', '')).done(function(data) {
+            if (systemfilter) {
+                systemfilterParams = "&systemfilter=" + systemfilter + "&systemfilteroperator=" + systemfilteroperator + "&systemfiltervalue=" + systemfiltervalue;
+            } else {
+                systemfilterParams = "";
+            }
+            $.when(ajaxCallSync(urlDatos + '&op=getpage' + filterParams + '&rpp=' + rpp + orderParams + '&page=' + pagina + systemfilterParams, 'GET', '')).done(function(data) {
                 pagina_objs = data;
             });
             return pagina_objs;
         },
-        getPages: function(rpp, filter, filteroperator, filtervalue) {
+        getPages: function(rpp, filter, filteroperator, filtervalue, systemfilter, systemfilteroperator, systemfiltervalue) {
             if (filter) {
                 filterParams = "&filter=" + filter + "&filteroperator=" + filteroperator + "&filtervalue=" + filtervalue;
             } else {
                 filterParams = "";
             }
-            $.when(ajaxCallSync(urlDatos + '&op=getpages' + filterParams + '&rpp=' + rpp, 'GET', '')).done(function(data) {
+            if (systemfilter) {
+                systemfilterParams = "&systemfilter=" + systemfilter + "&systemfilteroperator=" + systemfilteroperator + "&systemfiltervalue=" + systemfiltervalue;
+            } else {
+                systemfilterParams = "";
+            }
+            $.when(ajaxCallSync(urlDatos + '&op=getpages' + filterParams + '&rpp=' + rpp + systemfilterParams, 'GET', '')).done(function(data) {
                 pages = data['data'];
             });
             return pages;
         },
-        getRegisters: function(filter, filteroperator, filtervalue) {
+        getRegisters: function(filter, filteroperator, filtervalue, systemfilter, systemfilteroperator, systemfiltervalue) {
             if (filter) {
                 filterParams = "&filter=" + filter + "&filteroperator=" + filteroperator + "&filtervalue=" + filtervalue;
             } else {
                 filterParams = "";
             }
-            $.when(ajaxCallSync(urlDatos + '&op=getregisters' + filterParams, 'GET', '')).done(function(data) {
+            if (systemfilter) {
+                systemfilterParams = "&systemfilter=" + systemfilter + "&systemfilteroperator=" + systemfilteroperator + "&systemfiltervalue=" + systemfiltervalue;
+            } else {
+                systemfilterParams = "";
+            }
+            $.when(ajaxCallSync(urlDatos + '&op=getregisters' + filterParams + systemfilterParams, 'GET', '')).done(function(data) {
                 regs = data['data'];
             });
             return regs;
@@ -105,9 +120,9 @@ var vista = function(objeto, ContextPath) {
         getLoading: function() {
             return '<img src="img/ajax-loading.gif" alt="cargando..." />';
         },
-        getPageLinks: function(page_number, rpp, filter, filteroperator, filtervalue) {
+        getPageLinks: function(page_number, rpp, filter, filteroperator, filtervalue, systemfilter, systemfilteroperator, systemfiltervalue) {
             page_number = parseInt(page_number);
-            total_pages = parseInt(objeto.getPages(rpp, filter, filteroperator, filtervalue));
+            total_pages = parseInt(objeto.getPages(rpp, filter, filteroperator, filtervalue, systemfilter, systemfilteroperator, systemfiltervalue));
             neighborhood = parseInt(neighborhood);
             vector = "<div class=\"pagination\"><ul>";
             if (page_number > 1)
@@ -134,7 +149,7 @@ var vista = function(objeto, ContextPath) {
             vector += "</ul></div>";
             return vector;
         },
-        getPageTable: function(pag, order, ordervalue, rpp, filter, filteroperator, filtervalue, botonera) {
+        getPageTable: function(pag, order, ordervalue, rpp, filter, filteroperator, filtervalue, systemfilter, systemfilteroperator, systemfiltervalue, botonera) {
             var tabla = "<table class=\"table table table-striped table-condensed\">";
             if (objeto.getPrettyFieldNamesAcciones() != null) {
                 tabla += '<tr>';
@@ -146,18 +161,24 @@ var vista = function(objeto, ContextPath) {
                 });
                 tabla += '</tr>';
             }
-            page = objeto.getPage(pag, order, ordervalue, rpp, filter, filteroperator, filtervalue)['list'];
+            page = objeto.getPage(pag, order, ordervalue, rpp, filter, filteroperator, filtervalue, systemfilter, systemfilteroperator, systemfiltervalue)['list'];
             $.each(page, function(index, value) {
                 tabla += '<tr>';
 
                 $.each(objeto.getFieldNames(), function(index, valor) {
                     if (/id_/.test(valor)) {
                         $.when(ajaxCallSync(ContextPath + '/json?ob=' + valor.split("_")[1] + '&op=get&id=' + value[valor], 'GET', '')).done(function(data) {
-                            contador=0;
+                            
+                            contador = 0;
+                            add_tabla="";
                             for (key in data) {
-                                if (contador==1) tabla += '<td>' + data[key] + '</td>';
+                                if (contador == 0)
+                                    add_tabla = '<td>id=' + data[key] + '(no existe)</td>';
+                                if (contador == 1)
+                                    add_tabla = '<td>' + data[key] + '</td>';
                                 contador++;
-                            }   
+                            }
+                            tabla += add_tabla;
                         });
                     } else {
                         tabla += '<td>' + value[valor] + '</td>';
@@ -203,8 +224,8 @@ var vista = function(objeto, ContextPath) {
                 $('#' + campos[index]).val(datos[campos[index]]);
             });
         },
-        getRegistersInfo: function(filter, filteroperator, filtervalue) {
-            regs = this.getObject().getRegisters(filter, filteroperator, filtervalue);
+        getRegistersInfo: function(filter, filteroperator, filtervalue, systemfilter, systemfilteroperator, systemfiltervalue) {
+            regs = this.getObject().getRegisters(filter, filteroperator, filtervalue, systemfilter, systemfilteroperator, systemfiltervalue);
             return "<p>Mostrando una consulta de " + regs + " registros.</p>";
         },
         getOrderInfo: function(order, ordervalue) {

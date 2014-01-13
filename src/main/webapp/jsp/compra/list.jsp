@@ -11,7 +11,7 @@
     CompraDao_Mysql oCompraDao_Mysql = new CompraDao_Mysql(Conexion.getConection());
     ArrayList<String> alColumnsNames = (ArrayList<String>) oCompraDao_Mysql.getColumnsNames();
     Iterator<String> oIterador = alColumnsNames.listIterator();
-    String strNombreMantenimiento = "producto";
+    String strNombreMantenimiento = "compra";
 %>
 <div id="<%=strNombreMantenimiento%>_list">
     <div class="span12">

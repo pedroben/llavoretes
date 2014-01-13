@@ -39,15 +39,9 @@ public class CompraGetpages implements GenericOperation {
                         oFilterBean.setFilterValue(request.getParameter("filtervalue"));
                         oFilterBean.setFilterOrigin("user");
                         alFilter.add(oFilterBean);
-                    } else {
-                        alFilter = null;
-                    }
-                } else {
-                    alFilter = null;
-                }
-            } else {
-                alFilter = null;
-            }
+                    } 
+                } 
+            } 
             if (request.getParameter("systemfilter") != null) {
                 if (request.getParameter("systemfilteroperator") != null) {
                     if (request.getParameter("systemfiltervalue") != null) {
@@ -60,6 +54,7 @@ public class CompraGetpages implements GenericOperation {
                     }
                 }
             }
+            if (alFilter.isEmpty())alFilter=null;
             HashMap<String, String> hmOrder = new HashMap<>();
             if (request.getParameter("order") != null) {
                 if (request.getParameter("ordervalue") != null) {

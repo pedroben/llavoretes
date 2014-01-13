@@ -39,8 +39,6 @@ public class ProductoGetpage implements GenericOperation {
                 page = Integer.parseInt(request.getParameter("page"));
             }
             ArrayList<FilterBean> alFilter = new ArrayList<>();
-            
-                    
             if (request.getParameter("filter") != null) {
                 if (request.getParameter("filteroperator") != null) {
                     if (request.getParameter("filtervalue") != null) {
@@ -50,9 +48,9 @@ public class ProductoGetpage implements GenericOperation {
                         oFilterBean.setFilterValue(request.getParameter("filtervalue"));
                         oFilterBean.setFilterOrigin("user");
                         alFilter.add(oFilterBean);
-                    } else alFilter=null;
-                } else alFilter=null;
-            } else alFilter=null;
+                    }
+                }
+            }
             if (request.getParameter("systemfilter") != null) {
                 if (request.getParameter("systemfilteroperator") != null) {
                     if (request.getParameter("systemfiltervalue") != null) {
@@ -68,12 +66,16 @@ public class ProductoGetpage implements GenericOperation {
             HashMap<String, String> hmOrder = new HashMap<>();
 
             if (request.getParameter("order") != null) {
-                if (request.getParameter("ordervalue") != null) {           
-                    hmOrder.put(request.getParameter("order"), request.getParameter("ordervalue"));                  
-                } else             hmOrder=null;
-            } else             hmOrder=null;
+                if (request.getParameter("ordervalue") != null) {
+                    hmOrder.put(request.getParameter("order"), request.getParameter("ordervalue"));
+                } else {
+                    hmOrder = null;
+                }
+            } else {
+                hmOrder = null;
+            }
             ProductoDao_Mysql oProductoDAO = new ProductoDao_Mysql(Conexion.getConection());
-            List<ProductoBean> oProductos = oProductoDAO.getPage( rpp, page, alFilter,hmOrder );
+            List<ProductoBean> oProductos = oProductoDAO.getPage(rpp, page, alFilter, hmOrder);
             data = new Gson().toJson(oProductos);
             data = "{\"list\":" + data + "}";
             return data;

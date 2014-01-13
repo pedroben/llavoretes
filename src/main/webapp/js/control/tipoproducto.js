@@ -7,7 +7,7 @@
 var control_tipoproducto_list = function(path) {
     //contexto privado
 
-    var prefijo_div = "#tipoproducto_list";
+    var prefijo_div = "#tipoproducto_list ";
 
     function cargaBotoneraMantenimiento() {
         var botonera = [
@@ -113,7 +113,7 @@ var control_tipoproducto_list = function(path) {
         }
     }
     return {
-        inicia: function(view, pag, order, ordervalue, rpp, filter, filteroperator, filtervalue, callback) {
+        inicia: function(view, pag, order, ordervalue, rpp, filter, filteroperator, filtervalue, callback, systemfilter, systemfilteroperator, systemfiltervalue) {
 
             var thisObject = this;
 
@@ -125,127 +125,127 @@ var control_tipoproducto_list = function(path) {
 
             //muestra la botonera de páginas
 
-            $(prefijo_div + " #pagination").empty().append(view.getLoading()).html(view.getPageLinks(pag, rpp, filter, filteroperator, filtervalue));
+            $(prefijo_div + "#pagination").empty().append(view.getLoading()).html(view.getPageLinks(pag, rpp, filter, filteroperator, filtervalue, systemfilter, systemfilteroperator, systemfiltervalue));
 
             //muestra el listado principal
 
             if (callback) {
-                $(prefijo_div + ' #crear').hide();
-                $(prefijo_div + " #datos").empty().append(view.getLoading()).html(view.getPageTable(pag, order, ordervalue, rpp, filter, filteroperator, filtervalue, cargaBotoneraBuscando()));
+                $(prefijo_div + '#crear').hide();
+                $(prefijo_div + "#datos").empty().append(view.getLoading()).html(view.getPageTable(pag, order, ordervalue, rpp, filter, filteroperator, filtervalue, systemfilter, systemfilteroperator, systemfiltervalue, cargaBotoneraBuscando()));
             } else {
-                $(prefijo_div + " #datos").empty().append(view.getLoading()).html(view.getPageTable(pag, order, ordervalue, rpp, filter, filteroperator, filtervalue, cargaBotoneraMantenimiento()));
+                $(prefijo_div + "#datos").empty().append(view.getLoading()).html(view.getPageTable(pag, order, ordervalue, rpp, filter, filteroperator, filtervalue, systemfilter, systemfilteroperator, systemfiltervalue, cargaBotoneraMantenimiento()));
             }
 
             //muestra la frase con el número de registros de la consulta
 
-            $(prefijo_div + " #registers").empty().append(view.getLoading()).html(view.getRegistersInfo(filter, filteroperator, filtervalue));
+            $(prefijo_div + "#registers").empty().append(view.getLoading()).html(view.getRegistersInfo(filter, filteroperator, filtervalue, systemfilter, systemfilteroperator, systemfiltervalue));
 
             //muestra la frase de estado de la ordenación de la tabla
 
-            $(prefijo_div + " #order").empty().append(view.getLoading()).html(view.getOrderInfo(order, ordervalue));
+            $(prefijo_div + "#order").empty().append(view.getLoading()).html(view.getOrderInfo(order, ordervalue));
 
             //muestra la frase de estado del filtro de la tabla aplicado
 
-            $(prefijo_div + " #filter").empty().append(view.getLoading()).html(view.getFilterInfo(filter, filteroperator, filtervalue));
+            $(prefijo_div + "#filter").empty().append(view.getLoading()).html(view.getFilterInfo(filter, filteroperator, filtervalue));
 
             //asignación eventos de la botonera de cada línea del listado principal
             if (callback) {
-                $(prefijo_div + ' .btn.btn-mini.action01').unbind('click');
-                $(prefijo_div + ' .btn.btn-mini.action01').click(callback);
+                $(prefijo_div + '.btn.btn-mini.action01').unbind('click');
+                $(prefijo_div + '.btn.btn-mini.action01').click(callback);
             } else {
-                $(prefijo_div + ' .btn.btn-mini.action01').unbind('click');
-                $(prefijo_div + ' .btn.btn-mini.action01').click(function() {
-                    loadDivView(view, prefijo_div + ' #datos2', $(this).attr('id'));
+                $(prefijo_div + '.btn.btn-mini.action01').unbind('click');
+                $(prefijo_div + '.btn.btn-mini.action01').click(function() {
+                    loadDivView(view, prefijo_div + '#datos2', $(this).attr('id'));
                 });
 
-                $(prefijo_div + ' .btn.btn-mini.action02').unbind('click');
-                $(prefijo_div + ' .btn.btn-mini.action02').click(function() {
-                    loadModalView(view, prefijo_div + ' #modal01', $(this).attr('id'));
+                $(prefijo_div + '.btn.btn-mini.action02').unbind('click');
+                $(prefijo_div + '.btn.btn-mini.action02').click(function() {
+                    loadModalView(view, prefijo_div + '#modal01', $(this).attr('id'));
                 });
 
-                $(prefijo_div + ' .btn.btn-mini.action03').unbind('click');
-                $(prefijo_div + ' .btn.btn-mini.action03').click(function() {
-                    loadModalForm(view, prefijo_div + ' #modal01', $(this).attr('id'), "edit");
+                $(prefijo_div + '.btn.btn-mini.action03').unbind('click');
+                $(prefijo_div + '.btn.btn-mini.action03').click(function() {
+                    loadModalForm(view, prefijo_div + '#modal01', $(this).attr('id'), "edit");
                 });
 
-                $(prefijo_div + ' .btn.btn-mini.action04').unbind('click');
-                $(prefijo_div + ' .btn.btn-mini.action04').click(function() {
-                    removeConfirmationModalForm(view, prefijo_div + ' #modal01', $(this).attr('id'));
+                $(prefijo_div + '.btn.btn-mini.action04').unbind('click');
+                $(prefijo_div + '.btn.btn-mini.action04').click(function() {
+                    removeConfirmationModalForm(view, prefijo_div + '#modal01', $(this).attr('id'));
                 });
             }
 
             //asignación de evento del enlace para quitar el orden en el listado principal
 
-            $(prefijo_div + ' #linkQuitarOrden').unbind('click');
-            $(prefijo_div + ' #linkQuitarOrden').click(function() {
-                thisObject.inicia(view, pag, null, null, rpp, filter, filteroperator, filtervalue, callback, null);
+            $(prefijo_div + '#linkQuitarOrden').unbind('click');
+            $(prefijo_div + '#linkQuitarOrden').click(function() {
+                thisObject.inicia(view, pag, null, null, rpp, filter, filteroperator, filtervalue, callback, systemfilter, systemfilteroperator, systemfiltervalue);
             });
 
             //asignación de evento del enlace para quitar el filtro en el listado principal
 
-            $(prefijo_div + ' #linkQuitarFiltro').unbind('click');
-            $(prefijo_div + ' #linkQuitarFiltro').click(function() {
-                thisObject.inicia(view, pag, order, ordervalue, rpp, null, null, null, callback, null);
+            $(prefijo_div + '#linkQuitarFiltro').unbind('click');
+            $(prefijo_div + '#linkQuitarFiltro').click(function() {
+                thisObject.inicia(view, pag, order, ordervalue, rpp, null, null, null, callback, systemfilter, systemfilteroperator, systemfiltervalue);
             });
 
             //asignación de eventos de la ordenación por columnas del listado principal
 
             $.each(view.getObject().getFieldNames(), function(index, valor) {
-                $(prefijo_div + ' .orderAsc').unbind('click');
-                $(prefijo_div + ' .orderAsc' + index).click(function() {
-                    rpp = $(prefijo_div + " #rpp option:selected").text();
-                    thisObject.inicia(view, pag, valor, "asc", rpp, filter, filteroperator, filtervalue, callback, null);
+                $(prefijo_div + '.orderAsc').unbind('click');
+                $(prefijo_div + '.orderAsc' + index).click(function() {
+                    rpp = $(prefijo_div + "#rpp option:selected").text();
+                    thisObject.inicia(view, pag, valor, "asc", rpp, filter, filteroperator, filtervalue, callback, systemfilter, systemfilteroperator, systemfiltervalue);
                 });
-                $(prefijo_div + ' .orderDesc').unbind('click');
-                $(prefijo_div + ' .orderDesc' + index).click(function() {
-                    rpp = $(prefijo_div + " #rpp option:selected").text();
-                    thisObject.inicia(view, pag, valor, "desc", rpp, filter, filteroperator, filtervalue, callback, null);
+                $(prefijo_div + '.orderDesc').unbind('click');
+                $(prefijo_div + '.orderDesc' + index).click(function() {
+                    rpp = $(prefijo_div + "#rpp option:selected").text();
+                    thisObject.inicia(view, pag, valor, "desc", rpp, filter, filteroperator, filtervalue, callback, systemfilter, systemfilteroperator, systemfiltervalue);
                 });
 
             });
 
             //asignación del evento de click para cambiar de página en la botonera de paginación
 
-            $(prefijo_div + ' .pagination_link').unbind('click');
-            $(prefijo_div + ' .pagination_link').click(function(event) {
+            $(prefijo_div + '.pagination_link').unbind('click');
+            $(prefijo_div + '.pagination_link').click(function(event) {
                 var id = $(this).attr('id');
-                rpp = $(prefijo_div + " #rpp option:selected").text();
-                thisObject.inicia(view, id, order, ordervalue, rpp, filter, filteroperator, filtervalue, callback, null);
-                return false                
+                rpp = $(prefijo_div + "#rpp option:selected").text();
+                thisObject.inicia(view, id, order, ordervalue, rpp, filter, filteroperator, filtervalue, callback, systemfilter, systemfilteroperator, systemfiltervalue);
+                return false
             });
 
             //boton de crear un nuevo elemento
-            $(prefijo_div + ' #crear').unbind('click');
-            $(prefijo_div + ' #crear').click(function() {
-                loadModalForm(view, prefijo_div + ' #modal01', $(this).attr('id'));
+            $(prefijo_div + '#crear').unbind('click');
+            $(prefijo_div + '#crear').click(function() {
+                loadModalForm(view, prefijo_div + '#modal01', $(this).attr('id'));
             });
 
             //asignación del evento de filtrado al boton
 
-            $(prefijo_div + ' #btnFiltrar').unbind('click');
-            $(prefijo_div + " #btnFiltrar").click(function(event) {
-                filter = $(prefijo_div + " #selectFilter option:selected").text();
-                filteroperator = $(prefijo_div + " #selectFilteroperator option:selected").text();
-                filtervalue = $(prefijo_div + " #inputFiltervalue").val();
-                thisObject.inicia(view, pag, order, ordervalue, rpp, filter, filteroperator, filtervalue, callback, null);
-                return false;                
+            $(prefijo_div + '#btnFiltrar').unbind('click');
+            $(prefijo_div + "#btnFiltrar").click(function(event) {
+                filter = $(prefijo_div + "#selectFilter option:selected").text();
+                filteroperator = $(prefijo_div + "#selectFilteroperator option:selected").text();
+                filtervalue = $(prefijo_div + "#inputFiltervalue").val();
+                thisObject.inicia(view, pag, order, ordervalue, rpp, filter, filteroperator, filtervalue, callback, systemfilter, systemfilteroperator, systemfiltervalue);
+                return false;
             });
 
             //asigación de evento de refresco de la tabla cuando volvemos de una operación en ventana modal
 
-            $(prefijo_div + ' #modal01').unbind('hidden');
-            $(prefijo_div + ' #modal01').on('hidden', function() {
+            $(prefijo_div + '#modal01').unbind('hidden');
+            $(prefijo_div + '#modal01').on('hidden', function() {
 
-                rpp = $(prefijo_div + " #rpp option:selected").text();
-                thisObject.inicia(view, pag, order, ordervalue, rpp, filter, filteroperator, filtervalue, callback, null);
+                rpp = $(prefijo_div + "#rpp option:selected").text();
+                thisObject.inicia(view, pag, order, ordervalue, rpp, filter, filteroperator, filtervalue, callback, systemfilter, systemfilteroperator, systemfiltervalue);
             });
 
             //asignación del evento de cambio del numero de regs por página
 
-            $(prefijo_div + ' #rpp').unbind('change');
-            $(prefijo_div + ' #rpp').on('change', function() {
-                rpp = $(prefijo_div + " #rpp option:selected").text();
-                thisObject.inicia(view, pag, order, ordervalue, rpp, filter, filteroperator, filtervalue, callback, null);
+            $(prefijo_div + '#rpp').unbind('change');
+            $(prefijo_div + '#rpp').on('change', function() {
+                rpp = $(prefijo_div + "#rpp option:selected").text();
+                thisObject.inicia(view, pag, order, ordervalue, rpp, filter, filteroperator, filtervalue, callback, systemfilter, systemfilteroperator, systemfiltervalue);
             });
         }
     };

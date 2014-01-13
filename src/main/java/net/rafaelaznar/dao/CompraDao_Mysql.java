@@ -77,7 +77,7 @@ public class CompraDao_Mysql implements CompraDao {
                 if (!oMysql.existsOne("compra", oCompraBean.getId())) {
                     oCompraBean.setId(0);
                 } else {
-                    oCompraBean.setId_cliente(Integer.parseInt(oMysql.getOne("compra", "id_compra", oCompraBean.getId())));
+                    oCompraBean.setId_cliente(Integer.parseInt(oMysql.getOne("compra", "id_cliente", oCompraBean.getId())));
                     oCompraBean.setId_producto(Integer.parseInt(oMysql.getOne("compra", "id_producto", oCompraBean.getId())));
                     //--fecha
                     String strFecha = oMysql.getOne("compra", "fecha", oCompraBean.getId());
@@ -89,7 +89,7 @@ public class CompraDao_Mysql implements CompraDao {
                     }
                     //fin de fecha
                     oCompraBean.setCantidad(Integer.parseInt(oMysql.getOne("compra", "cantidad", oCompraBean.getId())));
-                    oCompraBean.setId_factura(Integer.parseInt(oMysql.getOne("compra", "id_factura", oCompraBean.getId())));
+                    //oCompraBean.setId_factura(Integer.parseInt(oMysql.getOne("compra", "id_factura", oCompraBean.getId())));
                 }
             } catch (Exception e) {
                 throw new Exception("CompraDao.getCompra: Error: " + e.getMessage());

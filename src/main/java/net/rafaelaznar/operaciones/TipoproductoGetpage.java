@@ -39,8 +39,6 @@ public class TipoproductoGetpage implements GenericOperation {
                 page = Integer.parseInt(request.getParameter("page"));
             }
             ArrayList<FilterBean> alFilter = new ArrayList<>();
-            
-                    
             if (request.getParameter("filter") != null) {
                 if (request.getParameter("filteroperator") != null) {
                     if (request.getParameter("filtervalue") != null) {
@@ -50,9 +48,9 @@ public class TipoproductoGetpage implements GenericOperation {
                         oFilterBean.setFilterValue(request.getParameter("filtervalue"));
                         oFilterBean.setFilterOrigin("user");
                         alFilter.add(oFilterBean);
-                    } else alFilter=null;
-                } else alFilter=null;
-            } else alFilter=null;
+                    } 
+                } 
+            } 
             if (request.getParameter("systemfilter") != null) {
                 if (request.getParameter("systemfilteroperator") != null) {
                     if (request.getParameter("systemfiltervalue") != null) {
@@ -64,7 +62,7 @@ public class TipoproductoGetpage implements GenericOperation {
                         alFilter.add(oFilterBean);
                     }
                 }
-            }
+            }            
             HashMap<String, String> hmOrder = new HashMap<>();
 
             if (request.getParameter("order") != null) {

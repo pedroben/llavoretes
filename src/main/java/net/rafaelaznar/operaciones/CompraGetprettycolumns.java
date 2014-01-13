@@ -21,7 +21,7 @@ public class CompraGetprettycolumns implements GenericOperation {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         try {
-            String data = "{\"data\": [\"id\", \"cliente\", \"producto\", \"cantidad\", \"fecha\", \"factura\"]}";
+            String data = "{\"data\": [\"id\", \"cliente\", \"producto\", \"cantidad\", \"fecha\"]}";
             return data;
         } catch (Exception e) {
             throw new ServletException("CompraGetprettycolumnsJson: View Error: " + e.getMessage());
