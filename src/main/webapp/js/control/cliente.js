@@ -227,7 +227,7 @@ var control_cliente_list = function(path) {
             });
 
             //asignación del evento de click para cambiar de página en la botonera de paginación
-
+            
             $(prefijo_div + '.pagination_link').unbind('click');
             $(prefijo_div + '.pagination_link').click(function() {
                 var id = $(this).attr('id');
@@ -238,10 +238,14 @@ var control_cliente_list = function(path) {
 
             //boton de crear un nuevo elemento
             
-            $(prefijo_div + '#crear').unbind('click');
-            $(prefijo_div + '#crear').click(function() {
-                loadModalForm(view, '#modal01', $(this).attr('id'));
-            });
+            if (callback) {
+                $(prefijo_div + '#crear').css("display", "none");
+            } else {
+                $(prefijo_div + '#crear').unbind('click');
+                $(prefijo_div + '#crear').click(function() {
+                    loadModalForm(view, prefijo_div + '#modal01', $(this).attr('id'));
+                });
+            }
 
             //asignación del evento de filtrado al boton
 

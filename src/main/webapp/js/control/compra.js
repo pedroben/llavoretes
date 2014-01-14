@@ -55,7 +55,11 @@ var control_compra_list = function(path) {
 
 
         //clave ajena cliente
-     $(prefijo_div + '#id_cliente_desc').empty().html(objeto('cliente', path).getOne($(prefijo_div + '#id_cliente').val()).descripcion);
+        if ($(prefijo_div + '#id_cliente').val() != "") {
+            clienteInfo = objeto('cliente', path).getOne($(prefijo_div + '#id_cliente').val());
+            $(prefijo_div + '#id_cliente_desc').empty().html(clienteInfo.nombre + " " + clienteInfo.ape1);
+        }
+
 //pte incorporar librería https://github.com/jschr/bootstrap-modal
 //ejemplos en http://jschr.github.io/bootstrap-modal/        
 //            $(prefijo_div + '#modal01').css({
@@ -89,13 +93,14 @@ var control_compra_list = function(path) {
             });
 
             var clienteControl = control_cliente_list(path);
-            clienteControl.inicia(clienteView, 1, null, null, 10, null, null, null, callbackSearchTipoproducto, null, null, null);
+            clienteControl.inicia(clienteView, 1, null, null, 10, null, null, null, callbackSearchCliente, null, null, null);
 
-            function callbackSearchTipoproducto(id) {
+            function callbackSearchCliente(id) {
                 $(prefijo_div + '#modal02').modal('hide');
                 $(prefijo_div + '#modal02').data('modal', null);
                 $(prefijo_div + '#id_cliente').val($(this).attr('id'));
-                $(prefijo_div + '#id_cliente_desc').empty().html(objeto('cliente', path).getOne($(prefijo_div + '#id_cliente').val()).descripcion);
+                clienteInfo = objeto('cliente', path).getOne($(prefijo_div + '#id_cliente').val());
+                $(prefijo_div + '#id_cliente_desc').empty().html(clienteInfo.nombre + " " + clienteInfo.ape1);
                 return false;
             }
 
@@ -107,8 +112,8 @@ var control_compra_list = function(path) {
 
 
 
- //clave ajena producto
-     $(prefijo_div + '#id_producto_desc').empty().html(objeto('producto', path).getOne($(prefijo_div + '#id_producto').val()).descripcion);
+        //clave ajena producto
+        $(prefijo_div + '#id_producto_desc').empty().html(objeto('producto', path).getOne($(prefijo_div + '#id_producto').val()).descripcion);
 //pte incorporar librería https://github.com/jschr/bootstrap-modal
 //ejemplos en http://jschr.github.io/bootstrap-modal/        
 //            $(prefijo_div + '#modal01').css({
@@ -142,9 +147,9 @@ var control_compra_list = function(path) {
             });
 
             var productoControl = control_producto_list(path);
-            productoControl.inicia(productoView, 1, null, null, 10, null, null, null, callbackSearchTipoproducto, null, null, null);
+            productoControl.inicia(productoView, 1, null, null, 10, null, null, null, callbackSearchProducto, null, null, null);
 
-            function callbackSearchTipoproducto(id) {
+            function callbackSearchProducto(id) {
                 $(prefijo_div + '#modal02').modal('hide');
                 $(prefijo_div + '#modal02').data('modal', null);
                 $(prefijo_div + '#id_producto').val($(this).attr('id'));

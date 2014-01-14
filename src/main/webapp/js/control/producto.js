@@ -286,11 +286,14 @@ var control_producto_list = function(path) {
             });
 
             //boton de crear un nuevo elemento
-
-            $(prefijo_div + '#crear').unbind('click');
-            $(prefijo_div + '#crear').click(function() {
-                loadModalForm(view, '#modal01', 0);
-            });
+            if (callback) {
+                $(prefijo_div + '#crear').css("display", "none");
+            } else {
+                $(prefijo_div + '#crear').unbind('click');
+                $(prefijo_div + '#crear').click(function() {
+                    loadModalForm(view, prefijo_div + '#modal01', $(this).attr('id'));
+                });
+            }
 
 
 

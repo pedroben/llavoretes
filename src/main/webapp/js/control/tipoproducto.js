@@ -213,12 +213,18 @@ var control_tipoproducto_list = function(path) {
                 thisObject.inicia(view, id, order, ordervalue, rpp, filter, filteroperator, filtervalue, callback, systemfilter, systemfilteroperator, systemfiltervalue);
                 return false
             });
-
+            
             //boton de crear un nuevo elemento
-            $(prefijo_div + '#crear').unbind('click');
-            $(prefijo_div + '#crear').click(function() {
-                loadModalForm(view, prefijo_div + '#modal01', $(this).attr('id'));
-            });
+            if (callback) {
+                $(prefijo_div + '#crear').css("display", "none");
+            } else {
+                $(prefijo_div + '#crear').unbind('click');
+                $(prefijo_div + '#crear').click(function() {
+                    loadModalForm(view, prefijo_div + '#modal01', $(this).attr('id'));
+                });
+            }
+            
+            
 
             //asignación del evento de filtrado al boton
 

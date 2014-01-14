@@ -37,7 +37,7 @@
         <div class="control-group">
             <label class="control-label" for="id_producto">Producto: </label> 
             <div class="controls">                
-                <input readonly="true" id="id_tipoproducto" class="input-mini"
+                <input readonly="true" id="id_producto" class="input-mini"
                        name="id_producto" type="text" size="5" maxlength="5" />  
                 <a class="btn btn-mini" id="id_producto_button" href="#"><i class="icon-search"></i></a>
             </div>
