@@ -66,13 +66,19 @@ public class ControlJsp extends HttpServlet {
             if (ob.equalsIgnoreCase("usuario")) {
                 if (op.equalsIgnoreCase("login02")) {
                     UsuarioBean oUsuario = new UsuarioBean();
-                    oUsuario.setLogin(request.getParameter("login"));
-                    oUsuario.setPassword(request.getParameter("password"));
-                    UsuarioDao_Mysql oUsuarioDao = new UsuarioDao_Mysql(Conexion.getConection());
-                    oUsuario = oUsuarioDao.getFromLogin(oUsuario);
-                    if (oUsuario.getId() != 0) {
-                        oUsuario = oUsuarioDao.get(oUsuario);
-                        request.getSession().setAttribute("usuarioBean", oUsuario);
+
+                    String login = request.getParameter("login");
+                    String pass = request.getParameter("password");
+
+                    if (!login.equalsIgnoreCase("") && !pass.equalsIgnoreCase("")) {
+                        oUsuario.setLogin(login);
+                        oUsuario.setPassword(pass);
+                        UsuarioDao_Mysql oUsuarioDao = new UsuarioDao_Mysql(Conexion.getConection());
+                        oUsuario = oUsuarioDao.getFromLogin(oUsuario);
+                        if (oUsuario.getId() != 0) {
+                            oUsuario = oUsuarioDao.get(oUsuario);
+                            request.getSession().setAttribute("usuarioBean", oUsuario);
+                        }
                     }
                 }
                 if (op.equalsIgnoreCase("logout")) {

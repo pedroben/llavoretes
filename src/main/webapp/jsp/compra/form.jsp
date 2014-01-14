@@ -7,7 +7,6 @@
 <form class="form-horizontal" action="Controller" method="post" id="productoForm">
     <fieldset>
 
-
         <div class="control-group">
             <label class="control-label" for="id">Id: </label>
             <div class="controls">
@@ -30,10 +29,6 @@
             </div>
         </div> 
 
-
-
-
-
         <div class="control-group">
             <label class="control-label" for="id_producto">Producto: </label> 
             <div class="controls">                
@@ -48,9 +43,9 @@
             </div>
         </div> 
 
-        
-        
-        
+
+
+
         <div class="control-group">
             <label class="control-label" for="codigo">Cantidad: </label>
             <div class="controls">
@@ -59,13 +54,13 @@
         </div>
 
 
-        <div class="control-group">
+       <div class="control-group">
             <label class="control-label" for="descripcion">Fecha: </label> 
             <div class="controls">
-                <input id="fecha" name="fecha" type="date" size="30" maxlength="50" value="" /> 
+                <input type="text" name="fecha" id="datepicker">
             </div>
         </div>
-        
+
 
         <div class="control-group">
             <div class="controls">
@@ -74,3 +69,8 @@
         </div>
     </fieldset>
 </form>
+<script>
+    $(function() {
+        $("#datepicker").datepicker();
+    });
+</script>
