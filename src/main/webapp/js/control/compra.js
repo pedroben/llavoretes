@@ -33,6 +33,29 @@ var control_compra_list = function(path) {
         });
     }
 
+    function loadForeign(strObjetoForeign, strPlace,control,functionCallback) {
+       var objConsulta = objeto(strObjetoForeign, path);
+            var consultaView = vista(objConsulta, path);
+
+            cabecera = '<button id="full-width" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>" + "<h3 id="myModalLabel">Elección</h3>';
+            pie = '<button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Cerrar</button>';
+            listado = consultaView.getEmptyList();
+            loadForm(strPlace, cabecera, listado, pie, true);
+
+            $(prefijo_div + strPlace).css({
+                'right': '20px',
+                'left': '20px',
+                'width': 'auto',
+                'margin': '0',
+                'display': 'block'
+            });
+
+            var consultaControl = control(path);
+            consultaControl.inicia(consultaView, 1, null, null, 10, null, null, null, functionCallback, null, null, null);
+ 
+    }
+
+
     function loadModalForm(view, place, id, action) {
         cabecera = '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>';
         if (action == "edit") {
@@ -50,51 +73,14 @@ var control_compra_list = function(path) {
             $(prefijo_div + '#codigo').focus();
         }
 
-
-
-
-
         //clave ajena cliente
         if ($(prefijo_div + '#id_cliente').val() != "") {
             clienteInfo = objeto('cliente', path).getOne($(prefijo_div + '#id_cliente').val());
             $(prefijo_div + '#id_cliente_desc').empty().html(clienteInfo.nombre + " " + clienteInfo.ape1);
         }
-
-//pte incorporar librería https://github.com/jschr/bootstrap-modal
-//ejemplos en http://jschr.github.io/bootstrap-modal/        
-//            $(prefijo_div + '#modal01').css({
-//                'right': '20%',
-//                'left': '20%',
-//                'width': 'auto',
-//                'margin': '0'                
-//            });
-
-//        $(prefijo_div + '#modal01').css({
-//            'width': '612px'
-//        });
-        //en desarrollo: tratamiento de las claves ajenas ...
         $(prefijo_div + '#id_cliente_button').unbind('click');
         $(prefijo_div + '#id_cliente_button').click(function() {
-
-            var cliente = objeto('cliente', path);
-            var clienteView = vista(cliente, path);
-
-            cabecera = '<button id="full-width" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>" + "<h3 id="myModalLabel">Elección</h3>';
-            pie = '<button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Cerrar</button>';
-            listado = clienteView.getEmptyList();
-            loadForm('#modal02', cabecera, listado, pie, true);
-
-            $(prefijo_div + '#modal02').css({
-                'right': '20px',
-                'left': '20px',
-                'width': 'auto',
-                'margin': '0',
-                'display': 'block'
-            });
-
-            var clienteControl = control_cliente_list(path);
-            clienteControl.inicia(clienteView, 1, null, null, 10, null, null, null, callbackSearchCliente, null, null, null);
-
+            loadForeign('cliente','#modal02',control_cliente_list,callbackSearchCliente);                        
             function callbackSearchCliente(id) {
                 $(prefijo_div + '#modal02').modal('hide');
                 $(prefijo_div + '#modal02').data('modal', null);
@@ -103,52 +89,16 @@ var control_compra_list = function(path) {
                 $(prefijo_div + '#id_cliente_desc').empty().html(clienteInfo.nombre + " " + clienteInfo.ape1);
                 return false;
             }
-
             return false;
-
         });
 
-
-
-
-
         //clave ajena producto
-        $(prefijo_div + '#id_producto_desc').empty().html(objeto('producto', path).getOne($(prefijo_div + '#id_producto').val()).descripcion);
-//pte incorporar librería https://github.com/jschr/bootstrap-modal
-//ejemplos en http://jschr.github.io/bootstrap-modal/        
-//            $(prefijo_div + '#modal01').css({
-//                'right': '20%',
-//                'left': '20%',
-//                'width': 'auto',
-//                'margin': '0'                
-//            });
-
-//        $(prefijo_div + '#modal01').css({
-//            'width': '612px'
-//        });
-        //en desarrollo: tratamiento de las claves ajenas ...
+        if ($(prefijo_div + '#id_producto').val() != "") {
+            $(prefijo_div + '#id_producto_desc').empty().html(objeto('producto', path).getOne($(prefijo_div + '#id_producto').val()).descripcion);
+        }
         $(prefijo_div + '#id_producto_button').unbind('click');
         $(prefijo_div + '#id_producto_button').click(function() {
-
-            var producto = objeto('producto', path);
-            var productoView = vista(producto, path);
-
-            cabecera = '<button id="full-width" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>" + "<h3 id="myModalLabel">Elección</h3>';
-            pie = '<button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Cerrar</button>';
-            listado = productoView.getEmptyList();
-            loadForm('#modal02', cabecera, listado, pie, true);
-
-            $(prefijo_div + '#modal02').css({
-                'right': '20px',
-                'left': '20px',
-                'width': 'auto',
-                'margin': '0',
-                'display': 'block'
-            });
-
-            var productoControl = control_producto_list(path);
-            productoControl.inicia(productoView, 1, null, null, 10, null, null, null, callbackSearchProducto, null, null, null);
-
+            loadForeign('producto','#modal02',control_producto_list,callbackSearchProducto);       
             function callbackSearchProducto(id) {
                 $(prefijo_div + '#modal02').modal('hide');
                 $(prefijo_div + '#modal02').data('modal', null);
@@ -156,17 +106,8 @@ var control_compra_list = function(path) {
                 $(prefijo_div + '#id_producto_desc').empty().html(objeto('producto', path).getOne($(prefijo_div + '#id_producto').val()).descripcion);
                 return false;
             }
-
             return false;
-
         });
-
-
-
-
-
-
-
 
         $(prefijo_div + '#submitForm').unbind('click');
         $(prefijo_div + '#submitForm').click(function(event) {
