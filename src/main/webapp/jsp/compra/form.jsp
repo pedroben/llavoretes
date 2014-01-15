@@ -7,7 +7,6 @@
 <form class="form-horizontal" action="#" id="formulario" name="formulario">
     <fieldset>
 
-
         <div class="control-group">
             <label class="control-label" for="id">Id: </label>
             <div class="controls">
@@ -29,10 +28,6 @@
                 <span id="id_cliente_desc" class="alert alert-success"></span>                                       
             </div>
         </div> 
-
-
-
-
 
         <div class="control-group">
             <label class="control-label" for="id_producto">Producto: </label> 
@@ -59,7 +54,7 @@
         </div>
 
 
-        <div class="control-group">
+       <div class="control-group">
             <label class="control-label" for="descripcion">Fecha: </label> 
             <div class="controls">
                 <input id="fecha" name="fecha" type="text" size="10" maxlength="50" value="" /> 
@@ -79,3 +74,8 @@
         </div>
     </fieldset>
 </form>
+<script>
+    $(function() {
+        $("#datepicker").datepicker();
+    });
+</script>
