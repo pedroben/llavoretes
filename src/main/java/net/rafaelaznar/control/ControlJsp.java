@@ -20,7 +20,7 @@ import net.rafaelaznar.helper.Conexion;
  * @author rafa
  */
 public class ControlJsp extends HttpServlet {
-
+    
     private static final long serialVersionUID = 1L;
 
     /**
@@ -66,10 +66,10 @@ public class ControlJsp extends HttpServlet {
             if (ob.equalsIgnoreCase("usuario")) {
                 if (op.equalsIgnoreCase("login02")) {
                     UsuarioBean oUsuario = new UsuarioBean();
-
+                    
                     String login = request.getParameter("login");
                     String pass = request.getParameter("password");
-
+                    
                     if (!login.equals("") && !pass.equals("")) {
                         oUsuario.setLogin(login);
                         oUsuario.setPassword(pass);
@@ -77,7 +77,9 @@ public class ControlJsp extends HttpServlet {
                         oUsuario = oUsuarioDao.getFromLogin(oUsuario);
                         if (oUsuario.getId() != 0) {
                             oUsuario = oUsuarioDao.get(oUsuario);
-                            request.getSession().setAttribute("usuarioBean", oUsuario);
+                            if (oUsuario.getLogin().equals(login) && oUsuario.getPassword().equals(pass)) {
+                                request.getSession().setAttribute("usuarioBean", oUsuario);
+                            }
                         }
                     }
                 }
@@ -88,7 +90,7 @@ public class ControlJsp extends HttpServlet {
             //servimos el jsp dentro de index.jsp
             request.setAttribute("contenido", "jsp/" + ob + "/" + op + ".jsp");
             getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
-
+            
         }
     }
 
@@ -106,7 +108,7 @@ public class ControlJsp extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-
+            
         } catch (Exception ex) {
             Logger.getLogger(ControlJsp.class.getName()).log(Level.SEVERE, null, ex);
         }
