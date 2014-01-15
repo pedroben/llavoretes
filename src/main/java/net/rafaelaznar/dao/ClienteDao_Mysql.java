@@ -4,9 +4,11 @@
  */
 package net.rafaelaznar.dao;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Locale;
 import net.rafaelaznar.data.MysqlData;
 import net.rafaelaznar.helper.Conexion;
 import net.rafaelaznar.helper.FilterBean;
@@ -75,10 +77,19 @@ public class ClienteDao_Mysql implements ClienteDao {
                 if (!oMysql.existsOne("cliente", oClienteBean.getId())) {
                     oClienteBean.setId(0);
                 } else {
-                    oClienteBean.setNombre(oMysql.getOne("cliente", "nombre", oClienteBean.getId()));
-                    oClienteBean.setApe1(oMysql.getOne("cliente", "ape1", oClienteBean.getId()));
-                    oClienteBean.setApe2(oMysql.getOne("cliente", "ape2", oClienteBean.getId()));
-                    oClienteBean.setEmail(oMysql.getOne("cliente", "email", oClienteBean.getId()));
+
+                    Class yourClass = ClienteBean.class;
+                    for (Method method : yourClass.getMethods()) {
+                        if (!method.getName().substring(3).equalsIgnoreCase("id")) {
+                            if (method.getName().substring(0, 3).equalsIgnoreCase("set")) {
+                                method.invoke(oClienteBean, oMysql.getOne("cliente", method.getName().substring(3).toLowerCase(Locale.ENGLISH), oClienteBean.getId()));
+                            }
+                        }
+                    }
+//                        oClienteBean.setNombre(oMysql.getOne("cliente", "nombre", oClienteBean.getId()));
+//                        oClienteBean.setApe1(oMysql.getOne("cliente", "ape1", oClienteBean.getId()));
+//                        oClienteBean.setApe2(oMysql.getOne("cliente", "ape2", oClienteBean.getId()));
+//                        oClienteBean.setEmail(oMysql.getOne("cliente", "email", oClienteBean.getId()));
                 }
             } catch (Exception e) {
                 throw new Exception("ClienteDao.getCliente: Error: " + e.getMessage());
@@ -128,12 +139,12 @@ public class ClienteDao_Mysql implements ClienteDao {
 
     @Override
     public ArrayList<String> getColumnsNames() throws Exception {
-        ArrayList<String> alColumns=null;
+        ArrayList<String> alColumns = null;
         try {
             oMysql.conexion(enumTipoConexion);
-            alColumns=oMysql.getColumnsName("cliente", Conexion.getDatabaseName());
+            alColumns = oMysql.getColumnsName("cliente", Conexion.getDatabaseName());
             oMysql.desconexion();
-            
+
         } catch (Exception e) {
             throw new Exception("ClienteDao.removeCliente: Error: " + e.getMessage());
         } finally {
