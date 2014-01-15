@@ -4,7 +4,7 @@
     Author     : rafa
 --%>
 <%@page import="java.text.SimpleDateFormat"%>
-<form class="form-horizontal" action="Controller" method="post" id="productoForm">
+<form class="form-horizontal" action="#" id="formulario" name="formulario">
     <fieldset>
 
         <div class="control-group">
@@ -57,10 +57,15 @@
        <div class="control-group">
             <label class="control-label" for="descripcion">Fecha: </label> 
             <div class="controls">
-                <input type="text" name="fecha" id="datepicker">
+                <input id="fecha" name="fecha" type="text" size="10" maxlength="50" value="" /> 
             </div>
         </div>
-
+        <script>$("#fecha").datepicker({
+                showOn: 'both',
+                buttonImageOnly: true,
+                changeYear: true,
+                numberOfMonths: 1});
+        </script>
 
         <div class="control-group">
             <div class="controls">

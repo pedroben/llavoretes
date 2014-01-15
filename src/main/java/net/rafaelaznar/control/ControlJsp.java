@@ -70,7 +70,7 @@ public class ControlJsp extends HttpServlet {
                     String login = request.getParameter("login");
                     String pass = request.getParameter("password");
 
-                    if (!login.equalsIgnoreCase("") && !pass.equalsIgnoreCase("")) {
+                    if (!login.equals("") && !pass.equals("")) {
                         oUsuario.setLogin(login);
                         oUsuario.setPassword(pass);
                         UsuarioDao_Mysql oUsuarioDao = new UsuarioDao_Mysql(Conexion.getConection());
