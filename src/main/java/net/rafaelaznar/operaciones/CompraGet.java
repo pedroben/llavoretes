@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import net.rafaelaznar.bean.CompraBean;
 import net.rafaelaznar.dao.CompraDao_Mysql;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import net.rafaelaznar.helper.Conexion;
 
 public class CompraGet implements GenericOperation {
@@ -30,8 +31,12 @@ public class CompraGet implements GenericOperation {
                 CompraDao_Mysql oCompraDAO = new CompraDao_Mysql(Conexion.getConection());
                 CompraBean oCompra = new CompraBean();
                 oCompra.setId(Integer.parseInt(request.getParameter("id")));
-                oCompraDAO.get(oCompra);
-                data = new Gson().toJson(oCompra);
+                oCompraDAO.get(oCompra);                                
+                GsonBuilder gsonBuilder = new GsonBuilder();
+                gsonBuilder.setDateFormat("dd/MM/yyyy");
+                Gson gson = gsonBuilder.create();
+                data = gson.toJson(oCompra);                
+                //data = new Gson().toJson(oCompra);
             }
             return data;
         } catch (Exception e) {

@@ -32,6 +32,10 @@
 
         <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 
+        
+                <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+        <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+        
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -106,8 +110,6 @@
         <script src="js/vendor/bootstrap-carousel.js"></script>
         <script src="js/vendor/bootstrap-typeahead.js"></script>    
 
-
-
         <script src="js/util.js" charset="UTF-8"></script>
         <script src="js/main.js" charset="UTF-8"></script>
 
@@ -117,6 +119,29 @@
         <script src="js/control/compra.js" charset="UTF-8"></script>
 
         <script>
+            /* Inicialización en español para la extensión 'UI date picker' para jQuery. */
+            /* Traducido por Vester (xvester [en] gmail [punto] com). */
+            jQuery(function($) {
+                $.datepicker.regional['es'] = {
+                    closeText: 'Cerrar',
+                    buttonImage: 'img/calendar.png',
+                    prevText: '<Ant',
+                    nextText: 'Sig>',
+                    currentText: 'Hoy',
+                    monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                    monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                    dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                    dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Juv', 'Vie', 'Sáb'],
+                    dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá'],
+                    weekHeader: 'Sm',
+                    dateFormat: 'dd/mm/yy',
+                    firstDay: 1,
+                    isRTL: false,
+                    showMonthAfterYear: false,
+                    yearSuffix: ''};
+                $.datepicker.setDefaults($.datepicker.regional['es']);
+            });
+
             //para solucionar el bug de la autollamada recursiva 
             //muy dificil de encontrar y depurar
             //dos modales a la vez se pasan el foco de una a la otra

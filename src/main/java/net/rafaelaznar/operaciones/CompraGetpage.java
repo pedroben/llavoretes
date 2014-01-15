@@ -5,6 +5,7 @@
 package net.rafaelaznar.operaciones;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -39,8 +40,6 @@ public class CompraGetpage implements GenericOperation {
                 page = Integer.parseInt(request.getParameter("page"));
             }
 
-            
-                    
             ArrayList<FilterBean> alFilter = new ArrayList<>();
             if (request.getParameter("filter") != null) {
                 if (request.getParameter("filteroperator") != null) {
@@ -51,9 +50,9 @@ public class CompraGetpage implements GenericOperation {
                         oFilterBean.setFilterValue(request.getParameter("filtervalue"));
                         oFilterBean.setFilterOrigin("user");
                         alFilter.add(oFilterBean);
-                    } 
-                } 
-            } 
+                    }
+                }
+            }
             if (request.getParameter("systemfilter") != null) {
                 if (request.getParameter("systemfilteroperator") != null) {
                     if (request.getParameter("systemfiltervalue") != null) {
@@ -66,17 +65,27 @@ public class CompraGetpage implements GenericOperation {
                     }
                 }
             }
-            if (alFilter.isEmpty())alFilter=null;
+            if (alFilter.isEmpty()) {
+                alFilter = null;
+            }
             HashMap<String, String> hmOrder = new HashMap<>();
 
             if (request.getParameter("order") != null) {
-                if (request.getParameter("ordervalue") != null) {           
-                    hmOrder.put(request.getParameter("order"), request.getParameter("ordervalue"));                  
-                } else             hmOrder=null;
-            } else             hmOrder=null;
+                if (request.getParameter("ordervalue") != null) {
+                    hmOrder.put(request.getParameter("order"), request.getParameter("ordervalue"));
+                } else {
+                    hmOrder = null;
+                }
+            } else {
+                hmOrder = null;
+            }
             CompraDao_Mysql oCompraDAO = new CompraDao_Mysql(Conexion.getConection());
-            List<CompraBean> oCompras = oCompraDAO.getPage( rpp, page, alFilter,hmOrder );
-            data = new Gson().toJson(oCompras);
+            List<CompraBean> oCompras = oCompraDAO.getPage(rpp, page, alFilter, hmOrder);
+
+            GsonBuilder gsonBuilder = new GsonBuilder();
+            gsonBuilder.setDateFormat("dd/MM/yyyy");
+            Gson gson = gsonBuilder.create();
+            data = gson.toJson(oCompras);
             data = "{\"list\":" + data + "}";
             return data;
         } catch (Exception e) {

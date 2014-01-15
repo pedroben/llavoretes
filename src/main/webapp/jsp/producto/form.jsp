@@ -3,7 +3,7 @@
     Created on : Jan 21, 2013, 10:24:17 AM
     Author     : rafa
 --%>
-<form class="form-horizontal" action="Controller" method="post" id="productoForm">
+<form class="form-horizontal" action="#" id="formulario" name="formulario">
     <fieldset>
         <div class="control-group">
             <label class="control-label" for="id">Id: </label>

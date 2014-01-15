@@ -33,26 +33,26 @@ var control_compra_list = function(path) {
         });
     }
 
-    function loadForeign(strObjetoForeign, strPlace,control,functionCallback) {
-       var objConsulta = objeto(strObjetoForeign, path);
-            var consultaView = vista(objConsulta, path);
+    function loadForeign(strObjetoForeign, strPlace, control, functionCallback) {
+        var objConsulta = objeto(strObjetoForeign, path);
+        var consultaView = vista(objConsulta, path);
 
-            cabecera = '<button id="full-width" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>" + "<h3 id="myModalLabel">Elección</h3>';
-            pie = '<button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Cerrar</button>';
-            listado = consultaView.getEmptyList();
-            loadForm(strPlace, cabecera, listado, pie, true);
+        cabecera = '<button id="full-width" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>" + "<h3 id="myModalLabel">Elección</h3>';
+        pie = '<button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Cerrar</button>';
+        listado = consultaView.getEmptyList();
+        loadForm(strPlace, cabecera, listado, pie, true);
 
-            $(prefijo_div + strPlace).css({
-                'right': '20px',
-                'left': '20px',
-                'width': 'auto',
-                'margin': '0',
-                'display': 'block'
-            });
+        $(prefijo_div + strPlace).css({
+            'right': '20px',
+            'left': '20px',
+            'width': 'auto',
+            'margin': '0',
+            'display': 'block'
+        });
 
-            var consultaControl = control(path);
-            consultaControl.inicia(consultaView, 1, null, null, 10, null, null, null, functionCallback, null, null, null);
- 
+        var consultaControl = control(path);
+        consultaControl.inicia(consultaView, 1, null, null, 10, null, null, null, functionCallback, null, null, null);
+
     }
 
 
@@ -80,7 +80,7 @@ var control_compra_list = function(path) {
         }
         $(prefijo_div + '#id_cliente_button').unbind('click');
         $(prefijo_div + '#id_cliente_button').click(function() {
-            loadForeign('cliente','#modal02',control_cliente_list,callbackSearchCliente);                        
+            loadForeign('cliente', '#modal02', control_cliente_list, callbackSearchCliente);
             function callbackSearchCliente(id) {
                 $(prefijo_div + '#modal02').modal('hide');
                 $(prefijo_div + '#modal02').data('modal', null);
@@ -98,7 +98,7 @@ var control_compra_list = function(path) {
         }
         $(prefijo_div + '#id_producto_button').unbind('click');
         $(prefijo_div + '#id_producto_button').click(function() {
-            loadForeign('producto','#modal02',control_producto_list,callbackSearchProducto);       
+            loadForeign('producto', '#modal02', control_producto_list, callbackSearchProducto);
             function callbackSearchProducto(id) {
                 $(prefijo_div + '#modal02').modal('hide');
                 $(prefijo_div + '#modal02').data('modal', null);
@@ -113,6 +113,15 @@ var control_compra_list = function(path) {
         $(prefijo_div + '#submitForm').click(function(event) {
             //validaciones...
             enviarDatosUpdateForm(view, id);
+
+//            $(prefijo_div + 'modal02').css({
+//                'position': 'fixed',
+//                'top': '20px',
+//                'right': '20px',
+//                'left': '20px',
+//                'width': 'auto',
+//                'margin': '0'
+//            });
             return false;
         });
     }
@@ -171,6 +180,23 @@ var control_compra_list = function(path) {
             mensaje = 'el servidor ha retornado el mensaje de error=' + resultado["message"];
             loadForm('#modal02', cabecera, "Código: " + resultado["status"] + "<br />" + mensaje + "<br />" + view.getObjectTable(resultado["message"]), pie, true);
         }
+
+
+        $(prefijo_div + '#modal02').css({
+            'right': '20px',
+            'left': '20px',
+            'width': 'auto',
+            'margin': '0',
+            'display': 'block'
+        });
+//        $(prefijo_div + 'modal02').css({
+//            'position': 'fixed',
+//            'top': '20px',
+//            'right': '20px',
+//            'left': '20px',
+//            'width': 'auto',
+//            'margin': '0'
+//        });
     }
     return {
         inicia: function(view, pag, order, ordervalue, rpp, filter, filteroperator, filtervalue, callback, systemfilter, systemfilteroperator, systemfiltervalue) {

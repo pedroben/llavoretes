@@ -3,7 +3,7 @@
     Created on : Jan 21, 2013, 10:24:17 AM
     Author     : rafa
 --%>
-<form id="formulario" class="form-horizontal" name="formulario" action="json">
+<form class="form-horizontal" action="#" id="formulario" name="formulario">
     <h2>Cliente</h2>
     <div class="control-group">
         <label class="control-label" for="inputId">Id:</label>
