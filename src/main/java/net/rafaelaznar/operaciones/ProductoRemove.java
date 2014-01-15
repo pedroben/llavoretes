@@ -10,10 +10,10 @@ import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import net.rafaelaznar.dao.ClienteDao_Mysql;
+import net.rafaelaznar.dao.ProductoDao_Mysql;
 import net.rafaelaznar.helper.Conexion;
 import net.rafaelaznar.helper.EncodingUtil;
-import net.rafaelaznar.bean.ClienteBean;
+import net.rafaelaznar.bean.ProductoBean;
 
 /**
  *
@@ -24,15 +24,14 @@ public class ProductoRemove implements GenericOperation {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         try {
-            ClienteDao_Mysql oClienteDAO = new ClienteDao_Mysql(Conexion.getConection());
-            ClienteBean oCliente = new ClienteBean();                                           
-            oCliente.setId(Integer.parseInt(request.getParameter("id")));            
-            Map<String, String> data = new HashMap<>();
-            oClienteDAO.remove(oCliente);
-            if (oCliente != null) {
-                
+            ProductoDao_Mysql oProductoDAO = new ProductoDao_Mysql(Conexion.getConection());
+            ProductoBean oProducto = new ProductoBean();                                           
+            oProducto.setId(Integer.parseInt(request.getParameter("id")));            
+            Map<String, String> data = new HashMap<>();            
+            if (oProducto != null) {
+                oProductoDAO.remove(oProducto);    
                 data.put("status", "200");
-                data.put("message", "se ha eliminado el registro con id=" + oCliente.getId());
+                data.put("message", "se ha eliminado el registro con id=" + oProducto.getId());
             } else {
                 data.put("status", "error");
                 data.put("message", "error");
@@ -41,7 +40,7 @@ public class ProductoRemove implements GenericOperation {
             String resultado = gson.toJson(data);
             return resultado;        
         } catch (Exception e) {
-            throw new ServletException("ClienteRemoveJson: View Error: " + e.getMessage());
+            throw new ServletException("ProductoRemoveJson: View Error: " + e.getMessage());
         }
     }
 }
