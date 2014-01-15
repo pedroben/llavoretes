@@ -55,7 +55,6 @@ var control_compra_list = function(path) {
 
     }
 
-
     function loadModalForm(view, place, id, action) {
         cabecera = '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>';
         if (action == "edit") {
@@ -74,10 +73,8 @@ var control_compra_list = function(path) {
         }
 
         //clave ajena cliente
-        if ($(prefijo_div + '#id_cliente').val() != "") {
-            clienteInfo = objeto('cliente', path).getOne($(prefijo_div + '#id_cliente').val());
-            $(prefijo_div + '#id_cliente_desc').empty().html(clienteInfo.nombre + " " + clienteInfo.ape1);
-        }
+        cargaClaveAjena('#id_cliente', '#id_cliente_desc', 'cliente')
+
         $(prefijo_div + '#id_cliente_button').unbind('click');
         $(prefijo_div + '#id_cliente_button').click(function() {
             loadForeign('cliente', '#modal02', control_cliente_list, callbackSearchCliente);
@@ -85,17 +82,14 @@ var control_compra_list = function(path) {
                 $(prefijo_div + '#modal02').modal('hide');
                 $(prefijo_div + '#modal02').data('modal', null);
                 $(prefijo_div + '#id_cliente').val($(this).attr('id'));
-                clienteInfo = objeto('cliente', path).getOne($(prefijo_div + '#id_cliente').val());
-                $(prefijo_div + '#id_cliente_desc').empty().html(clienteInfo.nombre + " " + clienteInfo.ape1);
+                cargaClaveAjena('#id_cliente', '#id_cliente_desc', 'cliente');
                 return false;
             }
             return false;
         });
 
         //clave ajena producto
-        if ($(prefijo_div + '#id_producto').val() != "") {
-            $(prefijo_div + '#id_producto_desc').empty().html(objeto('producto', path).getOne($(prefijo_div + '#id_producto').val()).descripcion);
-        }
+        cargaClaveAjena('#id_producto', '#id_producto_desc', 'producto')
         $(prefijo_div + '#id_producto_button').unbind('click');
         $(prefijo_div + '#id_producto_button').click(function() {
             loadForeign('producto', '#modal02', control_producto_list, callbackSearchProducto);
@@ -103,7 +97,7 @@ var control_compra_list = function(path) {
                 $(prefijo_div + '#modal02').modal('hide');
                 $(prefijo_div + '#modal02').data('modal', null);
                 $(prefijo_div + '#id_producto').val($(this).attr('id'));
-                $(prefijo_div + '#id_producto_desc').empty().html(objeto('producto', path).getOne($(prefijo_div + '#id_producto').val()).descripcion);
+                cargaClaveAjena('#id_producto', '#id_producto_desc', 'producto');
                 return false;
             }
             return false;
@@ -113,17 +107,16 @@ var control_compra_list = function(path) {
         $(prefijo_div + '#submitForm').click(function(event) {
             //validaciones...
             enviarDatosUpdateForm(view, id);
-
-//            $(prefijo_div + 'modal02').css({
-//                'position': 'fixed',
-//                'top': '20px',
-//                'right': '20px',
-//                'left': '20px',
-//                'width': 'auto',
-//                'margin': '0'
-//            });
             return false;
         });
+    }
+
+    function cargaClaveAjena(lugarID, lugarDesc, objetoClaveAjena) {
+        if ($(prefijo_div + lugarID).val() != "") {
+            objInfo = objeto(objetoClaveAjena, path).getOne($(prefijo_div + lugarID).val());
+            props = Object.getOwnPropertyNames(objInfo);
+            $(prefijo_div + lugarDesc).empty().html(objInfo[props[1]] + " " + objInfo[props[2]]);
+        }
     }
 
     function removeConfirmationModalForm(view, place, id) {
@@ -180,8 +173,6 @@ var control_compra_list = function(path) {
             mensaje = 'el servidor ha retornado el mensaje de error=' + resultado["message"];
             loadForm('#modal02', cabecera, "Código: " + resultado["status"] + "<br />" + mensaje + "<br />" + view.getObjectTable(resultado["message"]), pie, true);
         }
-
-
         $(prefijo_div + '#modal02').css({
             'right': '20px',
             'left': '20px',
@@ -189,14 +180,7 @@ var control_compra_list = function(path) {
             'margin': '0',
             'display': 'block'
         });
-//        $(prefijo_div + 'modal02').css({
-//            'position': 'fixed',
-//            'top': '20px',
-//            'right': '20px',
-//            'left': '20px',
-//            'width': 'auto',
-//            'margin': '0'
-//        });
+
     }
     return {
         inicia: function(view, pag, order, ordervalue, rpp, filter, filteroperator, filtervalue, callback, systemfilter, systemfilteroperator, systemfiltervalue) {

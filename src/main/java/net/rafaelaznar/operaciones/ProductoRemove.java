@@ -28,8 +28,9 @@ public class ProductoRemove implements GenericOperation {
             ClienteBean oCliente = new ClienteBean();                                           
             oCliente.setId(Integer.parseInt(request.getParameter("id")));            
             Map<String, String> data = new HashMap<>();
+            oClienteDAO.remove(oCliente);
             if (oCliente != null) {
-                oClienteDAO.remove(oCliente);
+                
                 data.put("status", "200");
                 data.put("message", "se ha eliminado el registro con id=" + oCliente.getId());
             } else {
