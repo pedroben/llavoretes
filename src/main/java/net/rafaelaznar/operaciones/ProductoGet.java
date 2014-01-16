@@ -15,7 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import net.rafaelaznar.bean.ProductoBean;
 import com.google.gson.Gson;
-import net.rafaelaznar.dao.ProductoDao_Mysql;
+import net.rafaelaznar.dao.ProductoDao;
+
 import net.rafaelaznar.helper.Conexion;
 
 public class ProductoGet implements GenericOperation {
@@ -27,7 +28,7 @@ public class ProductoGet implements GenericOperation {
             if (request.getParameter("id") == null) {
                 data = "{\"error\":\"id is mandatory\"}";
             } else {
-                ProductoDao_Mysql oProductoDAO = new ProductoDao_Mysql(Conexion.getConection());
+                ProductoDao oProductoDAO = new ProductoDao(Conexion.getConection());
                 ProductoBean oProducto = new ProductoBean();
                 oProducto.setId(Integer.parseInt(request.getParameter("id")));
                 oProductoDAO.get(oProducto);

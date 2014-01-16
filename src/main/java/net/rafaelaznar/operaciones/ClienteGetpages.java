@@ -9,7 +9,8 @@ import java.util.HashMap;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import net.rafaelaznar.dao.ClienteDao_Mysql;
+import net.rafaelaznar.dao.ClienteDao;
+
 import net.rafaelaznar.helper.Conexion;
 import net.rafaelaznar.helper.FilterBean;
 
@@ -64,7 +65,7 @@ public class ClienteGetpages implements GenericOperation {
             } else {
                 hmOrder = null;
             }
-            ClienteDao_Mysql oClienteDAO = new ClienteDao_Mysql(Conexion.getConection());
+            ClienteDao oClienteDAO = new ClienteDao(Conexion.getConection());
             int pages = oClienteDAO.getPages(rpp, alFilter, hmOrder);
             data = "{\"data\":\"" + Integer.toString(pages) + "\"}";
             return data;

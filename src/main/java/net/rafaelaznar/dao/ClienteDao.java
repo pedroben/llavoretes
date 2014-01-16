@@ -5,11 +5,16 @@
 package net.rafaelaznar.dao;
 
 import net.rafaelaznar.bean.ClienteBean;
+import net.rafaelaznar.helper.Conexion;
 
 /**
  *
  * @author rafa
  */
-public interface ClienteDao extends GenericDao<ClienteBean> {
+public class ClienteDao extends GenericDaoImplementation<ClienteBean> {
+  
+    public ClienteDao(Conexion.Tipo_conexion tipoConexion) throws Exception {
+        super(tipoConexion,"cliente");
+    }
     
 }

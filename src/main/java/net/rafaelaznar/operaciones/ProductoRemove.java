@@ -10,10 +10,11 @@ import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import net.rafaelaznar.dao.ProductoDao_Mysql;
+
 import net.rafaelaznar.helper.Conexion;
 import net.rafaelaznar.helper.EncodingUtil;
 import net.rafaelaznar.bean.ProductoBean;
+import net.rafaelaznar.dao.ProductoDao;
 
 /**
  *
@@ -24,7 +25,7 @@ public class ProductoRemove implements GenericOperation {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         try {
-            ProductoDao_Mysql oProductoDAO = new ProductoDao_Mysql(Conexion.getConection());
+            ProductoDao oProductoDAO = new ProductoDao(Conexion.getConection());
             ProductoBean oProducto = new ProductoBean();                                           
             oProducto.setId(Integer.parseInt(request.getParameter("id")));            
             Map<String, String> data = new HashMap<>();            

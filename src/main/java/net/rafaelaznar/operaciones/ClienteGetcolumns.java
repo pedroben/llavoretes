@@ -10,7 +10,8 @@ import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import net.rafaelaznar.dao.ClienteDao_Mysql;
+import net.rafaelaznar.dao.ClienteDao;
+
 import net.rafaelaznar.helper.Conexion;
 
 /**
@@ -23,7 +24,7 @@ public class ClienteGetcolumns implements GenericOperation {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         ArrayList<String> alColumns = null;
         try {
-            ClienteDao_Mysql oClienteDAO = new ClienteDao_Mysql(Conexion.getConection());
+            ClienteDao oClienteDAO = new ClienteDao(Conexion.getConection());
             alColumns = oClienteDAO.getColumnsNames();
             String data = new Gson().toJson(alColumns);
             data = "{\"data\":" + data + "}";

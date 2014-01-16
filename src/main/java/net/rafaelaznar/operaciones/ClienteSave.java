@@ -10,10 +10,11 @@ import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import net.rafaelaznar.dao.ClienteDao_Mysql;
+
 import net.rafaelaznar.helper.Conexion;
 import net.rafaelaznar.helper.EncodingUtil;
 import net.rafaelaznar.bean.ClienteBean;
+import net.rafaelaznar.dao.ClienteDao;
 
 /**
  *
@@ -25,7 +26,7 @@ public class ClienteSave implements GenericOperation {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         try {
-            ClienteDao_Mysql oClienteDAO = new ClienteDao_Mysql(Conexion.getConection());
+            ClienteDao oClienteDAO = new ClienteDao(Conexion.getConection());
             ClienteBean oCliente = new ClienteBean();
             Gson gson = new Gson();
             String jason = request.getParameter("json");

@@ -9,7 +9,8 @@ import java.util.HashMap;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import net.rafaelaznar.dao.ProductoDao_Mysql;
+import net.rafaelaznar.dao.ProductoDao;
+
 import net.rafaelaznar.helper.Conexion;
 import net.rafaelaznar.helper.FilterBean;
 
@@ -64,7 +65,7 @@ public class ProductoGetpages implements GenericOperation {
             } else {
                 hmOrder = null;
             }
-            ProductoDao_Mysql oProductoDAO = new ProductoDao_Mysql(Conexion.getConection());
+            ProductoDao oProductoDAO = new ProductoDao(Conexion.getConection());
             int pages = oProductoDAO.getPages(rpp, alFilter, hmOrder);
             data = "{\"data\":\"" + Integer.toString(pages) + "\"}";
             return data;

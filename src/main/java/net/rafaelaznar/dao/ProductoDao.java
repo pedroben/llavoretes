@@ -4,12 +4,19 @@
  */
 package net.rafaelaznar.dao;
 
+
 import net.rafaelaznar.bean.ProductoBean;
+import net.rafaelaznar.helper.Conexion;
 
 /**
  *
  * @author rafa
  */
-public interface ProductoDao extends GenericDao<ProductoBean> {
+
+public class ProductoDao extends GenericDaoImplementation<ProductoBean> {
+  
+    public ProductoDao(Conexion.Tipo_conexion tipoConexion) throws Exception {
+        super(tipoConexion,"producto");
+    }
     
 }

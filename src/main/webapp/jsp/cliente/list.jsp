@@ -4,11 +4,11 @@
     Author     : rafa
 --%>
 <%@page import="net.rafaelaznar.helper.Conexion"%>
-<%@page import="net.rafaelaznar.dao.ClienteDao_Mysql"%>
+<%@page import="net.rafaelaznar.dao.ClienteDao"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Iterator"%>
 <%
-    ClienteDao_Mysql oClienteDao_Mysql = new ClienteDao_Mysql(Conexion.getConection());
+    ClienteDao oClienteDao_Mysql = new ClienteDao(Conexion.getConection());
     ArrayList<String> alColumnsNames = (ArrayList<String>) oClienteDao_Mysql.getColumnsNames();
     Iterator<String> oIterador = alColumnsNames.listIterator();
     String strNombreMantenimiento = "cliente";

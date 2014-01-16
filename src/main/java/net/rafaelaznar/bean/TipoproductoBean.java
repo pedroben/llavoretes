@@ -7,7 +7,7 @@ package net.rafaelaznar.bean;
  */
 public class TipoproductoBean {
 
-    private int id = 0;
+    private Integer id = 0;
     private String descripcion = "";
 
     public TipoproductoBean() {
@@ -22,7 +22,7 @@ public class TipoproductoBean {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

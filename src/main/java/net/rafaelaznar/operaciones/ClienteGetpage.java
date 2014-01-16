@@ -11,9 +11,10 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import net.rafaelaznar.dao.ClienteDao_Mysql;
+
 import net.rafaelaznar.helper.Conexion;
 import net.rafaelaznar.bean.ClienteBean;
+import net.rafaelaznar.dao.ClienteDao;
 import net.rafaelaznar.helper.FilterBean;
 
 /**
@@ -70,7 +71,7 @@ public class ClienteGetpage implements GenericOperation {
                     hmOrder.put(request.getParameter("order"), request.getParameter("ordervalue"));                  
                 } else             hmOrder=null;
             } else             hmOrder=null;
-            ClienteDao_Mysql oClienteDAO = new ClienteDao_Mysql(Conexion.getConection());
+            ClienteDao oClienteDAO = new ClienteDao(Conexion.getConection());
             List<ClienteBean> oClientes = oClienteDAO.getPage( rpp, page, alFilter,hmOrder );
             data = new Gson().toJson(oClientes);
             data = "{\"list\":" + data + "}";

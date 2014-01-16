@@ -9,7 +9,7 @@ import java.io.UnsupportedEncodingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import net.rafaelaznar.dao.ClienteDao_Mysql;
+
 import net.rafaelaznar.data.MysqlData;
 
 /**

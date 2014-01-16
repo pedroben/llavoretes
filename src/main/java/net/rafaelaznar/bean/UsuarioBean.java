@@ -10,7 +10,7 @@ package net.rafaelaznar.bean;
  */
 public class UsuarioBean {
 
-    private int id;
+    private Integer id;
     private String nombre;
     private String email;
     private String login;
@@ -28,7 +28,7 @@ public class UsuarioBean {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

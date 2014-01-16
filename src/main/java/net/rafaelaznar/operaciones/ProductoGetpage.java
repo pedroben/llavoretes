@@ -11,9 +11,10 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import net.rafaelaznar.dao.ProductoDao_Mysql;
+
 import net.rafaelaznar.helper.Conexion;
 import net.rafaelaznar.bean.ProductoBean;
+import net.rafaelaznar.dao.ProductoDao;
 import net.rafaelaznar.helper.FilterBean;
 
 /**
@@ -74,7 +75,7 @@ public class ProductoGetpage implements GenericOperation {
             } else {
                 hmOrder = null;
             }
-            ProductoDao_Mysql oProductoDAO = new ProductoDao_Mysql(Conexion.getConection());
+            ProductoDao oProductoDAO = new ProductoDao(Conexion.getConection());
             List<ProductoBean> oProductos = oProductoDAO.getPage(rpp, page, alFilter, hmOrder);
             data = new Gson().toJson(oProductos);
             data = "{\"list\":" + data + "}";

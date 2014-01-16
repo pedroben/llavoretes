@@ -10,7 +10,7 @@ package net.rafaelaznar.bean;
  */
 public class ClienteBean {
 
-    private int id;
+    private Integer id;
     private String nombre;
     private String ape1;
     private String ape2;
@@ -19,7 +19,7 @@ public class ClienteBean {
     public ClienteBean() {
     }
 
-    public ClienteBean(int id) {
+    public ClienteBean(Integer id) {
         this.id = id;
     }
 
@@ -27,7 +27,7 @@ public class ClienteBean {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
