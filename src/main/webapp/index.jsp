@@ -13,7 +13,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Ajax Stock</title>
+        <title>Ajax Stock uniDAO</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -48,7 +48,7 @@
                         <span class="icon-bar"></span> 
                         <span class="icon-bar"></span>
                     </a> 
-                    <a class="brand" href="jsp">Ajax Stock</a>                   
+                    <a class="brand" href="jsp">Ajax Stock uniDAO</a>                   
                     <div class="nav-collapse collapse">
                         <%if (user != null) {%>
                         <jsp:include page="jsp/menuSuperior.jsp" />   
