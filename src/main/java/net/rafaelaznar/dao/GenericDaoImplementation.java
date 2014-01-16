@@ -14,6 +14,8 @@ import java.util.Locale;
 import net.rafaelaznar.data.MysqlData;
 import net.rafaelaznar.helper.Conexion;
 import net.rafaelaznar.helper.FilterBean;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -104,6 +106,9 @@ public class GenericDaoImplementation<TIPO_OBJETO> implements GenericDao<TIPO_OB
                                     method.invoke(oBean,  Double.parseDouble( oMysql.getOne(strTabla, method.getName().substring(3).toLowerCase(Locale.ENGLISH), (Integer) metodo_getId.invoke(oBean))));
                                 } else if (primitive.getName().equals("java.lang.Integer")) {
                                     method.invoke(oBean, Integer.parseInt(oMysql.getOne(strTabla, method.getName().substring(3).toLowerCase(Locale.ENGLISH), (Integer) metodo_getId.invoke(oBean))));
+                                } else if (primitive.getName().equals("java.util.Date")) {
+                                    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                                    method.invoke(oBean, format.parse(oMysql.getOne(strTabla, method.getName().substring(3).toLowerCase(Locale.ENGLISH), (Integer) metodo_getId.invoke(oBean))));
                                 } else {
                                     method.invoke(oBean, oMysql.getOne(strTabla, method.getName().substring(3).toLowerCase(Locale.ENGLISH), (Integer) metodo_getId.invoke(oBean)));
                                 }
