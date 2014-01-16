@@ -1,7 +1,7 @@
 Ajax-Stock-UniDao
 =================
 
-Ajax Stock UniDao
+Ajax Stock UniDao. uniDao stands for only one generic DAO class.
 
 Desarrollo de aplicaciones web. CPIFP Ausiàs March. Curso 2013-2014.
 
