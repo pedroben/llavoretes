@@ -72,7 +72,6 @@ public class GenericDaoImplementation<TIPO_OBJETO> implements GenericDao<TIPO_OB
             Iterator<Integer> iterador = arrId.listIterator();
             while (iterador.hasNext()) {
                 Object oBean = Class.forName(tipo.getName()).newInstance();
-
                 metodo_setId.invoke(oBean, iterador.next());
                 arrCliente.add(this.get((TIPO_OBJETO) oBean));
             }
@@ -138,7 +137,9 @@ public class GenericDaoImplementation<TIPO_OBJETO> implements GenericDao<TIPO_OB
                 if (!method.getName().substring(3).equalsIgnoreCase("id")) {
                     if (method.getName().substring(0, 3).equalsIgnoreCase("get")) {
                         if (!method.getName().equals("getClass")) {
-                            oMysql.updateOne((Integer) metodo_getId.invoke(oBean), strTabla, method.getName().substring(3).toLowerCase(Locale.ENGLISH), (String) method.invoke(oBean));
+                            
+                            
+                            oMysql.updateOne((Integer) metodo_getId.invoke(oBean), strTabla, method.getName().substring(3).toLowerCase(Locale.ENGLISH), (String) method.invoke(oBean).toString());
                         }
                     }
                 }
