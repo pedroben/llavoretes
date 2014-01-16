@@ -14,6 +14,8 @@ import java.util.Locale;
 import net.rafaelaznar.data.MysqlData;
 import net.rafaelaznar.helper.Conexion;
 import net.rafaelaznar.helper.FilterBean;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -100,9 +102,12 @@ public class GenericDaoImplementation<TIPO_OBJETO> implements GenericDao<TIPO_OB
                             if (method.getName().substring(0, 3).equalsIgnoreCase("set")) {
                                 final Class<?> primitive = method.getParameterTypes()[0];
                                 if (primitive.getName().equals("java.lang.Double")) {
-                                    method.invoke(oBean,  Double.parseDouble( oMysql.getOne(strTabla, method.getName().substring(3).toLowerCase(Locale.ENGLISH), (Integer) metodo_getId.invoke(oBean))));
+                                    method.invoke(oBean, Double.parseDouble(oMysql.getOne(strTabla, method.getName().substring(3).toLowerCase(Locale.ENGLISH), (Integer) metodo_getId.invoke(oBean))));
                                 } else if (primitive.getName().equals("java.lang.Integer")) {
                                     method.invoke(oBean, Integer.parseInt(oMysql.getOne(strTabla, method.getName().substring(3).toLowerCase(Locale.ENGLISH), (Integer) metodo_getId.invoke(oBean))));
+                                } else if (primitive.getName().equals("java.util.Date")) {
+                                    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                                    method.invoke(oBean, format.parse(oMysql.getOne(strTabla, method.getName().substring(3).toLowerCase(Locale.ENGLISH), (Integer) metodo_getId.invoke(oBean))));
                                 } else {
                                     method.invoke(oBean, oMysql.getOne(strTabla, method.getName().substring(3).toLowerCase(Locale.ENGLISH), (Integer) metodo_getId.invoke(oBean)));
                                 }
@@ -137,9 +142,15 @@ public class GenericDaoImplementation<TIPO_OBJETO> implements GenericDao<TIPO_OB
                 if (!method.getName().substring(3).equalsIgnoreCase("id")) {
                     if (method.getName().substring(0, 3).equalsIgnoreCase("get")) {
                         if (!method.getName().equals("getClass")) {
-                            
-                            
-                            oMysql.updateOne((Integer) metodo_getId.invoke(oBean), strTabla, method.getName().substring(3).toLowerCase(Locale.ENGLISH), (String) method.invoke(oBean).toString());
+                            final Class<?> primitive = method.getReturnType();
+                            String value = (String) method.invoke(oBean).toString();
+                            if (primitive.getName().equals("java.util.Date")) {
+                                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                                value = format.format(method.invoke(oBean));
+                            }
+                            String dato = (String) method.invoke(oBean).toString();
+                            String b = "";
+                            oMysql.updateOne((Integer) metodo_getId.invoke(oBean), strTabla, method.getName().substring(3).toLowerCase(Locale.ENGLISH), value);
                         }
                     }
                 }
@@ -184,5 +195,4 @@ public class GenericDaoImplementation<TIPO_OBJETO> implements GenericDao<TIPO_OB
         }
         return alColumns;
     }
-
 }
