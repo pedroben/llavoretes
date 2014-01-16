@@ -10,10 +10,11 @@ import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import net.rafaelaznar.dao.TipoproductoDao;
+
 import net.rafaelaznar.helper.Conexion;
 import net.rafaelaznar.helper.EncodingUtil;
 import net.rafaelaznar.bean.TipoproductoBean;
+import net.rafaelaznar.dao.TipoproductoDao;
 
 /**
  *

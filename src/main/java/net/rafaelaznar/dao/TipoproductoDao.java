@@ -4,6 +4,7 @@
  */
 package net.rafaelaznar.dao;
 
+import net.rafaelaznar.bean.ClienteBean;
 import net.rafaelaznar.bean.TipoproductoBean;
 import net.rafaelaznar.helper.Conexion;
 

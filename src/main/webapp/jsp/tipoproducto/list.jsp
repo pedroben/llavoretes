@@ -8,8 +8,8 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Iterator"%>
 <%
-    TipoproductoDao oTipoproductoDao_Mysql = new TipoproductoDao(Conexion.getConection());
-    ArrayList<String> alColumnsNames = (ArrayList<String>) oTipoproductoDao_Mysql.getColumnsNames();
+    TipoproductoDao oTipoproductoDao = new TipoproductoDao(Conexion.getConection());
+    ArrayList<String> alColumnsNames = (ArrayList<String>) oTipoproductoDao.getColumnsNames();
     Iterator<String> oIterador = alColumnsNames.listIterator();
     String strNombreMantenimiento = "tipoproducto";
 %>
