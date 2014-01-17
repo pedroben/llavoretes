@@ -82,7 +82,7 @@ var control_cliente_list = function(path) {
     }
 
     function enviarDatosUpdateForm(view, id) {
-        $.fn.serializeObject = function()
+       $.fn.serializeObject = function()
         {
             // http://jsfiddle.net/davidhong/gP9bh/
             var o = {};
@@ -106,7 +106,7 @@ var control_cliente_list = function(path) {
         pie = "<button class=\"btn btn-primary\" data-dismiss=\"modal\" aria-hidden=\"true\">Cerrar</button>";
         resultado = view.getObject().saveOne(jsonfile);
         if (resultado["status"] = "200") {
-            mensaje = 'valores actualizados correctamente para el cliente con id=' + resultado["message"];
+            mensaje = 'valores actualizados correctamente para el registro con id=' + resultado["message"];
             loadForm('#modal02', cabecera, "Código: " + resultado["status"] + "<br />" + mensaje + "<br />" + view.getObjectTable(resultado["message"]), pie, true);
         } else {
             mensaje = 'el servidor ha retornado el mensaje de error=' + resultado["message"];

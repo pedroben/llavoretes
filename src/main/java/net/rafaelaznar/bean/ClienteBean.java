@@ -10,11 +10,11 @@ package net.rafaelaznar.bean;
  */
 public class ClienteBean {
 
-    private Integer id;
-    private String nombre;
-    private String ape1;
-    private String ape2;
-    private String email;
+    private Integer id=0;
+    private String nombre="";
+    private String ape1="";
+    private String ape2="";
+    private String email="";
 
     public ClienteBean() {
     }
