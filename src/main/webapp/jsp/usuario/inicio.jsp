@@ -1,7 +1,7 @@
 <div class="hero-unit">
-    <h1>Bienvenidos a ajax stock uniDAO</h1>
-    <h3>Versión (v.01) de 16/1/2014</h3>
-    <h5>Desarrollo de aplicaciones web. CPIFP Ausiàs March. Curso 2013-2014.</h5>    
+    <h1>Bienvenidos a Llavoretes Gestio</h1>
+    <h3>Aplicación de gestión de Llavoretes Escola Infantil</h3>
+    <h5>Desarrollado por Javier Bonet y Pedro Benito</h5>    
 </div>
 <div class="row-fluid">
     <div class="span8">

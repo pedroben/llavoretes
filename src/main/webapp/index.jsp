@@ -48,7 +48,7 @@
                         <span class="icon-bar"></span> 
                         <span class="icon-bar"></span>
                     </a> 
-                    <a class="brand" href="jsp">Ajax Stock uniDAO</a>                   
+                    <a class="brand" href="jsp">Llavoretes Gestio</a>                   
                     <div class="nav-collapse collapse">
                         <%if (user != null) {%>
                         <jsp:include page="jsp/menuSuperior.jsp" />   
@@ -85,7 +85,7 @@
                     out.print("</div>");
                 %>    
                 <div class="row-fluid">
-                    <div class="span12"><hr><footer><p>&copy; Rafael Aznar (2013)</p></footer></div>   
+                    <div class="span12"><hr><footer><p>&copy; Javier Bonet / Pedro Benito (2014)</p></footer></div>   
                 </div>
             </div>
         </div>                    
