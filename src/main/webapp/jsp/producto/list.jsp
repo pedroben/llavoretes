@@ -3,8 +3,8 @@
     Created on : Jan 16, 2013, 12:57:09 PM
     Author     : rafa
 --%>
-<%@page import="net.rafaelaznar.helper.Conexion"%>
-<%@page import="net.rafaelaznar.dao.ProductoDao"%>
+<%@page import="net.llavoretes.helper.Conexion"%>
+<%@page import="net.llavoretes.dao.ProductoDao"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Iterator"%>
 <%

@@ -1,4 +1,4 @@
-<%@page import="net.rafaelaznar.bean.UsuarioBean"%>
+<%@page import="net.llavoretes.bean.UsuarioBean"%>
 <%UsuarioBean user = (UsuarioBean) request.getSession().getAttribute("usuarioBean");%>
 
 

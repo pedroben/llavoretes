@@ -3,7 +3,7 @@ package net.llavoretes.data;
 /**
  * Clase Mysql para acceder a bases de datos Mysql. Nivel data.
  *
- * @author rafael aznar
+ * @author Javier Bonet y Pedro Benito
  */
 import java.sql.Connection;
 import java.sql.ResultSet;
