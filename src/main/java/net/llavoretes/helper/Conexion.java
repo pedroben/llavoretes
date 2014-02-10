@@ -22,7 +22,7 @@ public class Conexion {
     }
 
     public static String getDatabaseName() {
-        return "facturacion";
+        return "llavoretesbd";
     }
 
     public static String getDatabaseLogin() {
