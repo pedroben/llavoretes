@@ -9,9 +9,9 @@
         <li class="nav-header">Usuario</li>
         <li><a id="lnkHome"  href="jsp">Home</a></li>
         <li><a id="lnkLogout" href="jsp?ob=usuario&op=logout">Logout</a></li>
-        <li class="nav-header">Mantenimientos</li>            
-        <li><a id="lnkCliente" href="#">Cliente</a></li>
-        <li><a id="lnkProducto" href="#">Producto</a></li>
+        <li class="nav-header">Mantenimientos</li>
+        <li><a id="lnkAlumnos" href="#">Alumnos</a></li>
+        <li><a id="lnkProfesor" href="#">Profesor</a></li>
     </ul>
 </div>
 

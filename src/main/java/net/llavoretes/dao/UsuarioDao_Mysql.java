@@ -77,7 +77,7 @@ public class UsuarioDao_Mysql implements UsuarioDao {
                 } else {
                     oUsuarioBean.setNombre(oMysql.getOne("usuario", "nombre", oUsuarioBean.getId()));
                     oUsuarioBean.setLogin(oMysql.getOne("usuario", "login", oUsuarioBean.getId()));
-                    oUsuarioBean.setPassword(oMysql.getOne("usuario", "password", oUsuarioBean.getId()));
+                    oUsuarioBean.setPassword(oMysql.getOne("usuario", "password", oUsuarioBean.getId()));        
                 }
             } catch (Exception e) {
                 throw new Exception("UsuarioDao.getUsuario: Error: " + e.getMessage());
@@ -100,7 +100,7 @@ public class UsuarioDao_Mysql implements UsuarioDao {
             }
             oMysql.updateOne(oUsuarioBean.getId(), "usuario", "nombre", oUsuarioBean.getNombre());
             oMysql.updateOne(oUsuarioBean.getId(), "usuario", "login", oUsuarioBean.getLogin());
-            oMysql.updateOne(oUsuarioBean.getId(), "usuario", "password", oUsuarioBean.getPassword());
+            oMysql.updateOne(oUsuarioBean.getId(), "usuario", "password", oUsuarioBean.getPassword());      
             oMysql.commitTrans();
         } catch (Exception e) {
             oMysql.rollbackTrans();

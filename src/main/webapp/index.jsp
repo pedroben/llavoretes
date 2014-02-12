@@ -115,6 +115,7 @@
         <script src="js/control/producto.js" charset="UTF-8"></script>
         <script src="js/control/tipoproducto.js" charset="UTF-8"></script>
         <script src="js/control/compra.js" charset="UTF-8"></script>
+        <script src="js/control/alumno.js" charset="UTF-8"></script>
 
         <script>
             /* Inicialización en español para la extensión 'UI date picker' para jQuery. */
@@ -148,29 +149,29 @@
             $(document).on('show', '.modal', function() {
                 $(document).off('focusin.modal');
             });
-            $(document).ready(function() {
-                $('#lnkCliente').unbind('click');
-                $('#lnkCliente').click(function() {
-                    var cliente = objeto('cliente', '<%=request.getContextPath()%>');
-                    var clienteView = vista(cliente, '<%=request.getContextPath()%>');
+            $(document).ready(function() {            
+                $('#lnkAlumnos').unbind('click');
+                $('#lnkAlumnos').click(function() {
+                    var alumno = objeto('alumno', '<%=request.getContextPath()%>');
+                    var alumnoView = vista(alumno, '<%=request.getContextPath()%>');
 
                     $('#indexContenidoJsp').empty();
-                    $('#indexContenido').empty().append(clienteView.getEmptyList());
+                    $('#indexContenido').empty().append(alumnoView.getEmptyList());
 
-                    var clienteControl = control_cliente_list('<%=request.getContextPath()%>');
-                    clienteControl.inicia(clienteView, 1, null, null, 10, null, null, null, null);
+                    var alumnoControl = control_alumno_list('<%=request.getContextPath()%>');
+                    alumnoControl.inicia(alumnoView, 1, null, null, 10, null, null, null, null);
                     return false;
                 });
-                $('#lnkProducto').unbind('click');
-                $('#lnkProducto').click(function() {
-                    var producto = objeto('producto', '<%=request.getContextPath()%>');
-                    var productoView = vista(producto, '<%=request.getContextPath()%>');
+                  $('#lnkProfesor').unbind('click');
+                $('#lnkProfesor').click(function() {
+                    var alumno = objeto('profesor', '<%=request.getContextPath()%>');
+                    var alumnoView = vista(alumno, '<%=request.getContextPath()%>');
 
                     $('#indexContenidoJsp').empty();
-                    $('#indexContenido').empty().append(productoView.getEmptyList());
+                    $('#indexContenido').empty().append(alumnoView.getEmptyList());
 
-                    var productoControl = control_producto_list('<%=request.getContextPath()%>');
-                    productoControl.inicia(productoView, 1, null, null, 10, null, null, null, null);
+                    var profesorControl = control_profesor_list('<%=request.getContextPath()%>');
+                    profesorControl.inicia(profesorView, 1, null, null, 10, null, null, null, null);
                     return false;
                 });
             });

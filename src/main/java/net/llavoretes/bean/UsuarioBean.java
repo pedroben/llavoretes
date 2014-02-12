@@ -10,10 +10,10 @@ package net.llavoretes.bean;
  */
 public class UsuarioBean {
 
-    private Integer id;
-    private String nombre;
-    private String login;
-    private String password;
+    private Integer id=0;
+    private String login="";
+    private String password="";
+    private String nombre="";
 
     public UsuarioBean() {
 
