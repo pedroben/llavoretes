@@ -111,10 +111,8 @@
         <script src="js/util.js" charset="UTF-8"></script>
         <script src="js/main.js" charset="UTF-8"></script>
 
-        <script src="js/control/cliente.js" charset="UTF-8"></script>
-        <script src="js/control/producto.js" charset="UTF-8"></script>
-        <script src="js/control/tipoproducto.js" charset="UTF-8"></script>
-        <script src="js/control/compra.js" charset="UTF-8"></script>
+        
+        <script src="js/control/profesor.js" charset="UTF-8"></script>
         <script src="js/control/alumno.js" charset="UTF-8"></script>
 
         <script>
@@ -164,11 +162,11 @@
                 });
                   $('#lnkProfesor').unbind('click');
                 $('#lnkProfesor').click(function() {
-                    var alumno = objeto('profesor', '<%=request.getContextPath()%>');
-                    var alumnoView = vista(alumno, '<%=request.getContextPath()%>');
+                    var profesor = objeto('profesor', '<%=request.getContextPath()%>');
+                    var profesorView = vista(profesor, '<%=request.getContextPath()%>');
 
                     $('#indexContenidoJsp').empty();
-                    $('#indexContenido').empty().append(alumnoView.getEmptyList());
+                    $('#indexContenido').empty().append(profesorView.getEmptyList());
 
                     var profesorControl = control_profesor_list('<%=request.getContextPath()%>');
                     profesorControl.inicia(profesorView, 1, null, null, 10, null, null, null, null);

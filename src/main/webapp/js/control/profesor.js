@@ -4,10 +4,10 @@
 // * and open the template in the editor.
 // */
 
-var control_alumno_list = function(path) {
+var control_profesor_list = function(path) {
     //contexto privado
 
-    var prefijo_div = "#alumno_list ";
+    var prefijo_div = "#profesor_list ";
 
     function cargaBotoneraMantenimiento() {
         var botonera = [
