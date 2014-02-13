@@ -53,7 +53,7 @@ public class ProfesorBean {
     /**
      * @param dni the dni to set
      */
-    public void setNif(String dni) {
+    public void setNif(String nif) {
         this.nif = nif;
     }
 
@@ -126,6 +126,20 @@ public class ProfesorBean {
     public void setEmail(String email) {
         this.email = email;
     }
+     /**
+     * @return the email
+     */
+    public String getDireccion() {
+        return direccion;
+    }
+
+    /**
+     * @param email the email to set
+     */
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+   
 
     /**
      * @return the horario
@@ -137,7 +151,7 @@ public class ProfesorBean {
     /**
      * @param horario the email to set
      */
-    public void setHorario(String email) {
+    public void setHorario(String horario) {
         this.horario = horario;
     }
 

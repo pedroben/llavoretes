@@ -1,77 +1,84 @@
 <%-- 
     Document   : form
-    Created on : 10-feb-2014, 10:11:42
-    Author     : llavoretes
+    Author     : Llavoretes
 --%>
 <form class="form-horizontal" action="#" id="formulario" name="formulario">
-    <h2>Cliente</h2>
+    <h2>Entrada</h2>
     <div class="control-group">
-        <label class="control-label" for="inputId">Id:</label>
+        <label class="control-label" for="inputId">ID:</label>
         <div class="controls">
             <input type="text" id="id" name="id" placeholder="id" />
         </div>
     </div>
-    <div class="control-group">
-        <label class="control-label"  for="inputNif">Nif:</label>
-        <div class="controls">
-            <input type="text" id="nif" name="nif" size="15" placeholder="nif" />
-        </div>
-    </div>
-    <div class="control-group">
+   <div class="control-group">
         <label class="control-label"  for="inputNombre">Nombre:</label>
         <div class="controls">
-            <input type="text" id="nombre" name="nombre" size="15" placeholder="nombre" />
+            <input type="text" id="nombre" name="nombre" size="15" placeholder="Nombre" />
         </div>
     </div>
     <div class="control-group">
-        <label class="control-label" for="inputApe1" >Primer apellido:</label>
+        <label class="control-label"  for="inputApe1">Primer Apellido:</label>
         <div class="controls">
-            <input type="text" id="ape1" name="ape1" placeholder="primer apellido" size="15" />
+            <input type="text" id="ape1" name="ape1" size="15" placeholder="Primer apellido" />
         </div>
     </div>
     <div class="control-group">
-        <label class="control-label"  for="inputApe2">Segundo apellido:</label>
+        <label class="control-label"  for="inputApe2">Segundo Apellido:</label>
         <div class="controls">
-            <input type="text" id="ape2" name="ape2" placeholder="segundo apellido" size="15" />
+            <input type="text" id="ape2" name="ape2" size="15" placeholder="Segundo Apellido" />
         </div>
     </div>
-    <div class="control-group">
-        <label class="control-label"  for="sexo">Sexo:</label>
+        <div class="control-group">
+        <label class="control-label"  for="inputNif">Nif</label>
         <div class="controls">
-            <input type="text" id="ape2" name="sexo" placeholder="sexo" size="15" />
+            <input type="text" id="nif" name="nif" size="15" placeholder="Documento identidad" />
         </div>
     </div>
-    <div class="control-group">
-        <label class="control-label"  for="direccion">Direccion:</label>
+    </div>
+        <div class="control-group">
+        <label class="control-label"  for="inputHorario">Teléfono:</label>
         <div class="controls">
-            <input type="text" id="direccion" name="direccion" placeholder="direccion" size="15" />
+            <input type="text" id="telefono" name="horario" size="15" placeholder="Ordinario o vespertino" />
         </div>
     </div>
     <div class="control-group">
-        <label class="control-label" for="telefono1">Telefono 1:</label>
+        <label class="control-label"  for="inputMedicacion">Em@il:</label>
         <div class="controls">
-            <input type="text" id="telefono1" name="telefono1" placeholder="telefono1" />
+            <input type="text" id="email" name="medicacion" size="15" placeholder="Medicacion" />
         </div>
     </div>
     <div class="control-group">
-        <label class="control-label" for="telefono2">Telefono 2:</label>
+        <label class="control-label"  for="inputOtros">Teléfono:</label>
         <div class="controls">
-            <input type="text" id="telefono2" name="telefono2" placeholder="telefono2" />
+            <input type="text" id="telefono" name="otros" size="15" placeholder="Otros" />
         </div>
     </div>
+    
     <div class="control-group">
-        <label class="control-label"  for="inputEmail">Email:</label>
+        <label class="control-label" for="inputId_grupo">ID Grupo</label>
         <div class="controls">
-            <input type="text" id="email" name="email" placeholder="email" size="15" />
+            <input type="text" id="id_grupo" name="id_grupo" placeholder="Id grupo" />
+            <a class="btn btn-mini" id="id_grupo_button" href="#"><i class="icon-search"></i></a>
         </div>
     </div>
+    
     <div class="control-group">
-        <label class="control-label" for="id_alumno">Id Alumno:</label>
+        <label class="control-label" for="inputId_primertutor">ID Grupo</label>
         <div class="controls">
-            <input type="text" id="id_alumno" name="id_alumno" placeholder="id_alumno" />
+            <input type="text" id="id_primertutor" name="id_primertutor" placeholder="Id Primer Tutor" />
+            <a class="btn btn-mini" id="id_primer_button" href="#"><i class="icon-search"></i></a>
         </div>
     </div>
+    
     <div class="control-group">
+        <label class="control-label" for="inputId_segundotutor">ID Grupo</label>
+        <div class="controls">
+            <input type="text" id="id_primertutor" name="id_segundotutor" placeholder="Id Segundo Tutor" />
+            <a class="btn btn-mini" id="id_segundo_button" href="#"><i class="icon-search"></i></a>
+        </div>
+    </div>
+    
+        <div class="control-group">
         <div class="controls">
             <button type="submit" id="submitForm" class="btn submitForm">Submit</button>
         </div>

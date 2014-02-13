@@ -6,37 +6,36 @@
 
 package net.llavoretes.dao;
 
-
 import net.llavoretes.bean.GrupoBean;
 import net.llavoretes.bean.ProfesorBean;
 import net.llavoretes.helper.Conexion;
 
 /**
  *
- * @author Pedro Benito
+ * @author al037184
  */
-public class ProfesorDao extends GenericDaoImplementation<ProfesorBean>{
+public class GrupoDao extends GenericDaoImplementation<GrupoBean>{
     
-    public ProfesorDao(Conexion.Tipo_conexion tipo_conexion) throws Exception{
+    public GrupoDao(Conexion.Tipo_conexion tipo_conexion) throws Exception{
         super(tipo_conexion, "profesor");
     }
     
-   public ProfesorBean getFromId_grupo(GrupoBean oGrupoBean) throws Exception {
-        ProfesorBean oProfesorBean = new ProfesorBean();
-        if (oGrupoBean.getId() > 0) {
+   public GrupoBean getFromId_profesor(ProfesorBean oProfesorBean) throws Exception {
+        GrupoBean oGrupoBean = new GrupoBean();
+        if (oProfesorBean.getId() > 0) {
             try {
                 oMysql.conexion(enumTipoConexion);
-                String id_grupo = Integer.toString(oGrupoBean.getId());
-                Integer id_user = Integer.parseInt(oMysql.getId("profesor", "id_grupo", id_grupo));
-                oProfesorBean.setId(id_user);
+                String id_profesor = Integer.toString(oGrupoBean.getId());
+                Integer id_user = Integer.parseInt(oMysql.getId("grupo", "id_profesor", id_profesor));
+                oGrupoBean.setId(id_user);
             } catch (Exception e) {
                 throw new Exception("ProfesorDao.getProfesor: Error: " + e.getMessage());
             } finally {
                 oMysql.desconexion();
             }
         } else {
-            oProfesorBean.setId(0);
+            oGrupoBean.setId(0);
         }
-        return oProfesorBean;
+        return oGrupoBean;
     }
 }

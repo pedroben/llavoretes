@@ -78,11 +78,11 @@ public class ProfesorGetpage implements GenericOperation {
                 hmOrder = null;
             }
             ProfesorDao oProfesorDAO = new ProfesorDao(Conexion.getConection());
-            List<ProfesorBean> oProfesors = oProfesorDAO.getPage(rpp, page, alFilter, hmOrder);
+            List<ProfesorBean> oProfesor = oProfesorDAO.getPage(rpp, page, alFilter, hmOrder);
             GsonBuilder gsonBuilder = new GsonBuilder();
             gsonBuilder.setDateFormat("dd/MM/yyyy");
             Gson gson = gsonBuilder.create();
-            data = gson.toJson(oProfesors);
+            data = gson.toJson(oProfesor);
             data = "{\"list\":" + data + "}";
             return data;
         } catch (Exception e) {

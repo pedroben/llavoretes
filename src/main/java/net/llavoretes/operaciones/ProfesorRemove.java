@@ -18,8 +18,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import net.llavoretes.helper.Conexion;
 import net.llavoretes.helper.EncodingUtil;
-import net.llavoretes.bean.AlumnoBean;
-import net.llavoretes.dao.AlumnoDao;
+import net.llavoretes.bean.ProfesorBean;
+import net.llavoretes.dao.ProfesorDao;
 
 
 
@@ -30,14 +30,14 @@ public class ProfesorRemove implements GenericOperation{
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         try {
-            AlumnoDao oAlumnoDAO = new AlumnoDao(Conexion.getConection());
-            AlumnoBean oAlumno = new AlumnoBean();                                           
-            oAlumno.setId(Integer.parseInt(request.getParameter("id")));            
+            ProfesorDao oProfesorDAO = new ProfesorDao(Conexion.getConection());
+            ProfesorBean oProfesorBean = new ProfesorBean();                                           
+            oProfesorBean.setId(Integer.parseInt(request.getParameter("id")));            
             Map<String, String> data = new HashMap<>();
-            if (oAlumno != null) {
-                oAlumnoDAO.remove(oAlumno);
+            if (oProfesorBean != null) {
+                oProfesorDAO.remove(oProfesorBean);
                 data.put("status", "200");
-                data.put("message", "se ha eliminado el registro con id=" + oAlumno.getId());
+                data.put("message", "se ha eliminado el registro con id=" + oProfesorBean.getId());
             } else {
                 data.put("status", "error");
                 data.put("message", "error");
@@ -46,7 +46,7 @@ public class ProfesorRemove implements GenericOperation{
             String resultado = gson.toJson(data);
             return resultado;        
         } catch (Exception e) {
-            throw new ServletException("AlumnoRemoveJson: View Error: " + e.getMessage());
+            throw new ServletException("ProfesorRemoveJson: View Error: " + e.getMessage());
         }
     }
     

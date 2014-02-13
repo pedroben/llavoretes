@@ -4,14 +4,14 @@
 --%>
 
 <%@page import="net.llavoretes.helper.Conexion"%>
-<%@page import="net.llavoretes.dao.AlumnoDao"%>
+<%@page import="net.llavoretes.dao.GrupoDao"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Iterator"%>
 <%
-    AlumnoDao oAlumnoDao = new AlumnoDao(Conexion.getConection());
-    ArrayList<String> alColumnsNames = (ArrayList<String>) oAlumnoDao.getColumnsNames();
+    GrupoDao oGrupoDao = new GrupoDao(Conexion.getConection());
+    ArrayList<String> alColumnsNames = (ArrayList<String>) oGrupoDao.getColumnsNames();
     Iterator<String> oIterador = alColumnsNames.listIterator();
-    String strNombreMantenimiento = "alumno";
+    String strNombreMantenimiento = "grupo";
 %>
 <div id="<%=strNombreMantenimiento%>_list">
     <div class="span12">
@@ -26,7 +26,7 @@
             <div class="span5">
                 <div class="text-right">
                     <legend>Filtro</legend> 
-                    <form class="navbar-form pull-right" action="Controller" method="post" id="alumnoForm">
+                    <form class="navbar-form pull-right" action="Controller" method="post" id="profesorForm">
                         <fieldset>                                                                     
                             <span>
                                 <select id="selectFilter" name="filter" width="80" style="width: 100px">

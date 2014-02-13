@@ -60,6 +60,15 @@
         </div>
     </div>
     <div class="control-group">
+        <label class="control-label" for="inputId_grupo">ID Grupo:</label>
+        <div class="controls">
+            <input type="text" id="id_usuario" name="id_grupo" placeholder="Id grupo" />
+            <a class="btn btn-mini" id="id_grupo_button" href="#"><i class="icon-search"></i></a>
+        </div>
+    </div>
+    
+    
+    <div class="control-group">
         <div class="controls">
             <button type="submit" id="submitForm" class="btn submitForm">Submit</button>
         </div>
