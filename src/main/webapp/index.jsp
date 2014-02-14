@@ -111,9 +111,10 @@
         <script src="js/util.js" charset="UTF-8"></script>
         <script src="js/main.js" charset="UTF-8"></script>
 
-        
+
         <script src="js/control/profesor.js" charset="UTF-8"></script>
         <script src="js/control/alumno.js" charset="UTF-8"></script>
+        <script src="js/control/grupo.js" charset="UTF-8"></script>
 
         <script>
             /* Inicialización en español para la extensión 'UI date picker' para jQuery. */
@@ -147,7 +148,7 @@
             $(document).on('show', '.modal', function() {
                 $(document).off('focusin.modal');
             });
-            $(document).ready(function() {            
+            $(document).ready(function() {
                 $('#lnkAlumnos').unbind('click');
                 $('#lnkAlumnos').click(function() {
                     var alumno = objeto('alumno', '<%=request.getContextPath()%>');
@@ -160,7 +161,7 @@
                     alumnoControl.inicia(alumnoView, 1, null, null, 10, null, null, null, null);
                     return false;
                 });
-                  $('#lnkProfesor').unbind('click');
+                $('#lnkProfesor').unbind('click');
                 $('#lnkProfesor').click(function() {
                     var profesor = objeto('profesor', '<%=request.getContextPath()%>');
                     var profesorView = vista(profesor, '<%=request.getContextPath()%>');
@@ -170,6 +171,18 @@
 
                     var profesorControl = control_profesor_list('<%=request.getContextPath()%>');
                     profesorControl.inicia(profesorView, 1, null, null, 10, null, null, null, null);
+                    return false;
+                });
+                $('#lnkGrupo').unbind('click');
+                $('#lnkGrupo').click(function() {
+                    var grupo = objeto('grupo', '<%=request.getContextPath()%>');
+                    var grupoView = vista(grupo, '<%=request.getContextPath()%>');
+
+                    $('#indexContenidoJsp').empty();
+                    $('#indexContenido').empty().append(grupoView.getEmptyList());
+
+                    var grupoControl = control_grupo_list('<%=request.getContextPath()%>');
+                    grupoControl.inicia(grupoView, 1, null, null, 10, null, null, null, null);
                     return false;
                 });
             });

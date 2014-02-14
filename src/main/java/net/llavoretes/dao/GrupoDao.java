@@ -17,7 +17,7 @@ import net.llavoretes.helper.Conexion;
 public class GrupoDao extends GenericDaoImplementation<GrupoBean>{
     
     public GrupoDao(Conexion.Tipo_conexion tipo_conexion) throws Exception{
-        super(tipo_conexion, "profesor");
+        super(tipo_conexion, "grupo");
     }
     
    public GrupoBean getFromId_profesor(ProfesorBean oProfesorBean) throws Exception {

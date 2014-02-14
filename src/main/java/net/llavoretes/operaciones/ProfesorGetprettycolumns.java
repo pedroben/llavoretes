@@ -20,7 +20,7 @@ public class ProfesorGetprettycolumns implements GenericOperation {
             String data = "{\"data\": [\"id\", \"nif\", \"nombre\", \"primer apellido\", \"segundo apellido\", \"direccion\", \"telefono \", \"email\", \"horario\", \"id grupo\"]}";
             return data;
         } catch (Exception e) {
-            throw new ServletException("AlumnoGetpagesJson: View Error: " + e.getMessage());
+            throw new ServletException("ProfesorGetpagesJson: View Error: " + e.getMessage());
         }
     }
 

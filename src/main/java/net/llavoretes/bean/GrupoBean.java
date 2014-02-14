@@ -53,7 +53,7 @@ public class GrupoBean {
     /**
      * @param dni the nombreaula to set
      */
-    public void setNombreaula(String dni) {
+    public void setNombreaula(String nombreaula) {
         this.nombreaula = nombreaula;
     }
 
@@ -67,7 +67,7 @@ public class GrupoBean {
     /**
      * @param nombre the franjaedad to set
      */
-    public void setFranjaedad(String nombre) {
+    public void setFranjaedad(String franjaedad) {
         this.franjaedad = franjaedad;
     }
 

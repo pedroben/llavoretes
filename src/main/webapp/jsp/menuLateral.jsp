@@ -12,6 +12,7 @@
         <li class="nav-header">Mantenimientos</li>
         <li><a id="lnkAlumnos" href="#">Alumnos</a></li>
         <li><a id="lnkProfesor" href="#">Profesor</a></li>
+        <li><a id="lnkGrupo" href="#">Grupo</a></li>
     </ul>
 </div>
 

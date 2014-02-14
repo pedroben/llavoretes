@@ -26,7 +26,7 @@
             <div class="span5">
                 <div class="text-right">
                     <legend>Filtro</legend> 
-                    <form class="navbar-form pull-right" action="Controller" method="post" id="profesorForm">
+                    <form class="navbar-form pull-right" action="Controller" method="post" id="grupoForm">
                         <fieldset>                                                                     
                             <span>
                                 <select id="selectFilter" name="filter" width="80" style="width: 100px">

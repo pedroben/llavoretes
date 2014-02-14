@@ -38,7 +38,7 @@
     <div class="control-group">
         <label class="control-label"  for="inputDireccion">Direccion</label>
         <div class="controls">
-            <input type="text" id="telefono" name="direccion" size="15" placeholder="Direccion" />
+            <input type="text" id="direccion" name="direccion" size="15" placeholder="Direccion" />
         </div>
     </div>
     <div class="control-group">
@@ -47,10 +47,10 @@
             <input type="text" id="telefono" name="telefono" size="15" placeholder="Móvil o fijo" />
         </div>
     </div>
-        <div class="control-group">
-        <label class="control-label"  for="inputHorario">Teléfono:</label>
+    <div class="control-group">
+        <label class="control-label"  for="inputHorario">Horario</label>
         <div class="controls">
-            <input type="text" id="telefono" name="horario" size="15" placeholder="Ordinario o vespertino" />
+            <input type="text" id="horario" name="horario" size="15" placeholder="Ordinario o vespertino" />
         </div>
     </div>
     <div class="control-group">
@@ -66,8 +66,8 @@
             <a class="btn btn-mini" id="id_grupo_button" href="#"><i class="icon-search"></i></a>
         </div>
     </div>
-    
-    
+
+
     <div class="control-group">
         <div class="controls">
             <button type="submit" id="submitForm" class="btn submitForm">Submit</button>

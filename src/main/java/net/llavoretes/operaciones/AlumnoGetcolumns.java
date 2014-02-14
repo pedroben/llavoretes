@@ -19,7 +19,7 @@ import net.llavoretes.dao.AlumnoDao;
 import net.llavoretes.helper.Conexion;
 
 
-public class AlumnoGetColumns implements GenericOperation{
+public class AlumnoGetcolumns implements GenericOperation{
     
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
