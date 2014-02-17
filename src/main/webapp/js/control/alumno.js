@@ -175,10 +175,10 @@ var control_alumno_list = function(path) {
                     removeConfirmationModalForm(view, '#modal01', $(this).attr('id'));
                 });
 
-                $(prefijo_div + '.btn.btn-mini.action05').unbind('click');
-                $(prefijo_div + '.btn.btn-mini.action05').click(function() {
-                    cargaCompras($(this).attr('id'));
-                });
+//                $(prefijo_div + '.btn.btn-mini.action05').unbind('click');
+//                $(prefijo_div + '.btn.btn-mini.action05').click(function() {
+//                    cargaCompras($(this).attr('id'));
+//                });
 
             }
 
