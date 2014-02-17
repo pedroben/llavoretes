@@ -1,86 +1,86 @@
 <%-- 
     Document   : form
-    Author     : Llavoretes
+    Created on : 10-feb-2014, 10:11:42
+    Author     : llavoretes
 --%>
 <form class="form-horizontal" action="#" id="formulario" name="formulario">
-    <h2>Entrada</h2>
+    <h2>Cliente</h2>
     <div class="control-group">
-        <label class="control-label" for="inputId">ID:</label>
+        <label class="control-label" for="inputId">Id:</label>
         <div class="controls">
             <input type="text" id="id" name="id" placeholder="id" />
         </div>
     </div>
-   <div class="control-group">
+    <div class="control-group">
         <label class="control-label"  for="inputNombre">Nombre:</label>
         <div class="controls">
-            <input type="text" id="nombre" name="nombre" size="15" placeholder="Nombre" />
+            <input type="text" id="nombre" name="nombre" size="15" placeholder="nombre" />
         </div>
     </div>
     <div class="control-group">
-        <label class="control-label"  for="inputApe1">Primer Apellido:</label>
+        <label class="control-label" for="inputApe1" >Primer apellido:</label>
         <div class="controls">
-            <input type="text" id="ape1" name="ape1" size="15" placeholder="Primer apellido" />
+            <input type="text" id="ape1" name="ape1" placeholder="primer apellido" size="15" />
         </div>
     </div>
     <div class="control-group">
-        <label class="control-label"  for="inputApe2">Segundo Apellido:</label>
+        <label class="control-label"  for="inputApe2">Segundo apellido:</label>
         <div class="controls">
-            <input type="text" id="ape2" name="ape2" size="15" placeholder="Segundo Apellido" />
-        </div>
-    </div>
-        <div class="control-group">
-        <label class="control-label"  for="inputNif">Nif</label>
-        <div class="controls">
-            <input type="text" id="nif" name="nif" size="15" placeholder="Documento identidad" />
-        </div>
-    </div>
-    </div>
-        <div class="control-group">
-        <label class="control-label"  for="inputHorario">Teléfono:</label>
-        <div class="controls">
-            <input type="text" id="telefono" name="horario" size="15" placeholder="Ordinario o vespertino" />
+            <input type="text" id="ape2" name="ape2" placeholder="segundo apellido" size="15" />
         </div>
     </div>
     <div class="control-group">
-        <label class="control-label"  for="inputMedicacion">Em@il:</label>
+        <label class="control-label"  for="inputNif">Nif:</label>
         <div class="controls">
-            <input type="text" id="email" name="medicacion" size="15" placeholder="Medicacion" />
+            <input type="text" id="nif" name="nif" placeholder="nif" size="15" />
         </div>
     </div>
     <div class="control-group">
-        <label class="control-label"  for="inputOtros">Teléfono:</label>
-        <div class="controls">
-            <input type="text" id="telefono" name="otros" size="15" placeholder="Otros" />
+        <label class="control-label"  for="inputid_primertutor">Id Primertutor:</label>
+        <div class="controls">           
+            <input readonly="true" id="id_primertutor" class="input-mini" 
+                   name="id_primertutor" type="text" size="5" maxlength="5" />
+            <a class="btn btn-mini" id="id_primertutor_button" href="#"><i class="icon-search"></i></a>
         </div>
     </div>
-    
     <div class="control-group">
-        <label class="control-label" for="inputId_grupo">ID Grupo</label>
-        <div class="controls">
-            <input type="text" id="id_grupo" name="id_grupo" placeholder="Id grupo" />
+        <label class="control-label"  for="inputid_segundotutor">Id Segundotutor:</label>
+        <div class="controls">           
+            <input readonly="true" id="id_segundotutor" class="input-mini" 
+                   name="id_segundotutor" type="text" size="5" maxlength="5" />
+            <a class="btn btn-mini" id="id_segundotutor_button" href="#"><i class="icon-search"></i></a>
+        </div>
+    </div>
+     <div class="control-group">
+        <label class="control-label"  for="inputid_grupo">Id Grupo:</label>
+        <div class="controls">           
+            <input readonly="true" id="id_grupo" class="input-mini" 
+                   name="id_grupo" type="text" size="5" maxlength="5" />
             <a class="btn btn-mini" id="id_grupo_button" href="#"><i class="icon-search"></i></a>
         </div>
     </div>
-    
     <div class="control-group">
-        <label class="control-label" for="inputId_primertutor">ID Grupo</label>
+        <label class="control-label"  for="horario">Horario:</label>
         <div class="controls">
-            <input type="text" id="id_primertutor" name="id_primertutor" placeholder="Id Primer Tutor" />
-            <a class="btn btn-mini" id="id_primer_button" href="#"><i class="icon-search"></i></a>
+            <input type="text" id="horario" name="horario" placeholder="horario" size="15" />
         </div>
     </div>
-    
     <div class="control-group">
-        <label class="control-label" for="inputId_segundotutor">ID Grupo</label>
+        <label class="control-label"  for="medicacion">Medicacion:</label>
         <div class="controls">
-            <input type="text" id="id_primertutor" name="id_segundotutor" placeholder="Id Segundo Tutor" />
-            <a class="btn btn-mini" id="id_segundo_button" href="#"><i class="icon-search"></i></a>
+            <input type="text" id="medicacion" name="medicacion" placeholder="medicacion" size="15" />
         </div>
     </div>
-    
-        <div class="control-group">
+    <div class="control-group">
+        <label class="control-label" for="otros">Otros:</label>
+        <div class="controls">
+            <input type="text" id="otros" name="otros" placeholder="otros" />
+        </div>
+    </div>
+    <div class="control-group">
         <div class="controls">
             <button type="submit" id="submitForm" class="btn submitForm">Submit</button>
         </div>
     </div>
 </form>
+

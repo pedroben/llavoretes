@@ -76,6 +76,5 @@ public class AlumnoGetpages implements GenericOperation{
             throw new ServletException("AlumnoGetpagesJson: View Error: " + e.getMessage());
         }
     }
- 
     
 }

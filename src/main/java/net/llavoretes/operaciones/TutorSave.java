@@ -6,9 +6,8 @@ package net.llavoretes.operaciones;
 
 /**
  *
- * @author mati
+ * @author llavoretes
  */
-
 
 import com.google.gson.Gson;
 import java.util.HashMap;
@@ -19,29 +18,30 @@ import javax.servlet.http.HttpServletResponse;
 
 import net.llavoretes.helper.Conexion;
 import net.llavoretes.helper.EncodingUtil;
-import net.llavoretes.bean.AlumnoBean;
-import net.llavoretes.dao.AlumnoDao;
+import net.llavoretes.bean.TutorBean;
+import net.llavoretes.dao.TutorDao;
 
 
 
-public class AlumnoSave implements GenericOperation{
+
+public class TutorSave implements GenericOperation{
     
      @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         
         try {
-            AlumnoDao oAlumnoDAO = new AlumnoDao(Conexion.getConection());
-            AlumnoBean oAlumno = new AlumnoBean();
+            TutorDao oTutorDAO = new TutorDao(Conexion.getConection());
+            TutorBean oTutor = new TutorBean();
             Gson gson = new Gson();
             String jason = request.getParameter("json");
             jason = EncodingUtil.decodeURIComponent(jason);
-            oAlumno = gson.fromJson(jason, oAlumno.getClass());
+            oTutor = gson.fromJson(jason, oTutor.getClass());
             Map<String, String> data = new HashMap<>();
-            if (oAlumno != null) {
-                oAlumno = oAlumnoDAO.set(oAlumno);
+            if (oTutor != null) {
+                oTutor = oTutorDAO.set(oTutor);
                 data.put("status", "200");
-                data.put("message", Integer.toString(oAlumno.getId()));
+                data.put("message", Integer.toString(oTutor.getId()));
             } else {
                 data.put("status", "error");
                 data.put("message", "error");
@@ -49,10 +49,11 @@ public class AlumnoSave implements GenericOperation{
             String resultado = gson.toJson(data);
             return resultado;
         } catch (Exception e) {
-            throw new ServletException("AlumnoSaveJson: View Error: " + e.getMessage());
+            throw new ServletException("TutorSaveJson: View Error: " + e.getMessage());
         }
     }
     
   
+
     
 }

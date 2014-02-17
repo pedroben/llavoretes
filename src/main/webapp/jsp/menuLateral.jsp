@@ -13,6 +13,8 @@
         <li><a id="lnkAlumnos" href="#">Alumnos</a></li>
         <li><a id="lnkProfesor" href="#">Profesor</a></li>
         <li><a id="lnkGrupo" href="#">Grupo</a></li>
+        <li><a id="lnkTutor" href="#">Tutores</a></li>
+
     </ul>
 </div>
 

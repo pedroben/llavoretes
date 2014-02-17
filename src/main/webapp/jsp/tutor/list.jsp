@@ -1,17 +1,17 @@
 <%-- 
     Document   : list
-    Created on : 10-feb-2014, 10:18:22
+    Created on : 14-feb-2014, 12:28:18
     Author     : llavoretes
 --%>
 <%@page import="net.llavoretes.helper.Conexion"%>
-<%@page import="net.llavoretes.dao.AlumnoDao"%>
+<%@page import="net.llavoretes.dao.TutorDao"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Iterator"%>
 <%
-    AlumnoDao oAlumnoDao = new AlumnoDao(Conexion.getConection());
-    ArrayList<String> alColumnsNames = (ArrayList<String>) oAlumnoDao.getColumnsNames();
+    TutorDao oTutorDao = new TutorDao(Conexion.getConection());
+    ArrayList<String> alColumnsNames = (ArrayList<String>) oTutorDao.getColumnsNames();
     Iterator<String> oIterador = alColumnsNames.listIterator();
-    String strNombreMantenimiento = "alumno";
+    String strNombreMantenimiento = "tutor";
 %>
 <div id="<%=strNombreMantenimiento%>_list">
     <div class="span12">
@@ -93,4 +93,3 @@
         <div class="modal-footer"></div>
     </div>
 </div>
-

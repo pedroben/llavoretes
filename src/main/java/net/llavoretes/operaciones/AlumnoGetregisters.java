@@ -23,7 +23,7 @@ import net.llavoretes.helper.FilterBean;
 
 
 public class AlumnoGetregisters implements GenericOperation{
-    
+   
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String data;
@@ -53,12 +53,12 @@ public class AlumnoGetregisters implements GenericOperation{
                     }
                 }
             }       
-            AlumnoDao oAlumnoDAO = new AlumnoDao(Conexion.getConection());
+             AlumnoDao oAlumnoDAO = new  AlumnoDao(Conexion.getConection());
             int pages = oAlumnoDAO.getCount(alFilter);
             data = "{\"data\":\"" + Integer.toString(pages) + "\"}";
             return data;
         } catch (Exception e) {
-            throw new ServletException("AlumnoGetregistersJson: View Error: " + e.getMessage());
+            throw new ServletException("ProfesorGetregistersJson: View Error: " + e.getMessage());
         }
     }
     

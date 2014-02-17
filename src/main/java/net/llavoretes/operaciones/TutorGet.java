@@ -12,14 +12,16 @@ package net.llavoretes.operaciones;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import net.llavoretes.bean.AlumnoBean;
+import net.llavoretes.bean.TutorBean;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import net.llavoretes.dao.AlumnoDao;
+import net.llavoretes.dao.TutorDao;
 import net.llavoretes.helper.Conexion;
 
 
-public class AlumnoGet implements GenericOperation{
+
+public class TutorGet implements GenericOperation{
+    
     
         @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -28,21 +30,23 @@ public class AlumnoGet implements GenericOperation{
             if (request.getParameter("id") == null) {
                 data = "{\"error\":\"id is mandatory\"}";
             } else {
-                AlumnoDao oAlumnoDAO = new AlumnoDao(Conexion.getConection());
-                AlumnoBean oAlumno = new AlumnoBean();
-                oAlumno.setId(Integer.parseInt(request.getParameter("id")));
-                oAlumnoDAO.get(oAlumno);
+                TutorDao oTutorDAO = new TutorDao(Conexion.getConection());
+                TutorBean oTutor = new TutorBean();
+                oTutor.setId(Integer.parseInt(request.getParameter("id")));
+                oTutorDAO.get(oTutor);
                 GsonBuilder gsonBuilder = new GsonBuilder();
                 gsonBuilder.setDateFormat("dd/MM/yyyy");
                 Gson gson = gsonBuilder.create();
-                data = gson.toJson(oAlumno);
+                data = gson.toJson(oTutor);
                 
             }
             return data;
         } catch (Exception e) {
-            throw new ServletException("AlumnoGetJson: View Error: " + e.getMessage());
+            throw new ServletException("TutorGetJson: View Error: " + e.getMessage());
         }
     }
+    
+    
     
     
 }

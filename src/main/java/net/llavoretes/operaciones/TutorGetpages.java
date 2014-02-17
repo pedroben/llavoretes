@@ -9,25 +9,22 @@ package net.llavoretes.operaciones;
  * @author llavoretes
  */
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import net.llavoretes.dao.TutorDao;
 
 import net.llavoretes.helper.Conexion;
-import net.llavoretes.bean.AlumnoBean;
-import net.llavoretes.dao.AlumnoDao;
 import net.llavoretes.helper.FilterBean;
 
 
 
-public class AlumnoGetpage implements GenericOperation{
+
+public class TutorGetpages implements GenericOperation{
     
-    @Override
+     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String data;
         try {
@@ -36,12 +33,6 @@ public class AlumnoGetpage implements GenericOperation{
                 rpp = 10;
             } else {
                 rpp = Integer.parseInt(request.getParameter("rpp"));
-            }
-            int page;
-            if (request.getParameter("page") == null) {
-                page = 1;
-            } else {
-                page = Integer.parseInt(request.getParameter("page"));
             }
             ArrayList<FilterBean> alFilter = new ArrayList<>();
             if (request.getParameter("filter") != null) {
@@ -53,9 +44,9 @@ public class AlumnoGetpage implements GenericOperation{
                         oFilterBean.setFilterValue(request.getParameter("filtervalue"));
                         oFilterBean.setFilterOrigin("user");
                         alFilter.add(oFilterBean);
-                    }
-                }
-            }
+                    } 
+                } 
+            } 
             if (request.getParameter("systemfilter") != null) {
                 if (request.getParameter("systemfilteroperator") != null) {
                     if (request.getParameter("systemfiltervalue") != null) {
@@ -69,7 +60,6 @@ public class AlumnoGetpage implements GenericOperation{
                 }
             }
             HashMap<String, String> hmOrder = new HashMap<>();
-
             if (request.getParameter("order") != null) {
                 if (request.getParameter("ordervalue") != null) {
                     hmOrder.put(request.getParameter("order"), request.getParameter("ordervalue"));
@@ -79,18 +69,17 @@ public class AlumnoGetpage implements GenericOperation{
             } else {
                 hmOrder = null;
             }
-            AlumnoDao oAlumnoDAO = new AlumnoDao(Conexion.getConection());
-            List<AlumnoBean> oAlumno = oAlumnoDAO.getPage(rpp, page, alFilter, hmOrder);
-            GsonBuilder gsonBuilder = new GsonBuilder();
-            gsonBuilder.setDateFormat("dd/MM/yyyy");
-            Gson gson = gsonBuilder.create();
-            data = gson.toJson(oAlumno);
-            data = "{\"list\":" + data + "}";
+            TutorDao oTutorDAO = new TutorDao(Conexion.getConection());
+            int pages = oTutorDAO.getPages(rpp, alFilter, hmOrder);
+            data = "{\"data\":\"" + Integer.toString(pages) + "\"}";
             return data;
         } catch (Exception e) {
-            throw new ServletException("AlumnoGetPageJson: View Error: " + e.getMessage());
+            throw new ServletException("TutorGetpagesJson: View Error: " + e.getMessage());
         }
     }
- 
+    
+    
+    
+    
     
 }

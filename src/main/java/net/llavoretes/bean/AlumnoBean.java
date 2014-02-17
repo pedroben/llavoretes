@@ -16,7 +16,6 @@ public class AlumnoBean {
     private String ape1="";
     private String ape2="";
     private String nif="";
-    private String email="";
     private Integer id_primertutor=0;
     private Integer id_segundotutor=0;
     private Integer id_grupo=0;
@@ -103,20 +102,6 @@ public class AlumnoBean {
     }
 
     /**
-     * @return the email
-     */
-    public String getEmail() {
-        return email;
-    }
-
-    /**
-     * @param email the email to set
-     */
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    /**
      * @return the id_primertutor
      */
     public Integer getId_primertutor() {
@@ -199,9 +184,7 @@ public class AlumnoBean {
     public void setOtros(String otros) {
         this.otros = otros;
     }
-    
-    
-    
-    
+
+   
     
 }

@@ -6,7 +6,7 @@ package net.llavoretes.operaciones;
 
 /**
  *
- * @author llavoretes
+ * @author mati
  */
 
 import com.google.gson.Gson;
@@ -19,15 +19,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import net.llavoretes.helper.Conexion;
-import net.llavoretes.bean.AlumnoBean;
-import net.llavoretes.dao.AlumnoDao;
+import net.llavoretes.bean.TutorBean;
+import net.llavoretes.dao.TutorDao;
 import net.llavoretes.helper.FilterBean;
 
 
 
-public class AlumnoGetpage implements GenericOperation{
+public class TutorGetpage implements GenericOperation{
     
-    @Override
+     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String data;
         try {
@@ -79,18 +79,21 @@ public class AlumnoGetpage implements GenericOperation{
             } else {
                 hmOrder = null;
             }
-            AlumnoDao oAlumnoDAO = new AlumnoDao(Conexion.getConection());
-            List<AlumnoBean> oAlumno = oAlumnoDAO.getPage(rpp, page, alFilter, hmOrder);
+            TutorDao oTutorDAO = new TutorDao(Conexion.getConection());
+            List<TutorBean> oTutor = oTutorDAO.getPage(rpp, page, alFilter, hmOrder);
             GsonBuilder gsonBuilder = new GsonBuilder();
             gsonBuilder.setDateFormat("dd/MM/yyyy");
             Gson gson = gsonBuilder.create();
-            data = gson.toJson(oAlumno);
+            data = gson.toJson(oTutor);
             data = "{\"list\":" + data + "}";
             return data;
         } catch (Exception e) {
-            throw new ServletException("AlumnoGetPageJson: View Error: " + e.getMessage());
+            throw new ServletException("TutorGetPageJson: View Error: " + e.getMessage());
         }
     }
- 
+    
+    
+    
+    
     
 }
