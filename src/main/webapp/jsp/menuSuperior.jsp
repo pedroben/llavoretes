@@ -9,7 +9,8 @@
     <div class="nav-collapse collapse">
         <ul class="nav">
             <li><a href="jsp">Inicio</a></li>
-            <li><a href="jsp?ob=alumno&op=list">Alumnos</a></li>         
+            <li><a href="jsp?ob=alumno&op=list">Alumnos</a></li> 
+             <li><a href="jsp?ob=tutor&op=list">Tutores</a></li> 
         </ul>
     </div>
 </ul>
