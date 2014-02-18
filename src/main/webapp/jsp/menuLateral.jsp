@@ -14,7 +14,8 @@
         <li><a id="lnkProfesor" href="#">Profesor</a></li>
         <li><a id="lnkGrupo" href="#">Grupo</a></li>
         <li><a id="lnkTutor" href="#">Tutores</a></li>
-        <li><a id="lnkCurso" href="#">Curso</a></li>
+        <li><a id="lnkCurso" href="#">Cursos</a></li>
+        <li><a id="lnkPago" href="#">Pagos</a></li>
     </ul>
 </div>
 
