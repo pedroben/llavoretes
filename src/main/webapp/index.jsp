@@ -116,6 +116,7 @@
         <script src="js/control/alumno.js" charset="UTF-8"></script>
         <script src="js/control/grupo.js" charset="UTF-8"></script>
         <script src="js/control/tutor.js" charset="UTF-8"></script>
+        <script src="js/control/curso.js" charset="UTF-8"></script>
 
         <script>
             /* Inicialización en español para la extensión 'UI date picker' para jQuery. */
@@ -196,6 +197,18 @@
 
                     var tutorControl = control_tutor_list('<%=request.getContextPath()%>');
                     tutorControl.inicia(tutorView, 1, null, null, 10, null, null, null, null);
+                    return false;
+                });
+                $('#lnkCurso').unbind('click');
+                $('#lnkCurso').click(function() {
+                    var curso = objeto('curso', '<%=request.getContextPath()%>');
+                    var cursoView = vista(curso, '<%=request.getContextPath()%>');
+
+                    $('#indexContenidoJsp').empty();
+                    $('#indexContenido').empty().append(cursoView.getEmptyList());
+
+                    var cursoControl = control_curso_list('<%=request.getContextPath()%>');
+                    cursoControl.inicia(cursoView, 1, null, null, 10, null, null, null, null);
                     return false;
                 });
             });
