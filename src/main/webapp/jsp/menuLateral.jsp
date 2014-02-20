@@ -16,6 +16,7 @@
         <li><a id="lnkTutor" href="#">Tutores</a></li>
         <li><a id="lnkCurso" href="#">Cursos</a></li>
         <li><a id="lnkPago" href="#">Pagos</a></li>
+        <li><a id="lnkIncidencia" href="#">Incidencias</a></li>
     </ul>
 </div>
 
