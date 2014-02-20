@@ -1,8 +1,8 @@
 <%-- 
-    Document   : list
-    Created on : 10-feb-2014, 10:18:22
-    Author     : llavoretes
+    Document   : list.jsp
+    Author     : Pedro Benito
 --%>
+
 <%@page import="net.llavoretes.helper.Conexion"%>
 <%@page import="net.llavoretes.dao.AlumnoDao"%>
 <%@page import="java.util.ArrayList"%>
