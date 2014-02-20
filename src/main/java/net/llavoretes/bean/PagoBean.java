@@ -1,27 +1,31 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package net.llavoretes.bean;
 
+import javax.ejb.Stateless;
+
 /**
  *
- * @author llavoretes
+ * @author al037184
  */
+@Stateless
 public class PagoBean {
-    
-    private Integer id=0;
-    private Integer id_curso=0;
-    private Integer id_alumno=0;
-    private Integer id_mes=0;
-    private Integer pagado=0;
-    private Double cantidad=0.0;
-   
-     public PagoBean() {
+
+    private Integer id = 0;
+    private Integer id_curso = 0;
+    private Integer id_alumno = 0;
+    private Integer id_mes = 0;
+    private Integer pagado = 0;
+    private Double cantidad = 0.0;
+
+    public PagoBean() {
     }
 
     public PagoBean(Integer id) {
-        this.id = id;
+        this.setId(id);
     }
 
     /**
@@ -107,8 +111,4 @@ public class PagoBean {
     public void setCantidad(Double cantidad) {
         this.cantidad = cantidad;
     }
-    
-    
-    
-    
 }

@@ -265,4 +265,3 @@ var control_pago_list = function(path) {
 };
 
 
-

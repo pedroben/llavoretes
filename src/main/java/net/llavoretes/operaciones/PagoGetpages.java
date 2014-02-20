@@ -1,13 +1,10 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package net.llavoretes.operaciones;
 
-/**
- *
- * @author llavoretes
- */
+package net.llavoretes.operaciones;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,16 +12,16 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import net.llavoretes.dao.PagoDao;
-
 import net.llavoretes.helper.Conexion;
 import net.llavoretes.helper.FilterBean;
 
+/**
+ *
+ * @author al037184
+ */
+public class PagoGetpages implements GenericOperation {
 
-
-
-public class PagoGetpages implements GenericOperation{
-    
-     @Override
+    @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String data;
         try {
@@ -77,10 +74,4 @@ public class PagoGetpages implements GenericOperation{
             throw new ServletException("PagoGetpagesJson: View Error: " + e.getMessage());
         }
     }
-    
-    
-    
-    
-    
-    
 }

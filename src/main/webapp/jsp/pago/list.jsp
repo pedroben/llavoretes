@@ -1,12 +1,13 @@
 <%-- 
     Document   : list
-    Created on : 18-feb-2014, 14:03:35
+    Created on : 18-feb-2014, 12:50:48
     Author     : llavoretes
 --%>
 <%@page import="net.llavoretes.helper.Conexion"%>
 <%@page import="net.llavoretes.dao.PagoDao"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Iterator"%>
+
 <%
     PagoDao oPagoDao = new PagoDao(Conexion.getConection());
     ArrayList<String> alColumnsNames = (ArrayList<String>) oPagoDao.getColumnsNames();
@@ -26,7 +27,7 @@
             <div class="span5">
                 <div class="text-right">
                     <legend>Filtro</legend> 
-                    <form class="navbar-form pull-right" action="Controller" method="post" id="alumnoForm">
+                    <form class="navbar-form pull-right" action="Controller" method="post" id="pagoForm">
                         <fieldset>                                                                     
                             <span>
                                 <select id="selectFilter" name="filter" width="80" style="width: 100px">

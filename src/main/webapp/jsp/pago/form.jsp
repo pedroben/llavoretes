@@ -11,7 +11,7 @@
             <input type="text" id="id" name="id" placeholder="id" />
         </div>
     <div class="control-group">
-        <label class="control-label"  for="inputid_curso">Id Curso:</label>
+        <label class="control-label"  for="inputId_curso">Id Curso:</label>
         <div class="controls">           
             <input  id="id_curso" class="input-mini" 
                    name="id_curso" type="text" size="5" maxlength="5" />
@@ -19,7 +19,7 @@
         </div>
     </div>
     <div class="control-group">
-        <label class="control-label"  for="inputid_alumno">Id Alumno:</label>
+        <label class="control-label"  for="inputId_alumno">Id Alumno:</label>
         <div class="controls">           
             <input  id="id_alumno" class="input-mini" 
                    name="id_alumno" type="text" size="5" maxlength="5" />
@@ -27,7 +27,7 @@
         </div>
     </div>
      <div class="control-group">
-        <label class="control-label"  for="inputid_mes">Id Mes:</label>
+        <label class="control-label"  for="inputId_mes">Id Mes:</label>
         <div class="controls">           
             <input  id="id_mes" class="input-mini" 
                    name="id_mes" type="text" size="5" maxlength="5" />
