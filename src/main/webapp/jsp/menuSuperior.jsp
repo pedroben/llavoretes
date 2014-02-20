@@ -9,6 +9,7 @@
     <div class="nav-collapse collapse">
         <ul class="nav">
             <li><a href="jsp">Inicio</a></li>
+            <li><a href="jsp">Pago</a></li>
         </ul>
     </div>
 </ul>

@@ -15,7 +15,7 @@ public class PagoBean {
     private Integer id_alumno=0;
     private Integer id_mes=0;
     private Integer pagado=0;
-    private Integer cantidad=0;
+    private Double cantidad=0.0;
    
      public PagoBean() {
     }
@@ -97,14 +97,14 @@ public class PagoBean {
     /**
      * @return the cantidad
      */
-    public Integer getCantidad() {
+    public Double getCantidad() {
         return cantidad;
     }
 
     /**
      * @param cantidad the cantidad to set
      */
-    public void setCantidad(Integer cantidad) {
+    public void setCantidad(Double cantidad) {
         this.cantidad = cantidad;
     }
     
