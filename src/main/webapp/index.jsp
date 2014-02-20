@@ -118,6 +118,7 @@
         <script src="js/control/tutor.js" charset="UTF-8"></script>
         <script src="js/control/curso.js" charset="UTF-8"></script>
         <script src="js/control/pago.js" charset="UTF-8"></script>
+        <script src="js/control/incidencia.js" charset="UTF-8"></script>
 
         <script>
             /* Inicialización en español para la extensión 'UI date picker' para jQuery. */
@@ -222,6 +223,18 @@
 
                     var pagoControl = control_pago_list('<%=request.getContextPath()%>');
                     pagoControl.inicia(pagoView, 1, null, null, 10, null, null, null, null);
+                    return false;
+                });
+                 $('#lnkIncidencia').unbind('click');
+                $('#lnkIncidencia').click(function() {
+                    var incidencia = objeto('incidencia', '<%=request.getContextPath()%>');
+                    var incidenciaView = vista(incidencia, '<%=request.getContextPath()%>');
+
+                    $('#indexContenidoJsp').empty();
+                    $('#indexContenido').empty().append(incidenciaView.getEmptyList());
+
+                    var incidenciaControl = control_incidencia_list('<%=request.getContextPath()%>');
+                    incidenciaControl.inicia(incidenciaView, 1, null, null, 10, null, null, null, null);
                     return false;
                 });
             });
