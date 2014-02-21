@@ -49,14 +49,21 @@
         </div>
 
 
-
+<!--
         <div class="control-group">
             <label class="control-label"  for="pagado">Pagado:</label>
             <div class="controls">
                 <input type="text" id="pagado" name="pagado" placeholder="pagado" size="15" />
             </div>
         </div>
+-->
 
+  <div class="control-group">
+        <label class="control-label" for="inputPagado" >Pagado</label>
+        <div class="controls">
+            <input type="checkbox" id="pagado" name="pagado" value="" />
+        </div>
+    </div>
 
 
 

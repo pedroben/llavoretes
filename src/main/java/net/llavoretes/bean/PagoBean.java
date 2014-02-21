@@ -18,7 +18,7 @@ public class PagoBean {
     private Integer id_curso = 0;
     private Integer id_alumno = 0;
     private Integer id_mes = 0;
-    private Integer pagado = 0;
+    private Boolean pagado = true;
     private Double cantidad = 0.0;
 
     public PagoBean() {
@@ -87,14 +87,14 @@ public class PagoBean {
     /**
      * @return the pagado
      */
-    public Integer getPagado() {
+    public Boolean getPagado() {
         return pagado;
     }
 
     /**
      * @param pagado the pagado to set
      */
-    public void setPagado(Integer pagado) {
+    public void setPagado(Boolean pagado) {
         this.pagado = pagado;
     }
 
