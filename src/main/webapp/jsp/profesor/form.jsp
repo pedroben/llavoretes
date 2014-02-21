@@ -50,7 +50,11 @@
     <div class="control-group">
         <label class="control-label"  for="inputHorario">Horario</label>
         <div class="controls">
-            <input type="text" id="horario" name="horario" size="15" placeholder="Ordinario o vespertino" />
+            <select id="horario" name="horario" type="text" autofocus="autofocus">
+                <option value="">Seleccione una opción...</option>
+                <option value="Ordinario">Ordinario</option>
+                <option value="Vespertino">Vespertino</option>
+            </select>
         </div>
     </div>
     <div class="control-group">

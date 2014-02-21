@@ -52,7 +52,7 @@
     <div class="control-group">
         <label class="control-label"  for="inputHorario">Horario</label>
         <div class="controls">
-            <select id="sexo" name="horario" type="text" autofocus="autofocus">
+            <select id="horario" name="horario" type="text" autofocus="autofocus">
                 <option value="">Seleccione una opción...</option>
                 <option value="Ordinario">Ordinario</option>
                 <option value="Vespertino">Vespertino</option>

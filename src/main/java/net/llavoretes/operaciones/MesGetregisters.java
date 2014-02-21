@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import net.llavoretes.dao.AlumnoDao;
+import net.llavoretes.dao.MesDao;
 import net.llavoretes.helper.Conexion;
 import net.llavoretes.helper.FilterBean;
 
@@ -18,8 +18,8 @@ import net.llavoretes.helper.FilterBean;
  *
  * @author al037184
  */
-public class AlumnoGetRegisters implements GenericOperation{
-    
+public class MesGetregisters implements GenericOperation {
+
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String data;
@@ -49,15 +49,12 @@ public class AlumnoGetRegisters implements GenericOperation{
                     }
                 }
             }       
-             AlumnoDao oAlumnoDAO = new  AlumnoDao(Conexion.getConection());
-            int pages = oAlumnoDAO.getCount(alFilter);
+            MesDao oMesDAO = new MesDao(Conexion.getConection());
+            int pages = oMesDAO.getCount(alFilter);
             data = "{\"data\":\"" + Integer.toString(pages) + "\"}";
             return data;
         } catch (Exception e) {
-            throw new ServletException("AlumnoGetregistersJson: View Error: " + e.getMessage());
+            throw new ServletException("MesGetregistersJson: View Error: " + e.getMessage());
         }
     }
-    
-
-    
 }
