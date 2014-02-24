@@ -16,8 +16,7 @@ public class AlumnoBean {
     private String ape1="";
     private String ape2="";
     private String nif="";
-    private Integer id_primertutor=0;
-    private Integer id_segundotutor=0;
+    private Integer id_tutor=0;
     private Integer id_grupo=0;
     private String horario="";
     private String medicacion="";
@@ -104,29 +103,15 @@ public class AlumnoBean {
     /**
      * @return the id_primertutor
      */
-    public Integer getId_primertutor() {
-        return id_primertutor;
+    public Integer getId_tutor() {
+        return id_tutor;
     }
 
     /**
      * @param id_primertutor the id_primertutor to set
      */
-    public void setId_primertutor(Integer id_primertutor) {
-        this.id_primertutor = id_primertutor;
-    }
-
-    /**
-     * @return the id_segundotutor
-     */
-    public Integer getId_segundotutor() {
-        return id_segundotutor;
-    }
-
-    /**
-     * @param id_segundotutor the id_segundotutor to set
-     */
-    public void setId_segundotutor(Integer id_segundotutor) {
-        this.id_segundotutor = id_segundotutor;
+    public void setId_tutor(Integer id_tutor) {
+        this.id_tutor = id_tutor;
     }
 
     /**

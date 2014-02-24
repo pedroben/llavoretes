@@ -36,19 +36,11 @@
         </div>
     </div>
     <div class="control-group">
-        <label class="control-label"  for="inputid_primertutor">Id Primertutor:</label>
+        <label class="control-label"  for="inputid_primertutor">Id tutor:</label>
         <div class="controls">           
             <input  id="id_primertutor" class="input-mini" 
                    name="id_primertutor" type="text" size="5" maxlength="5" />
             <a class="btn btn-mini" id="id_primertutor_button" href="#"><i class="icon-search"></i></a>
-        </div>
-    </div>
-    <div class="control-group">
-        <label class="control-label"  for="inputid_segundotutor">Id Segundotutor:</label>
-        <div class="controls">           
-            <input  id="id_segundotutor" class="input-mini" 
-                   name="id_segundotutor" type="text" size="5" maxlength="5" />
-            <a class="btn btn-mini" id="id_segundotutor_button" href="#"><i class="icon-search"></i></a>
         </div>
     </div>
      <div class="control-group">
