@@ -18,9 +18,16 @@
     </div>
 
     <div class="control-group">
-        <label class="control-label"  for="inputFranjaedad">Nombre:</label>
+        <label class="control-label"  for="inputFranjaedad">Franja edad</label>
         <div class="controls">
             <input type="text" id="franjaedad" name="franjaedad" size="15" placeholder="Franja Edad" />
+        </div>
+    </div>
+    
+        <div class="control-group">
+        <label class="control-label"  for="inputId_profesor">Id Profesor</label>
+        <div class="controls">
+            <input type="text" id="id_profesor" name="id_profesor" size="15" placeholder="Id profesor" />
         </div>
     </div>
     
