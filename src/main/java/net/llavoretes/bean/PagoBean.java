@@ -17,7 +17,7 @@ public class PagoBean {
     private Integer id = 0;
     private Integer id_curso = 0;
     private Integer id_alumno = 0;
-    private Integer id_mes = 0;
+    private String mes = "";
     private Boolean pagado = true;
     private Double cantidad = 0.0;
 
@@ -70,20 +70,9 @@ public class PagoBean {
         this.id_alumno = id_alumno;
     }
 
-    /**
-     * @return the id_mes
-     */
-    public Integer getId_mes() {
-        return id_mes;
-    }
-
-    /**
-     * @param id_mes the id_mes to set
-     */
-    public void setId_mes(Integer id_mes) {
-        this.id_mes = id_mes;
-    }
-
+   
+    
+    
     /**
      * @return the pagado
      */
@@ -110,5 +99,19 @@ public class PagoBean {
      */
     public void setCantidad(Double cantidad) {
         this.cantidad = cantidad;
+    }
+
+    /**
+     * @return the mes
+     */
+    public String getMes() {
+        return mes;
+    }
+
+    /**
+     * @param mes the mes to set
+     */
+    public void setMes(String mes) {
+        this.mes = mes;
     }
 }

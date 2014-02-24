@@ -10,6 +10,7 @@
         <div class="controls">
             <input type="text" id="id" name="id" placeholder="id" />
         </div>
+    </div>
         <div class="control-group">
             <label class="control-label"  for="inputId_curso">Id Curso:</label>
             <div class="controls">           
@@ -27,23 +28,38 @@
             </div>
         </div>
 
+        
+    
+        
+         <div class="control-group">
+        <label class="control-label"  for="inputHorario">Horario</label>
+        <div class="controls">
+            <select id="horario" name="horario" type="text" autofocus="autofocus">
+                <option value="">Seleccione una opción...</option>
+                <option value="Ordinario">Ordinario</option>
+                <option value="Vespertino">Vespertino</option>
+            </select>
+        </div>
+    </div>
+        
+    
         <div class="control-group">
             <label class="control-label"  for="inputMes">Mes</label>
             <div class="controls">
-                <select id="id_mes" name="mes" type="text" autofocus="autofocus">
+                <select id="mes" name="mes" type="text" autofocus="autofocus">
                     <option value="">Seleccione una opción...</option>
-                    <option value="enero">Enero</option>
-                    <option value="febrero">Febrero</option>
-                    <option value="marzo">Marzo</option>
-                    <option value="abril">Abril</option>
-                    <option value="mayo">Mayo</option>
-                    <option value="junio">Junio</option>
-                    <option value="julio">Julio</option>
-                    <option value="agosto">Agosto</option>
-                    <option value="septiembre">Septiembre</option>
-                    <option value="octubre">Octubre</option>
-                    <option value="noviembre">Noviembre</option>
-                    <option value="diciembre">Diciembre</option>
+                    <option value="Enero">Enero</option>
+                    <option value="Febrero">Febrero</option>
+                    <option value="Marzo">Marzo</option>
+                    <option value="Abril">Abril</option>
+                    <option value="Mayo">Mayo</option>
+                    <option value="Junio">Junio</option>
+                    <option value="Julio">Julio</option>
+                    <option value="Agosto">Agosto</option>
+                    <option value="Septiembre">Septiembre</option>
+                    <option value="Octubre">Octubre</option>
+                    <option value="Noviembre">Noviembre</option>
+                    <option value="Diciembre">Diciembre</option>
                 </select>
             </div>
         </div>
