@@ -24,10 +24,12 @@
         </div>
     </div>
     
-        <div class="control-group">
+    <div class="control-group">
         <label class="control-label"  for="inputId_profesor">Id Profesor</label>
-        <div class="controls">
-            <input type="text" id="id_profesor" name="id_profesor" size="15" placeholder="Id profesor" />
+        <div class="controls">                
+            <input readonly="true" id="id_profesor" class="input-mini"
+                   name="id_profesor" type="text" size="5" maxlength="5" />  
+            <a class="btn btn-mini" id="id_profesor_button" href="#"><i class="icon-search"></i></a>
         </div>
     </div>
     

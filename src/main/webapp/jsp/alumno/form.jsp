@@ -10,7 +10,7 @@
             <input type="text" id="id" name="id" placeholder="id" />
         </div>
     </div>
-   <div class="control-group">
+    <div class="control-group">
         <label class="control-label"  for="inputNombre">Nombre:</label>
         <div class="controls">
             <input type="text" id="nombre" name="nombre" size="15" placeholder="Nombre" />
@@ -36,16 +36,17 @@
     </div>
     <div class="control-group">
         <label class="control-label"  for="tutor">Id Tutor</label>
-        <div class="controls">           
-            <input  id="id_primertutor" class="input-mini" 
-                   name="id_primertutor" type="text" size="5" maxlength="5" />
-            <a class="btn btn-mini" id="id_primertutor_button" href="#"><i class="icon-search"></i></a>
+        <div class="controls">                
+            <input readonly="true" id="id_tutor" class="input-mini"
+                   name="id_tutor" type="text" size="5" maxlength="5" />  
+            <a class="btn btn-mini" id="id_tutor_button" href="#"><i class="icon-search"></i></a>
         </div>
     </div>
     <div class="control-group">
         <label class="control-label" for="inputId_grupo">ID Grupo</label>
-        <div class="controls">
-            <input type="text" id="id_grupo" name="id_grupo" placeholder="Id grupo" />
+        <div class="controls">                
+            <input readonly="true" id="id_grupo" class="input-mini"
+                   name="id_grupo" type="text" size="5" maxlength="5" />  
             <a class="btn btn-mini" id="id_grupo_button" href="#"><i class="icon-search"></i></a>
         </div>
     </div>
@@ -59,20 +60,20 @@
             </select>
         </div>
     </div>
-     <div class="control-group">
+    <div class="control-group">
         <label class="control-label"  for="inputMedicacion">Medicación</label>
         <div class="controls">
             <input type="text" id="otros" name="medicacion" size="15" placeholder="Medicación" />
         </div>
     </div>
-     <div class="control-group">
+    <div class="control-group">
         <label class="control-label"  for="inputOtros">Otros</label>
         <div class="controls">
             <input type="text" id="otros" name="otros" size="15" placeholder="Otros" />
         </div>
     </div>
-   
-    
+
+
     <div class="control-group">
         <div class="controls">
             <button type="submit" id="submitForm" class="btn submitForm">Submit</button>
