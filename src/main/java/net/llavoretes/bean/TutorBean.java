@@ -17,8 +17,7 @@ public class TutorBean {
     private String ape2="";
     private String sexo="";
     private String direccion="";
-    private Integer telefono1=0;
-    private Integer telefono2=0;
+    private Integer telefono=0;
     private String email="";
     private Integer id_alumno=0;
     
@@ -132,31 +131,18 @@ public class TutorBean {
     /**
      * @return the telefono1
      */
-    public Integer getTelefono1() {
-        return telefono1;
+    public Integer getTelefono() {
+        return telefono;
     }
 
     /**
      * @param telefono1 the telefono1 to set
      */
-    public void setTelefono1(Integer telefono1) {
-        this.telefono1 = telefono1;
+    public void setTelefono(Integer telefono1) {
+        this.telefono = telefono1;
     }
 
-    /**
-     * @return the telefono2
-     */
-    public Integer getTelefono2() {
-        return telefono2;
-    }
-
-    /**
-     * @param telefono2 the telefono2 to set
-     */
-    public void setTelefono2(Integer telefono2) {
-        this.telefono2 = telefono2;
-    }
-
+  
     /**
      * @return the email
      */

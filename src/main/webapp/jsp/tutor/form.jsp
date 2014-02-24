@@ -49,17 +49,12 @@
         </div>
     </div>
     <div class="control-group">
-        <label class="control-label"  for="inputTelefono1">Telefono 1:</label>
+        <label class="control-label"  for="inputTelefono">Telefono:</label>
         <div class="controls">
-            <input type="text" id="telefono1" name="telefono1" placeholder="telefono1" size="15" />
+            <input type="text" id="telefono" name="telefono" placeholder="telefono" size="15" />
         </div>
     </div>
-    <div class="control-group">
-        <label class="control-label"  for="inputTelefono2">Telefono 2:</label>
-        <div class="controls">
-            <input type="text" id="telefono2" name="telefono2" placeholder="telefono2" size="15" />
-        </div>
-    </div>
+   
     <div class="control-group">
         <label class="control-label"  for="inputEmail">Email:</label>
         <div class="controls">
