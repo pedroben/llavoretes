@@ -12,19 +12,19 @@
         </div>
         <div class="control-group">
             <label class="control-label"  for="inputId_curso">Id Curso:</label>
-            <div class="controls">           
-                <input  id="id_curso" class="input-mini" 
-                        name="id_curso" type="text" size="5" maxlength="5" />
-                <a class="btn btn-mini" id="id_curso_button" href="#"><i class="icon-search"></i></a>
-            </div>
+            <div class="controls">                
+            <input readonly="true" id="id_curso" class="input-mini"
+                   name="id_curso" type="text" size="5" maxlength="5" />  
+            <a class="btn btn-mini" id="id_curso_button" href="#"><i class="icon-search"></i></a>
+        </div>
         </div>
         <div class="control-group">
             <label class="control-label"  for="inputId_alumno">Id Alumno:</label>
-            <div class="controls">           
-                <input  id="id_alumno" class="input-mini" 
-                        name="id_alumno" type="text" size="5" maxlength="5" />
-                <a class="btn btn-mini" id="id_alumno_button" href="#"><i class="icon-search"></i></a>
-            </div>
+            <div class="controls">                
+            <input readonly="true" id="id_alumno" class="input-mini"
+                   name="id_alumno" type="text" size="5" maxlength="5" />  
+            <a class="btn btn-mini" id="id_alumno_button" href="#"><i class="icon-search"></i></a>
+        </div>
         </div>
 
         <div class="control-group">
