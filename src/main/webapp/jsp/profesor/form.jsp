@@ -66,8 +66,9 @@
  
       <div class="control-group">
         <label class="control-label" for="inputId_grupo">ID Grupo</label>
-        <div class="controls">
-            <input type="text" id="id_grupo" name="id_grupo" placeholder="Id grupo" />
+        <div class="controls">                
+            <input readonly="true" id="id_grupo" class="input-mini"
+                   name="id_grupo" type="text" size="5" maxlength="5" />  
             <a class="btn btn-mini" id="id_grupo_button" href="#"><i class="icon-search"></i></a>
         </div>
     </div>
