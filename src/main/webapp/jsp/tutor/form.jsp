@@ -49,15 +49,9 @@
         </div>
     </div>
     <div class="control-group">
-        <label class="control-label"  for="inputTelefono1">Telefono 1:</label>
+        <label class="control-label"  for="inputTelefono">Telefono :</label>
         <div class="controls">
-            <input type="text" id="telefono1" name="telefono1" placeholder="telefono1" size="15" />
-        </div>
-    </div>
-    <div class="control-group">
-        <label class="control-label"  for="inputTelefono2">Telefono 2:</label>
-        <div class="controls">
-            <input type="text" id="telefono2" name="telefono2" placeholder="telefono2" size="15" />
+            <input type="text" id="telefono" name="telefono" placeholder="telefono" size="15" />
         </div>
     </div>
     <div class="control-group">
@@ -68,8 +62,10 @@
     </div>
     <div class="control-group">
         <label class="control-label"  for="inputId_Alumno">Id Alumno:</label>
-        <div class="controls">
-            <input type="text" id="id_alumno" name="id_alumno" placeholder="id_alumno" size="15" />
+        <div class="controls">                
+            <input readonly="true" id="id_alumno" class="input-mini"
+                   name="id_alumno" type="text" size="5" maxlength="5" />  
+            <a class="btn btn-mini" id="id_alumno_button" href="#"><i class="icon-search"></i></a>
         </div>
     </div>
     <div class="control-group">

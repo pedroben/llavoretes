@@ -19,7 +19,7 @@ public class TutorGetprettycolumns implements GenericOperation{
      @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         try {
-            String data = "{\"data\": [\"id\", \"nif\", \"nombre\", \"primer apellido\", \"segundo apellido\", \"sexo\", \"direccion\", \"Telefono 1\", \"Telefono 2\", \"Email\", \"Id Alumno\"]}";
+            String data = "{\"data\": [\"id\", \"nif\", \"nombre\", \"primer apellido\", \"segundo apellido\", \"sexo\", \"direccion\", \"Telefono\", \"Email\", \"Id Alumno\"]}";
             return data;
         } catch (Exception e) {
             throw new ServletException("AlumnoGetpagesJson: View Error: " + e.getMessage());
