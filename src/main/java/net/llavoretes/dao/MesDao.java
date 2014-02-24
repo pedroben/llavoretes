@@ -6,18 +6,18 @@
 
 package net.llavoretes.dao;
 
-import net.llavoretes.bean.PagoBean;
+import net.llavoretes.bean.MesBean;
 import net.llavoretes.helper.Conexion;
 
 /**
  *
  * @author al037184
  */
-public class PagoDao  extends GenericDaoImplementation<PagoBean>{
+public class MesDao extends GenericDaoImplementation<MesBean>{
     
      
-    public PagoDao(Conexion.Tipo_conexion tipoConexion) throws Exception {
-        super(tipoConexion,"pago");
+    public MesDao(Conexion.Tipo_conexion tipoConexion) throws Exception {
+        super(tipoConexion,"mes");
     }
     
     

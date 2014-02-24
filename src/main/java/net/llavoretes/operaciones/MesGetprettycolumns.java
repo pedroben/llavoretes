@@ -14,17 +14,16 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author al037184
  */
-public class AlumnoGetprettycolumns implements GenericOperation{
-    
+public class MesGetprettycolumns implements GenericOperation {
+
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         try {
-            String data = "{\"data\": [\"id\", \"nombre\", \"ape1\", \"ape2\", \"nif\", \"tutores\", \"grupo\", \"horario\", \"medicacion\", \"otros\"]}";
+            String data = "{\"data\": [\"id\", \"nombre\"]}";
             return data;
         } catch (Exception e) {
-            throw new ServletException("AlumnoGetpagesJson: View Error: " + e.getMessage());
+            throw new ServletException("ProfesorGetpagesJson: View Error: " + e.getMessage());
         }
     }
-  
-    
+
 }

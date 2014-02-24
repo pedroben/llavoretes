@@ -11,7 +11,7 @@ import java.util.HashMap;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import net.llavoretes.dao.AlumnoDao;
+import net.llavoretes.dao.MesDao;
 import net.llavoretes.helper.Conexion;
 import net.llavoretes.helper.FilterBean;
 
@@ -19,9 +19,9 @@ import net.llavoretes.helper.FilterBean;
  *
  * @author al037184
  */
-public class AlumnoGetpages implements GenericOperation{
-    
-     @Override
+public class MesGetpages implements GenericOperation {
+
+    @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String data;
         try {
@@ -66,15 +66,12 @@ public class AlumnoGetpages implements GenericOperation{
             } else {
                 hmOrder = null;
             }
-            AlumnoDao oAlumnoDAO = new AlumnoDao(Conexion.getConection());
-            int pages = oAlumnoDAO.getPages(rpp, alFilter, hmOrder);
+            MesDao oMesDAO = new MesDao(Conexion.getConection());
+            int pages = oMesDAO.getPages(rpp, alFilter, hmOrder);
             data = "{\"data\":\"" + Integer.toString(pages) + "\"}";
             return data;
         } catch (Exception e) {
-            throw new ServletException("AlumnoGetpagesJson: View Error: " + e.getMessage());
+            throw new ServletException("MesGetpagesJson: View Error: " + e.getMessage());
         }
     }
-    
-  
-    
 }

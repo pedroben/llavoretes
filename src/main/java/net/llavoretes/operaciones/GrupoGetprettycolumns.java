@@ -19,7 +19,7 @@ public class GrupoGetprettycolumns implements GenericOperation {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         try {
-            String data = "{\"data\": [\"id\", \"Nombre aula\", \"Franja edad\", \"id_alumno\", \"id_profesor\"]}";
+            String data = "{\"data\": [\"id\", \"Nombre aula\", \"Franja edad\", \"id_profesor\"]}";
             return data;
         } catch (Exception e) {
             throw new ServletException("GrupoGetpagesJson: View Error: " + e.getMessage());

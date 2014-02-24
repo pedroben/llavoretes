@@ -1,28 +1,30 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package net.llavoretes.bean;
 
+import javax.ejb.Stateless;
+
 /**
  *
- * @author llavoretes
+ * @author al037184
  */
+@Stateless
 public class AlumnoBean {
-    
-    
-    private Integer id=0;
-    private String nombre="";
-    private String ape1="";
-    private String ape2="";
-    private String nif="";
-    private Integer id_tutor=0;
-    private Integer id_grupo=0;
-    private String horario="";
-    private String medicacion="";
-    private String otros="";
-    
-    
+
+    private Integer id = 0;
+    private String nombre = "";
+    private String ape1 = "";
+    private String ape2 = "";
+    private String nif = "";
+    private Integer id_tutor = 0;
+    private Integer id_grupo = 0;
+    private String horario = "";
+    private String medicacion = "";
+    private String otros = "";
+
     public AlumnoBean() {
     }
 
@@ -101,14 +103,14 @@ public class AlumnoBean {
     }
 
     /**
-     * @return the id_primertutor
+     * @return the id_tutor
      */
     public Integer getId_tutor() {
         return id_tutor;
     }
 
     /**
-     * @param id_primertutor the id_primertutor to set
+     * @param id_tutor the id_tutor to set
      */
     public void setId_tutor(Integer id_tutor) {
         this.id_tutor = id_tutor;
@@ -170,6 +172,4 @@ public class AlumnoBean {
         this.otros = otros;
     }
 
-   
-    
 }

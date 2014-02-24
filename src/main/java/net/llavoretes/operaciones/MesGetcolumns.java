@@ -6,25 +6,37 @@
 
 package net.llavoretes.operaciones;
 
+import com.google.gson.Gson;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import net.llavoretes.dao.MesDao;
+import net.llavoretes.helper.Conexion;
 
 /**
  *
  * @author al037184
  */
-public class AlumnoGetprettycolumns implements GenericOperation{
+public class MesGetcolumns implements GenericOperation{
     
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        ArrayList<String> alColumns = null;
         try {
-            String data = "{\"data\": [\"id\", \"nombre\", \"ape1\", \"ape2\", \"nif\", \"tutores\", \"grupo\", \"horario\", \"medicacion\", \"otros\"]}";
+            MesDao oMesDAO = new MesDao(Conexion.getConection());
+            alColumns = oMesDAO.getColumnsNames();
+            String data = new Gson().toJson(alColumns);
+            data = "{\"data\":" + data + "}";
             return data;
         } catch (Exception e) {
-            throw new ServletException("AlumnoGetpagesJson: View Error: " + e.getMessage());
+            throw new ServletException("MesGetcolumnsJson: View Error: " + e.getMessage());
         }
     }
-  
+    
+    
+    
+    
+    
     
 }

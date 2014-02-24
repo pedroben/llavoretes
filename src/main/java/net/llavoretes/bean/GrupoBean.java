@@ -19,7 +19,6 @@ public class GrupoBean {
     private Integer id = 0;
     private String nombreaula = "";
     private String franjaedad = "";
-    private Integer id_alumno = 0;
     private Integer id_profesor = 0;
     
      public GrupoBean() {
@@ -71,19 +70,6 @@ public class GrupoBean {
         this.franjaedad = franjaedad;
     }
 
-    /**
-     * @return the id_alumno
-     */
-    public int getId_alumno() {
-        return id_alumno;
-    }
-
-    /**
-     * @param id_alumno the id_grupo to set
-     */
-    public void setId_alumno(Integer id_alumno) {
-        this.id_alumno = id_alumno;
-    }
  /**
      * @return the id_profesor
      */

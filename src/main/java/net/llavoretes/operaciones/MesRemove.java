@@ -12,43 +12,41 @@ import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import net.llavoretes.bean.PagoBean;
-import net.llavoretes.dao.PagoDao;
+import net.llavoretes.bean.MesBean;
+import net.llavoretes.dao.MesDao;
 import net.llavoretes.helper.Conexion;
-import net.llavoretes.helper.EncodingUtil;
 
 /**
  *
  * @author al037184
  */
-public class PagoSave implements GenericOperation{
+public class MesRemove implements GenericOperation{
     
      @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         try {
-            PagoDao oPagoDAO = new PagoDao(Conexion.getConection());
-            PagoBean oPago = new PagoBean();
-            Gson gson = new Gson();
-            String jason = request.getParameter("json");
-            jason = EncodingUtil.decodeURIComponent(jason);
-            oPago = gson.fromJson(jason, oPago.getClass());
+            MesDao oMesDAO = new MesDao(Conexion.getConection());
+            MesBean oMesBean = new MesBean();                                           
+            oMesBean.setId(Integer.parseInt(request.getParameter("id")));            
             Map<String, String> data = new HashMap<>();
-            if (oPago != null) {
-                oPago = oPagoDAO.set(oPago);
+            if (oMesBean != null) {
+                oMesDAO.remove(oMesBean);
                 data.put("status", "200");
-                data.put("message", Integer.toString(oPago.getId()));
+                data.put("message", "se ha eliminado el registro con id=" + oMesBean.getId());
             } else {
                 data.put("status", "error");
                 data.put("message", "error");
             }
+            Gson gson = new Gson();
             String resultado = gson.toJson(data);
-            return resultado;
+            return resultado;        
         } catch (Exception e) {
-            throw new ServletException("ClienteSaveJson: View Error: " + e.getMessage());
+            throw new ServletException("MesRemoveJson: View Error: " + e.getMessage());
         }
     }
     
-  
+   
     
 }
+

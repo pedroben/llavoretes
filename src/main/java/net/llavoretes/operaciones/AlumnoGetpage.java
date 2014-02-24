@@ -1,13 +1,10 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package net.llavoretes.operaciones;
 
-/**
- *
- * @author llavoretes
- */
+package net.llavoretes.operaciones;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -17,17 +14,18 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import net.llavoretes.helper.Conexion;
 import net.llavoretes.bean.AlumnoBean;
 import net.llavoretes.dao.AlumnoDao;
+import net.llavoretes.helper.Conexion;
 import net.llavoretes.helper.FilterBean;
 
-
-
+/**
+ *
+ * @author al037184
+ */
 public class AlumnoGetpage implements GenericOperation{
     
-    @Override
+     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String data;
         try {
@@ -92,5 +90,10 @@ public class AlumnoGetpage implements GenericOperation{
         }
     }
  
+    
+    
+    
+    
+    
     
 }

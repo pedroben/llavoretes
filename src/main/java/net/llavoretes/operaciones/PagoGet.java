@@ -6,9 +6,8 @@ package net.llavoretes.operaciones;
 
 /**
  *
- * @author mati
+ * @author llavoretes
  */
-
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -21,10 +20,10 @@ import net.llavoretes.helper.Conexion;
 
 
 
-
 public class PagoGet implements GenericOperation{
     
-     @Override
+    
+        @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String data;         
         try {            
@@ -43,9 +42,10 @@ public class PagoGet implements GenericOperation{
             }
             return data;
         } catch (Exception e) {
-            throw new ServletException("PagoGetJson: View Error: " + e.getMessage());
+            throw new ServletException("TutorGetJson: View Error: " + e.getMessage());
         }
     }
+    
     
     
     

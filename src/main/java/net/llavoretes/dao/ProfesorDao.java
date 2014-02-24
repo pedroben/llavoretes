@@ -27,8 +27,8 @@ public class ProfesorDao extends GenericDaoImplementation<ProfesorBean>{
             try {
                 oMysql.conexion(enumTipoConexion);
                 String id_grupo = Integer.toString(oGrupoBean.getId());
-                Integer id_user = Integer.parseInt(oMysql.getId("profesor", "id_grupo", id_grupo));
-                oProfesorBean.setId(id_user);
+//                Integer id_user = Integer.parseInt(oMysql.getId("profesor", "id_grupo", id_grupo));
+//                oProfesorBean.setId(id_user);
             } catch (Exception e) {
                 throw new Exception("ProfesorDao.getProfesor: Error: " + e.getMessage());
             } finally {

@@ -1,30 +1,25 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package net.llavoretes.operaciones;
 
-/**
- *
- * @author llavoretes
- */
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import net.llavoretes.dao.PagoDao;
-
 import net.llavoretes.helper.Conexion;
 import net.llavoretes.helper.FilterBean;
 
+/**
+ *
+ * @author al037184
+ */
+public class PagoGetregisters implements GenericOperation {
 
-
-
-public class PagoGetregisters implements GenericOperation{
-    
-    
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String data;
@@ -54,7 +49,7 @@ public class PagoGetregisters implements GenericOperation{
                     }
                 }
             }       
-             PagoDao oPagoDAO = new  PagoDao(Conexion.getConection());
+            PagoDao oPagoDAO = new PagoDao(Conexion.getConection());
             int pages = oPagoDAO.getCount(alFilter);
             data = "{\"data\":\"" + Integer.toString(pages) + "\"}";
             return data;
@@ -62,13 +57,4 @@ public class PagoGetregisters implements GenericOperation{
             throw new ServletException("PagoGetregistersJson: View Error: " + e.getMessage());
         }
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }

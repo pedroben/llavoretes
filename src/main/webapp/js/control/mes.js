@@ -4,10 +4,10 @@
 // * and open the template in the editor.
 // */
 
-var control_pago_list = function(path) {
+var control_mes_list = function(path) {
     //contexto privado
 
-    var prefijo_div = "#pago_list ";
+    var prefijo_div = "#mes_list ";
 
     function cargaBotoneraMantenimiento() {
         var botonera = [

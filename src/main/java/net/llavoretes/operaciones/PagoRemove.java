@@ -1,13 +1,10 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package net.llavoretes.operaciones;
 
-/**
- *
- * @author llavoretes
- */
+package net.llavoretes.operaciones;
 
 import com.google.gson.Gson;
 import java.util.HashMap;
@@ -15,15 +12,14 @@ import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import net.llavoretes.helper.Conexion;
-import net.llavoretes.helper.EncodingUtil;
 import net.llavoretes.bean.PagoBean;
 import net.llavoretes.dao.PagoDao;
+import net.llavoretes.helper.Conexion;
 
-
-
-
+/**
+ *
+ * @author al037184
+ */
 public class PagoRemove implements GenericOperation{
     
      @Override
@@ -31,13 +27,13 @@ public class PagoRemove implements GenericOperation{
 
         try {
             PagoDao oPagoDAO = new PagoDao(Conexion.getConection());
-            PagoBean oPago = new PagoBean();                                           
-            oPago.setId(Integer.parseInt(request.getParameter("id")));            
+            PagoBean oPagoBean = new PagoBean();                                           
+            oPagoBean.setId(Integer.parseInt(request.getParameter("id")));            
             Map<String, String> data = new HashMap<>();
-            if (oPago != null) {
-                oPagoDAO.remove(oPago);
+            if (oPagoBean != null) {
+                oPagoDAO.remove(oPagoBean);
                 data.put("status", "200");
-                data.put("message", "se ha eliminado el registro con id=" + oPago.getId());
+                data.put("message", "se ha eliminado el registro con id=" + oPagoBean.getId());
             } else {
                 data.put("status", "error");
                 data.put("message", "error");
@@ -50,8 +46,6 @@ public class PagoRemove implements GenericOperation{
         }
     }
     
-    
-    
-    
+   
     
 }
