@@ -25,8 +25,10 @@
     </div>
     <div class="control-group">
         <label class="control-label"  for="inputIdAlumno">Id alumno:</label>
-        <div class="controls">
-            <input type="text" id="id_alumno" name="id_alumno" placeholder="id_alumno" size="15" />
+        <div class="controls">                
+            <input readonly="true" id="id_alumno" class="input-mini"
+                   name="id_alumno" type="text" size="5" maxlength="5" />  
+            <a class="btn btn-mini" id="id_alumno_button" href="#"><i class="icon-search"></i></a>
         </div>
     </div>
     <div class="control-group">

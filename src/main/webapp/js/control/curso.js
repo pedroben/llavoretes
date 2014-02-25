@@ -50,11 +50,40 @@ var control_curso_list = function(path) {
             $(prefijo_div + '#id').val('0').attr("disabled", true);
             //$(prefijo_div + '#nombre').focus();
         }
+
+
+        //http://jqueryvalidation.org/documentation/
+        $('#formulario').validate({
+            rules: {
+                anyo: {
+                    required: true,
+                    maxlength: 9
+                }
+            },
+            messages: {
+                anyo: {
+                    required: "Introduce un año (yyyy-yyyy)",
+                    maxlength: "Tiene que tener 9 caracteres"
+                }
+            },
+            highlight: function(element) {
+                $(element).closest('.control-group').removeClass('success').addClass('error');
+            },
+            success: function(element) {
+                element
+                        .text('OK!').addClass('valid')
+                        .closest('.control-group').removeClass('error').addClass('success');
+            }
+        });
+
         $(prefijo_div + '#submitForm').unbind('click');
         $(prefijo_div + '#submitForm').click(function() {
-            enviarDatosUpdateForm(view, id);
+            if ($("#formulario").valid()) {
+                enviarDatosUpdateForm(view, prefijo_div);
+            }
             return false;
         });
+
     }
 
     function removeConfirmationModalForm(view, place, id) {
@@ -81,7 +110,7 @@ var control_curso_list = function(path) {
     }
 
     function enviarDatosUpdateForm(view, id) {
-       $.fn.serializeObject = function()
+        $.fn.serializeObject = function()
         {
             // http://jsfiddle.net/davidhong/gP9bh/
             var o = {};
@@ -213,7 +242,7 @@ var control_curso_list = function(path) {
             });
 
             //asignación del evento de click para cambiar de página en la botonera de paginación
-            
+
             $(prefijo_div + '.pagination_link').unbind('click');
             $(prefijo_div + '.pagination_link').click(function() {
                 var id = $(this).attr('id');
@@ -223,7 +252,7 @@ var control_curso_list = function(path) {
             });
 
             //boton de crear un nuevo elemento
-            
+
             if (callback) {
                 $(prefijo_div + '#crear').css("display", "none");
             } else {

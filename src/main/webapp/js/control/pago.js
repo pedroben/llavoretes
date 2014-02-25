@@ -50,12 +50,81 @@ var control_pago_list = function(path) {
             $(prefijo_div + '#id').val('0').attr("disabled", true);
             //$(prefijo_div + '#nombre').focus();
         }
+        
+         //clave ajena curso
+        cargaClaveAjena('#id_curso', '#id_curso_desc', 'curso')
+        $(prefijo_div + '#id_curso_button').unbind('click');
+        $(prefijo_div + '#id_curso_button').click(function() {
+            loadForeign('curso', '#modal02', control_curso_list, callbackSearchCurso);
+            function callbackSearchCurso(id) {
+                $(prefijo_div + '#modal02').modal('hide');
+                $(prefijo_div + '#modal02').data('modal', null);
+                $(prefijo_div + '#id_curso').val($(this).attr('id'));
+                cargaClaveAjena('#id_curso', '#id_curso_desc', 'curso');
+                return false;
+            }
+            return false;
+        });
+        
+        
+         //clave ajena Alumno
+        cargaClaveAjena('#id_alumno', '#id_alumno_desc', 'alumno')
+        $(prefijo_div + '#id_alumno_button').unbind('click');
+        $(prefijo_div + '#id_alumno_button').click(function() {
+            loadForeign('alumno', '#modal02', control_alumno_list, callbackSearchAlumno);
+            function callbackSearchAlumno(id) {
+                $(prefijo_div + '#modal02').modal('hide');
+                $(prefijo_div + '#modal02').data('modal', null);
+                $(prefijo_div + '#id_alumno').val($(this).attr('id'));
+                cargaClaveAjena('#id_alumno', '#id_alumno_desc', 'alumno');
+                return false;
+            }
+            return false;
+        });
+        
+        
+        
+        
         $(prefijo_div + '#submitForm').unbind('click');
         $(prefijo_div + '#submitForm').click(function() {
             enviarDatosUpdateForm(view, id);
             return false;
         });
     }
+    
+    
+     function cargaClaveAjena(lugarID, lugarDesc, objetoClaveAjena) {
+        if ($(prefijo_div + lugarID).val() !== "") {
+            objInfo = objeto(objetoClaveAjena, path).getOne($(prefijo_div + lugarID).val());
+            props = Object.getOwnPropertyNames(objInfo);
+            $(prefijo_div + lugarDesc).empty().html(objInfo[props[1]]);
+        }
+    }
+
+    function loadForeign(strObjetoForeign, strPlace, control, functionCallback) {
+        var objConsulta = objeto(strObjetoForeign, path);
+        var consultaView = vista(objConsulta, path);
+
+        cabecera = '<button id="full-width" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button><h3 id="myModalLabel">Elección</h3>';
+        pie = '<button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Cerrar</button>';
+        listado = consultaView.getEmptyList();
+        loadForm(strPlace, cabecera, listado, pie, true);
+
+        $(prefijo_div + strPlace).css({
+            'right': '20px',
+            'left': '20px',
+            'width': 'auto',
+            'margin': '0',
+            'display': 'block'
+        });
+
+        var consultaControl = control(path);
+        consultaControl.inicia(consultaView, 1, null, null, 10, null, null, null, functionCallback, null, null, null);
+
+    }
+    
+    
+    
 
     function removeConfirmationModalForm(view, place, id) {
         cabecera = "<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">×</button>" +

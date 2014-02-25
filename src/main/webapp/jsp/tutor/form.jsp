@@ -49,12 +49,11 @@
         </div>
     </div>
     <div class="control-group">
-        <label class="control-label"  for="inputTelefono">Telefono:</label>
+        <label class="control-label"  for="inputTelefono">Telefono :</label>
         <div class="controls">
             <input type="text" id="telefono" name="telefono" placeholder="telefono" size="15" />
         </div>
     </div>
-   
     <div class="control-group">
         <label class="control-label"  for="inputEmail">Email:</label>
         <div class="controls">
@@ -63,8 +62,10 @@
     </div>
     <div class="control-group">
         <label class="control-label"  for="inputId_Alumno">Id Alumno:</label>
-        <div class="controls">
-            <input type="text" id="id_alumno" name="id_alumno" placeholder="id_alumno" size="15" />
+        <div class="controls">                
+            <input readonly="true" id="id_alumno" class="input-mini"
+                   name="id_alumno" type="text" size="5" maxlength="5" />  
+            <a class="btn btn-mini" id="id_alumno_button" href="#"><i class="icon-search"></i></a>
         </div>
     </div>
     <div class="control-group">

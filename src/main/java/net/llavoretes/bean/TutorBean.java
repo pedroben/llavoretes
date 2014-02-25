@@ -138,11 +138,11 @@ public class TutorBean {
     /**
      * @param telefono1 the telefono1 to set
      */
-    public void setTelefono(Integer telefono1) {
-        this.telefono = telefono1;
+    public void setTelefono(Integer telefono) {
+        this.telefono = telefono;
     }
 
-  
+    
     /**
      * @return the email
      */
