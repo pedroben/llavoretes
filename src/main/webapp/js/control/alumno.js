@@ -35,6 +35,29 @@ var control_alumno_list = function(path) {
     }
 
     function loadModalForm(view, place, id, action) {
+        
+         jQuery.validator.addMethod("caracteresespeciales",
+                function(value, element) {
+                    return /^[A-Za-z\d=#$%@_ -]+$/.test(value);
+                },
+                "Nada de caracteres especiales, por favor"
+                );
+
+        jQuery.validator.addMethod("nifES",
+                function(value, element) {
+                    "use strict";
+                    value = value.toUpperCase();
+                    if (!value.match('((^[A-Z]{1}[0-9]{7}[A-Z0-9]{1}$|^[T]{1}[A-Z0-9]{8}$)|^[0-9]{8}[A-Z]{1}$)')) {
+                        return false;
+                    }
+                    if (/^[0-9]{8}[A-Z]{1}$/.test(value)) {
+                        return ("TRWAGMYFPDXBNJZSQVHLCKE".charAt(value.substring(8, 0) % 23) === value.charAt(8));
+                    }
+                    return false;
+                },
+                "Por favor, introduce un DNI correcto"
+                );
+                    
         cabecera = '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>';
         if (action == "edit") {
             cabecera += '<h3 id="myModalLabel">Edición de ' + view.getObject().getName() + "</h3>";
@@ -82,6 +105,85 @@ var control_alumno_list = function(path) {
         });
         
         
+          //http://jqueryvalidation.org/documentation/
+        $('#formulario').validate({
+            rules: {
+        
+                nombre: {
+                    required: true,
+                    maxlength: 255
+                },
+                ape1: {
+                    required: true,
+                    maxlength: 255
+                },
+                ape2: {
+                    required: true,
+                    maxlength: 255
+                },
+               nif: {
+                    required: true,
+                    maxlength: 9,
+                    caracteresespeciales: true,
+                    nifES: true
+
+                },  
+                id_tutor: {
+                    required: true,
+                    digits: true        
+                },
+                id_grupo: {            
+                    required: true,
+                    digits: true
+                },
+                horario: {
+                    required: true
+                    
+                }
+                
+            },
+            messages: {
+                nombre: {
+                    required: "Introduce un nombre",
+                    maxlength: "Tiene que ser menos de 255 caracteres"
+                },
+                ape1: {
+                    required: "Introduce un primer apellido",
+                    maxlength: "Tiene que ser menos de 255 caracteres"
+                    
+                },
+                ape2: {
+                    required: "Introduce un segundo apellido",
+                    maxlength: "Tiene que ser menos de 255 caracteres",
+                    
+                },
+                nif: {
+                    required: "Introduce un dni",
+                    maxlength: "Tiene que tener menos de 9 caracteres",
+                    nifES: "Introduce un dni valido"
+                },
+                id_tutor: {
+                   required: "Selecciona un tutor",
+                   digits: "El id del usuario tiene que ser un entero"        
+                },
+                id_grupo: {
+                   required: "Selecciona un grupo",
+                   digits: "El id del usuario tiene que ser un entero"       
+                },
+                horario: {
+                    required: "Introduce un horario",        
+                }        
+                
+            },
+            highlight: function(element) {
+                $(element).closest('.control-group').removeClass('success').addClass('error');
+            },
+            success: function(element) {
+                element
+                        .text('OK!').addClass('valid')
+                        .closest('.control-group').removeClass('error').addClass('success');
+            }
+        });
         
         $(prefijo_div + '#submitForm').unbind('click');
         $(prefijo_div + '#submitForm').click(function() {

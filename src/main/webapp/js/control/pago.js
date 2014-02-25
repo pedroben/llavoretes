@@ -82,12 +82,68 @@ var control_pago_list = function(path) {
             return false;
         });
         
+         //http://jqueryvalidation.org/documentation/
+        $('#formulario').validate({
+            rules: {
+                
+                id_curso: {            
+                    required: true,
+                    digits: true
+                },
+                id_alumno: {            
+                    required: true,
+                    digits: true
+                },         
+                id_mes: {
+                    required: true              
+                },
+                pagado: {
+                    required: true,
+                    maxlength: 255
+                },
+                cantidad: {            
+                    required: true,
+                    number: true
+                }      
+            },
+            messages: {
+                
+                id_curso: {
+                   required: "Selecciona un curso",
+                   digits: "El id del curso tiene que ser un entero"       
+                },
+                id_alumno: {
+                   required: "Selecciona un alumno",
+                   digits: "El id del alumno tiene que ser un entero"       
+                },
+                id_mes: {
+                    required:"Introduce un mes"
+                },        
+                pagado: {
+                    required: "Introduce la situacion del pago",
+                },
+                cantidad: {
+                    required: "Introduce una descripcion",
+                    maxlength: "Tiene que ser menos de 255 caracteres",
+                    Double: "Tiene que ser un numero"
+                }           
+            },
+            highlight: function(element) {
+                $(element).closest('.control-group').removeClass('success').addClass('error');
+            },
+            success: function(element) {
+                element
+                        .text('OK!').addClass('valid')
+                        .closest('.control-group').removeClass('error').addClass('success');
+            }
+        });
+             
         
-        
-        
-        $(prefijo_div + '#submitForm').unbind('click');
+       $(prefijo_div + '#submitForm').unbind('click');
         $(prefijo_div + '#submitForm').click(function() {
-            enviarDatosUpdateForm(view, id);
+            if ($('#formulario').valid()) {
+                enviarDatosUpdateForm(view, prefijo_div);
+            }
             return false;
         });
     }

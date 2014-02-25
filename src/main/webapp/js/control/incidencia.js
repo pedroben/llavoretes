@@ -66,12 +66,55 @@ var control_incidencia_list = function(path) {
             return false;
         });
         
+           //http://jqueryvalidation.org/documentation/
+        $('#formulario').validate({
+            rules: {
+                
+                fechahora: {
+                    required: true,
+                    maxlength: 255
+                },
+                descripcion: {
+                    required: true,
+                    maxlength: 255
+                },
+                id_alumno: {            
+                    required: true,
+                    digits: true
+                }      
+            },
+            messages: {
+                     
+                fechahora: {
+                    required: "Introduce una fecha y hora(dd-mm-yyyy hh-mm)",
+                    maxlength: "Tiene que ser menos de 255 caracteres"
+                },
+                descripcion: {
+                    required: "Introduce una descripcion",
+                    maxlength: "Tiene que ser menos de 255 caracteres"        
+                },
+                id_alumno: {
+                   required: "Selecciona un alumno",
+                   digits: "El id del usuario tiene que ser un entero"       
+                }      
+                
+            },
+            highlight: function(element) {
+                $(element).closest('.control-group').removeClass('success').addClass('error');
+            },
+            success: function(element) {
+                element
+                        .text('OK!').addClass('valid')
+                        .closest('.control-group').removeClass('error').addClass('success');
+            }
+        });
+             
         
-        
-        
-        $(prefijo_div + '#submitForm').unbind('click');
+       $(prefijo_div + '#submitForm').unbind('click');
         $(prefijo_div + '#submitForm').click(function() {
-            enviarDatosUpdateForm(view, id);
+            if ($('#formulario').valid()) {
+                enviarDatosUpdateForm(view, prefijo_div);
+            }
             return false;
         });
     }

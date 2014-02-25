@@ -35,6 +35,30 @@ var control_tutor_list = function(path) {
     }
 
     function loadModalForm(view, place, id, action) {
+        
+         jQuery.validator.addMethod("caracteresespeciales",
+                function(value, element) {
+                    return /^[A-Za-z\d=#$%@_ -]+$/.test(value);
+                },
+                "Nada de caracteres especiales, por favor"
+                );
+
+        jQuery.validator.addMethod("nifES",
+                function(value, element) {
+                    "use strict";
+                    value = value.toUpperCase();
+                    if (!value.match('((^[A-Z]{1}[0-9]{7}[A-Z0-9]{1}$|^[T]{1}[A-Z0-9]{8}$)|^[0-9]{8}[A-Z]{1}$)')) {
+                        return false;
+                    }
+                    if (/^[0-9]{8}[A-Z]{1}$/.test(value)) {
+                        return ("TRWAGMYFPDXBNJZSQVHLCKE".charAt(value.substring(8, 0) % 23) === value.charAt(8));
+                    }
+                    return false;
+                },
+                "Por favor, introduce un DNI correcto"
+                );
+      
+        
         cabecera = '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>';
         if (action == "edit") {
             cabecera += '<h3 id="myModalLabel">Edición de ' + view.getObject().getName() + "</h3>";
@@ -67,11 +91,112 @@ var control_tutor_list = function(path) {
             return false;
         });
         
+          //http://jqueryvalidation.org/documentation/
+        $('#formulario').validate({
+            rules: {
         
+                nif: {
+                    required: true,
+                    maxlength: 9,
+                    caracteresespeciales: true,
+                    nifES: true
+                },  
+                nombre: {
+                    required: true,
+                    maxlength: 255
+                },
+                ape1: {
+                    required: true,
+                    maxlength: 255
+                },
+                ape2: {
+                    required: true,
+                    maxlength: 255
+                },
+                sexo: {
+                    required: true,
+                    maxlength: 20
+                },        
+                direccion:{
+                    required: true
+                },
+                telefono:{
+                    caracteresespeciales: true,
+                    required: true,
+                    maxlength: 9,
+                    minlength: 9,
+                    number: true
+                },        
+                email: {
+                     required: true,
+                    maxlength: 150,
+                    email: true       
+                },
+                id_alumno: {            
+                    required: true,
+                    digits: true
+                }      
+            },
+            messages: {
+                
+                nif: {
+                    required: "Introduce un dni",
+                    maxlength: "Tiene que tener menos de 9 caracteres",
+                    nifES: "Introduce un dni valido"
+                },
+                nombre: {
+                    required: "Introduce un nombre",
+                    maxlength: "Tiene que ser menos de 255 caracteres"
+                },
+                ape1: {
+                    required: "Introduce un primer apellido",
+                    maxlength: "Tiene que ser menos de 255 caracteres"
+                    
+                },
+                ape2: {
+                    required: "Introduce un segundo apellido",
+                    maxlength: "Tiene que ser menos de 255 caracteres"
+                    
+                },
+                sexo: {
+                    required: "Introduce el tipo de sexo",
+                    maxlength: "Tiene que ser menos de 20 caracteres"
+                },
+                direccion: {
+                    required: "Introduce una direccion"
+                },
+                telefono: {
+                    required: "Introduce tu número de telefono",
+                    maxlength: "Máximo 9 dígitos",
+                    minlength: "Cómo mínimo 9 dígitos",
+                    number: "Por favor, introduce tu número"
+                },
+                email: {
+                    required: "Introduce tu correo electrónico",
+                    maxlength: "Máximo 150 carácteres",
+                    email: "Por favor, introduce un email válido"
+                },
+                id_alumno: {
+                   required: "Selecciona un alumno",
+                   digits: "El id del usuario tiene que ser un entero"       
+                }      
+                
+            },
+            highlight: function(element) {
+                $(element).closest('.control-group').removeClass('success').addClass('error');
+            },
+            success: function(element) {
+                element
+                        .text('OK!').addClass('valid')
+                        .closest('.control-group').removeClass('error').addClass('success');
+            }
+        });
         
         $(prefijo_div + '#submitForm').unbind('click');
         $(prefijo_div + '#submitForm').click(function() {
-            enviarDatosUpdateForm(view, id);
+            if ($('#formulario').valid()) {
+                enviarDatosUpdateForm(view, prefijo_div);
+            }
             return false;
         });
     }

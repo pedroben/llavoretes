@@ -67,9 +67,55 @@ var control_grupo_list = function(path) {
         });
      
         
-        $(prefijo_div + '#submitForm').unbind('click');
+          //http://jqueryvalidation.org/documentation/
+        $('#formulario').validate({
+            rules: {
+                
+                nombreaula: {
+                    required: true,
+                    maxlength: 255
+                },
+                franjaedad: {
+                    required: true,
+                    maxlength: 255
+                },
+                id_profesor: {            
+                    required: true,
+                    digits: true
+                }      
+            },
+            messages: {
+                     
+                nombreaula: {
+                    required: "Introduce un nombre",
+                    maxlength: "Tiene que ser menos de 255 caracteres"
+                },
+                franjaedad: {
+                    required: "Introduce una franja de edad",
+                    maxlength: "Tiene que ser menos de 255 caracteres"        
+                },
+                id_profesor: {
+                   required: "Selecciona un profesor",
+                   digits: "El id del usuario tiene que ser un entero"       
+                }      
+                
+            },
+            highlight: function(element) {
+                $(element).closest('.control-group').removeClass('success').addClass('error');
+            },
+            success: function(element) {
+                element
+                        .text('OK!').addClass('valid')
+                        .closest('.control-group').removeClass('error').addClass('success');
+            }
+        });
+             
+        
+       $(prefijo_div + '#submitForm').unbind('click');
         $(prefijo_div + '#submitForm').click(function() {
-            enviarDatosUpdateForm(view, id);
+            if ($('#formulario').valid()) {
+                enviarDatosUpdateForm(view, prefijo_div);
+            }
             return false;
         });
     }
