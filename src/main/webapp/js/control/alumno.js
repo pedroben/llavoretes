@@ -11,6 +11,7 @@ var control_alumno_list = function(path) {
 
     function cargaBotoneraMantenimiento() {
         var botonera = [
+            {"class": "btn btn-mini action05", "icon": "", "text": "incidencias"},
             {"class": "btn btn-mini action01", "icon": "icon-eye-open", "text": ""},
             {"class": "btn btn-mini action02", "icon": "icon-zoom-in", "text": ""},
             {"class": "btn btn-mini action03", "icon": "icon-pencil", "text": ""},
@@ -33,6 +34,22 @@ var control_alumno_list = function(path) {
             $(prefijo_div + place).empty();
         });
     }
+    
+    
+     function cargaIncidencias(id) {
+
+        var incidencia = objeto('incidencia', path);
+        var incidenciaView = vista(incidencia, path);
+
+        $('#indexContenidoJsp').empty();
+        $('#indexContenido').empty().append(incidenciaView.getEmptyList());
+
+        var incidenciaControl = control_incidencia_list(path);
+        incidenciaControl.inicia(incidenciaView, 1, null, null, 10, null, null, null, null, "id_alumno", "equals", id);
+        return false;
+
+    }
+    
 
     function loadModalForm(view, place, id, action) {
         
@@ -342,11 +359,12 @@ var control_alumno_list = function(path) {
                 $(prefijo_div + '.btn.btn-mini.action04').click(function() {
                     removeConfirmationModalForm(view, '#modal01', $(this).attr('id'));
                 });
+                
+                $(prefijo_div + '.btn.btn-mini.action05').unbind('click');
+                $(prefijo_div + '.btn.btn-mini.action05').click(function() {
+                    cargaIncidencias($(this).attr('id'));
+                });
 
-//                $(prefijo_div + '.btn.btn-mini.action05').unbind('click');
-//                $(prefijo_div + '.btn.btn-mini.action05').click(function() {
-//                    cargaCompras($(this).attr('id'));
-//                });
 
             }
 

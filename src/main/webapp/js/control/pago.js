@@ -94,7 +94,7 @@ var control_pago_list = function(path) {
                     required: true,
                     digits: true
                 },         
-                id_mes: {
+                mes: {
                     required: true              
                 },
                 pagado: {
@@ -116,7 +116,7 @@ var control_pago_list = function(path) {
                    required: "Selecciona un alumno",
                    digits: "El id del alumno tiene que ser un entero"       
                 },
-                id_mes: {
+                mes: {
                     required:"Introduce un mes"
                 },        
                 pagado: {
