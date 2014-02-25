@@ -50,6 +50,31 @@ var control_curso_list = function(path) {
             $(prefijo_div + '#id').val('0').attr("disabled", true);
             //$(prefijo_div + '#nombre').focus();
         }
+        
+         $('#formulario').validate({
+            rules: {
+                anyo: {
+                    required: true        
+                }
+            },
+            messages: {
+                anyo: {
+                    required: "Introduce un año",
+                }
+            },
+            highlight: function(element) {
+                $(element).closest('.control-group').removeClass('success').addClass('error');
+            },
+            success: function(element) {
+                element
+                        .text('OK!').addClass('valid')
+                        .closest('.control-group').removeClass('error').addClass('success');
+            }
+        });
+        
+        
+        
+        
         $(prefijo_div + '#submitForm').unbind('click');
         $(prefijo_div + '#submitForm').click(function() {
             enviarDatosUpdateForm(view, id);
