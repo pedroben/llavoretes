@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 25-02-2014 a las 04:30:02
+-- Tiempo de generación: 26-02-2014 a las 04:10:14
 -- Versión del servidor: 5.5.32
 -- Versión de PHP: 5.4.19
 
@@ -141,18 +141,18 @@ INSERT INTO `historico` (`id`, `id_curso`, `id_alumno`) VALUES
 
 CREATE TABLE IF NOT EXISTS `incidencia` (
   `id` int(4) NOT NULL AUTO_INCREMENT,
-  `fechahora` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `fecha` date DEFAULT NULL,
   `descripcion` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
   `id_alumno` int(4) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
 
 --
 -- Volcado de datos para la tabla `incidencia`
 --
 
-INSERT INTO `incidencia` (`id`, `fechahora`, `descripcion`, `id_alumno`) VALUES
-(3, '16/01/2014', 'Cumpleaños', 1);
+INSERT INTO `incidencia` (`id`, `fecha`, `descripcion`, `id_alumno`) VALUES
+(5, '2014-02-06', 'aaaa', 4);
 
 -- --------------------------------------------------------
 
@@ -168,7 +168,7 @@ CREATE TABLE IF NOT EXISTS `pago` (
   `pagado` varchar(12) COLLATE utf8_unicode_ci DEFAULT NULL,
   `cantidad` double DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=19 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=20 ;
 
 --
 -- Volcado de datos para la tabla `pago`
@@ -179,7 +179,8 @@ INSERT INTO `pago` (`id`, `id_curso`, `id_alumno`, `mes`, `pagado`, `cantidad`) 
 (15, 1, 6, 'Mayo', 'Parcialmente', 150),
 (16, 1, 2, 'Febrero', 'Si', 250),
 (17, 3, 7, 'Diciembre', 'Si', 250),
-(18, 3, 7, 'Junio', 'No', 0);
+(18, 3, 7, 'Junio', 'No', 0),
+(19, 2, 5, 'Agosto', 'No', 250);
 
 -- --------------------------------------------------------
 
