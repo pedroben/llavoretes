@@ -70,9 +70,8 @@ var control_incidencia_list = function(path) {
         $('#formulario').validate({
             rules: {
                 
-                fechahora: {
+                fecha: {
                     required: true,
-                    maxlength: 255
                 },
                 descripcion: {
                     required: true,
@@ -85,9 +84,8 @@ var control_incidencia_list = function(path) {
             },
             messages: {
                      
-                fechahora: {
+                fecha: {
                     required: "Introduce una fecha y hora(dd-mm-yyyy hh-mm)",
-                    maxlength: "Tiene que ser menos de 255 caracteres"
                 },
                 descripcion: {
                     required: "Introduce una descripcion",
@@ -104,7 +102,7 @@ var control_incidencia_list = function(path) {
             },
             success: function(element) {
                 element
-                        .text('OK!').addClass('valid')
+                      //  .text('OK!').addClass('valid')
                         .closest('.control-group').removeClass('error').addClass('success');
             }
         });

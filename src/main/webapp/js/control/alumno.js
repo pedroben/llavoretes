@@ -197,7 +197,7 @@ var control_alumno_list = function(path) {
             },
             success: function(element) {
                 element
-                        .text('OK!').addClass('valid')
+                      //  .text('OK!').addClass('valid')
                         .closest('.control-group').removeClass('error').addClass('success');
             }
         });

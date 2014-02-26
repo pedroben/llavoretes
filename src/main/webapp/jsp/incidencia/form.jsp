@@ -11,12 +11,29 @@
             <input type="text" id="id" name="id" placeholder="id" />
         </div>
     </div>
-    <div class="control-group">
+   <!-- <div class="control-group">
         <label class="control-label"  for="inputFechaHora">Fecha y Hora:</label>
         <div class="controls">
             <input type="text" id="fechahora" name="fechahora" size="15" placeholder="fechahora" />
         </div>
     </div>
+   -->
+   
+   
+    <div class="control-group">
+        <label class="control-label"  for="inputFecha">Fecha: </label>
+        <div class="controls">
+            <input type="text" id="fecha" name="fecha" placeholder="fecha" />
+        </div>
+    </div>
+    <script>$("#fecha").datepicker({
+            showOn: 'both',
+            buttonImageOnly: true,
+            changeYear: true,
+            numberOfMonths: 1});
+    </script>
+    
+  
     <div class="control-group">
         <label class="control-label" for="inputDescripcion" >Descripcion:</label>
         <div class="controls">

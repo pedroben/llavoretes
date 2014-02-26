@@ -4,6 +4,8 @@
  */
 package net.llavoretes.bean;
 
+import java.util.Date;
+
 /**
  *
  * @author llavoretes
@@ -11,7 +13,7 @@ package net.llavoretes.bean;
 public class IncidenciaBean {
     
     private Integer id = 0;
-    private String fechahora = "";
+    private Date fecha = new Date();
     private String descripcion = "";
     private Integer id_alumno = 0;
 
@@ -30,17 +32,17 @@ public class IncidenciaBean {
     }
 
     /**
-     * @return the fechahora
+     * @return the fecha
      */
-    public String getFechahora() {
-        return fechahora;
+    public Date getFecha() {
+        return fecha;
     }
 
     /**
-     * @param fechahora the fechahora to set
+     * @param fecha the fecha to set
      */
-    public void setFechahora(String fechahora) {
-        this.fechahora = fechahora;
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
 
     /**
