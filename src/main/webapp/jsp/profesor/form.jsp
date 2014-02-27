@@ -11,13 +11,6 @@
         </div>
     </div>
     <div class="control-group">
-        <label class="control-label"  for="inputNif">Nif</label>
-        <div class="controls">
-            <input type="text" id="nif" name="nif" size="15" placeholder="Documento identidad" />
-        </div>
-    </div>
-
-    <div class="control-group">
         <label class="control-label"  for="inputNombre">Nombre:</label>
         <div class="controls">
             <input type="text" id="nombre" name="nombre" size="15" placeholder="Nombre" />
@@ -33,6 +26,12 @@
         <label class="control-label"  for="inputApe2">Segundo Apellido:</label>
         <div class="controls">
             <input type="text" id="ape2" name="ape2" size="15" placeholder="Segundo Apellido" />
+        </div>
+    </div>
+     <div class="control-group">
+        <label class="control-label"  for="inputNif">Nif</label>
+        <div class="controls">
+            <input type="text" id="nif" name="nif" size="15" placeholder="Documento identidad" />
         </div>
     </div>
     <div class="control-group">

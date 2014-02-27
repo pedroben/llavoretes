@@ -76,31 +76,11 @@ var control_tutor_list = function(path) {
         }
         
         
-        //clave ajena Alumno
-        cargaClaveAjena('#id_alumno', '#id_alumno_desc', 'alumno')
-        $(prefijo_div + '#id_alumno_button').unbind('click');
-        $(prefijo_div + '#id_alumno_button').click(function() {
-            loadForeign('alumno', '#modal02', control_alumno_list, callbackSearchAlumno);
-            function callbackSearchAlumno(id) {
-                $(prefijo_div + '#modal02').modal('hide');
-                $(prefijo_div + '#modal02').data('modal', null);
-                $(prefijo_div + '#id_alumno').val($(this).attr('id'));
-                cargaClaveAjena('#id_alumno', '#id_alumno_desc', 'alumno');
-                return false;
-            }
-            return false;
-        });
         
           //http://jqueryvalidation.org/documentation/
         $('#formulario').validate({
             rules: {
-        
-                nif: {
-                    required: true,
-                    maxlength: 9,
-                    caracteresespeciales: true,
-                    nifES: true
-                },  
+         
                 nombre: {
                     required: true,
                     maxlength: 255
@@ -113,6 +93,12 @@ var control_tutor_list = function(path) {
                     required: true,
                     maxlength: 255
                 },
+                nif: {
+                    required: true,
+                    maxlength: 9,
+                    caracteresespeciales: true,
+                    nifES: true
+                },        
                 sexo: {
                     required: true,
                     maxlength: 20
@@ -131,19 +117,10 @@ var control_tutor_list = function(path) {
                      required: true,
                     maxlength: 150,
                     email: true       
-                },
-                id_alumno: {            
-                    required: true,
-                    digits: true
-                }      
+                }             
             },
             messages: {
-                
-                nif: {
-                    required: "Introduce un dni",
-                    maxlength: "Tiene que tener menos de 9 caracteres",
-                    nifES: "Introduce un dni valido"
-                },
+                            
                 nombre: {
                     required: "Introduce un nombre",
                     maxlength: "Tiene que ser menos de 255 caracteres"
@@ -158,6 +135,11 @@ var control_tutor_list = function(path) {
                     maxlength: "Tiene que ser menos de 255 caracteres"
                     
                 },
+                nif: {
+                    required: "Introduce un dni",
+                    maxlength: "Tiene que tener menos de 9 caracteres",
+                    nifES: "Introduce un dni valido"
+                },        
                 sexo: {
                     required: "Introduce el tipo de sexo",
                     maxlength: "Tiene que ser menos de 20 caracteres"
@@ -175,11 +157,7 @@ var control_tutor_list = function(path) {
                     required: "Introduce tu correo electrónico",
                     maxlength: "Máximo 150 carácteres",
                     email: "Por favor, introduce un email válido"
-                },
-                id_alumno: {
-                   required: "Selecciona un alumno",
-                   digits: "El id del usuario tiene que ser un entero"       
-                }      
+                }    
                 
             },
             highlight: function(element) {
@@ -200,38 +178,6 @@ var control_tutor_list = function(path) {
             return false;
         });
     }
-
-
-    function cargaClaveAjena(lugarID, lugarDesc, objetoClaveAjena) {
-        if ($(prefijo_div + lugarID).val() !== "") {
-            objInfo = objeto(objetoClaveAjena, path).getOne($(prefijo_div + lugarID).val());
-            props = Object.getOwnPropertyNames(objInfo);
-            $(prefijo_div + lugarDesc).empty().html(objInfo[props[1]]);
-        }
-    }
-
-    function loadForeign(strObjetoForeign, strPlace, control, functionCallback) {
-        var objConsulta = objeto(strObjetoForeign, path);
-        var consultaView = vista(objConsulta, path);
-
-        cabecera = '<button id="full-width" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button><h3 id="myModalLabel">Elección</h3>';
-        pie = '<button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Cerrar</button>';
-        listado = consultaView.getEmptyList();
-        loadForm(strPlace, cabecera, listado, pie, true);
-
-        $(prefijo_div + strPlace).css({
-            'right': '20px',
-            'left': '20px',
-            'width': 'auto',
-            'margin': '0',
-            'display': 'block'
-        });
-
-        var consultaControl = control(path);
-        consultaControl.inicia(consultaView, 1, null, null, 10, null, null, null, functionCallback, null, null, null);
-
-    }
-    
 
     
     function removeConfirmationModalForm(view, place, id) {

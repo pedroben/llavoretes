@@ -95,12 +95,6 @@ var control_profesor_list = function(path) {
         $('#formulario').validate({
             rules: {
         
-                nif: {
-                    required: true,
-                    maxlength: 9,
-                    caracteresespeciales: true,
-                    nifES: true
-                },  
                 nombre: {
                     required: true,
                     maxlength: 255
@@ -113,6 +107,12 @@ var control_profesor_list = function(path) {
                     required: true,
                     maxlength: 255
                 },
+                nif: {
+                    required: true,
+                    maxlength: 9,
+                    caracteresespeciales: true,
+                    nifES: true
+                }, 
                 direccion:{
                     required: true
                 },
@@ -137,12 +137,6 @@ var control_profesor_list = function(path) {
                 }      
             },
             messages: {
-                
-                nif: {
-                    required: "Introduce un dni",
-                    maxlength: "Tiene que tener menos de 9 caracteres",
-                    nifES: "Introduce un dni valido"
-                },
                 nombre: {
                     required: "Introduce un nombre",
                     maxlength: "Tiene que ser menos de 255 caracteres"
@@ -156,6 +150,11 @@ var control_profesor_list = function(path) {
                     required: "Introduce un segundo apellido",
                     maxlength: "Tiene que ser menos de 255 caracteres"
                     
+                },
+                nif: {
+                    required: "Introduce un dni",
+                    maxlength: "Tiene que tener menos de 9 caracteres",
+                    nifES: "Introduce un dni valido"
                 },
                 direccion: {
                     required: "Introduce una direccion"
