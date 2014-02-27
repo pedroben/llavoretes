@@ -11,11 +11,11 @@ package net.llavoretes.bean;
  */
 public class ProfesorBean {
 
-    private Integer id = 0;
-    private String nif = "";
+    private Integer id = 0; 
     private String nombre = "";
     private String ape1 = "";
     private String ape2 = "";
+    private String nif = "";
     private String direccion = "";
     private String telefono = "";
     private String email = "";

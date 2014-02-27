@@ -11,15 +11,15 @@ package net.llavoretes.bean;
 public class TutorBean {
     
     private Integer id=0;
-    private String nif="";
     private String nombre="";
     private String ape1="";
     private String ape2="";
+    private String nif="";
     private String sexo="";
     private String direccion="";
     private Integer telefono=0;
     private String email="";
-    private Integer id_alumno=0;
+
     
     
       
@@ -157,20 +157,5 @@ public class TutorBean {
         this.email = email;
     }
 
-    /**
-     * @return the id_alumno
-     */
-    public Integer getId_alumno() {
-        return id_alumno;
-    }
-
-    /**
-     * @param id_alumno the id_alumno to set
-     */
-    public void setId_alumno(Integer id_alumno) {
-        this.id_alumno = id_alumno;
-    }
-    
- 
     
 }

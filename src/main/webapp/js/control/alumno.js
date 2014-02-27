@@ -138,8 +138,7 @@ var control_alumno_list = function(path) {
                     required: true,
                     maxlength: 255
                 },
-               nif: {
-                    required: true,
+               nif: {             
                     maxlength: 9,
                     caracteresespeciales: true,
                     nifES: true
@@ -174,8 +173,7 @@ var control_alumno_list = function(path) {
                     maxlength: "Tiene que ser menos de 255 caracteres",
                     
                 },
-                nif: {
-                    required: "Introduce un dni",
+                nif: {                   
                     maxlength: "Tiene que tener menos de 9 caracteres",
                     nifES: "Introduce un dni valido"
                 },

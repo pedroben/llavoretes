@@ -13,12 +13,6 @@
         </div>
     </div>
     <div class="control-group">
-        <label class="control-label"  for="inputNif">Nif:</label>
-        <div class="controls">
-            <input type="text" id="nif" name="nif" placeholder="nif" size="15" />
-        </div>
-    </div>
-    <div class="control-group">
         <label class="control-label"  for="inputNombre">Nombre:</label>
         <div class="controls">
             <input type="text" id="nombre" name="nombre" size="15" placeholder="nombre" />
@@ -34,6 +28,12 @@
         <label class="control-label"  for="inputApe2">Segundo apellido:</label>
         <div class="controls">
             <input type="text" id="ape2" name="ape2" placeholder="segundo apellido" size="15" />
+        </div>
+    </div>
+     <div class="control-group">
+        <label class="control-label"  for="inputNif">Nif:</label>
+        <div class="controls">
+            <input type="text" id="nif" name="nif" placeholder="nif" size="15" />
         </div>
     </div>
     <div class="control-group">
@@ -58,14 +58,6 @@
         <label class="control-label"  for="inputEmail">Email:</label>
         <div class="controls">
             <input type="text" id="email" name="email" placeholder="email" size="15" />
-        </div>
-    </div>
-    <div class="control-group">
-        <label class="control-label"  for="inputId_Alumno">Id Alumno:</label>
-        <div class="controls">                
-            <input readonly="true" id="id_alumno" class="input-mini"
-                   name="id_alumno" type="text" size="5" maxlength="5" />  
-            <a class="btn btn-mini" id="id_alumno_button" href="#"><i class="icon-search"></i></a>
         </div>
     </div>
     <div class="control-group">

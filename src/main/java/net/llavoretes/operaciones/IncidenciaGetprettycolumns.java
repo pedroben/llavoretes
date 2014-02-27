@@ -19,7 +19,7 @@ public class IncidenciaGetprettycolumns  implements GenericOperation{
      @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         try {
-            String data = "{\"data\": [\"id\", \"fecha y hora\", \"descripcion\", \"Id Alumno\"]}";
+            String data = "{\"data\": [\"id\", \"fecha\", \"descripcion\", \"Id Alumno\"]}";
             return data;
         } catch (Exception e) {
             throw new ServletException("IncidenciaGetprettycolumnsJson: View Error: " + e.getMessage());

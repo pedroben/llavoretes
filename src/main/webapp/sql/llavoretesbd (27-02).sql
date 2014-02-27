@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 26-02-2014 a las 04:10:14
+-- Tiempo de generación: 27-02-2014 a las 00:43:31
 -- Versión del servidor: 5.5.32
 -- Versión de PHP: 5.4.19
 
@@ -106,8 +106,8 @@ CREATE TABLE IF NOT EXISTS `grupo` (
 
 INSERT INTO `grupo` (`id`, `nombreaula`, `franjaedad`, `id_profesor`) VALUES
 (3, 'Papallones', '0-1', 2),
-(4, 'Cuquets', '0-1', 0),
-(5, 'Marietes', '1-2', 0),
+(4, 'Cuquets', '0-1', 1),
+(5, 'Marietes', '1-2', 3),
 (6, 'Abelles', '1-2', 0),
 (7, 'Pardalets', '2-3', 0),
 (8, 'Caragols', '2-3', 0);
@@ -145,14 +145,14 @@ CREATE TABLE IF NOT EXISTS `incidencia` (
   `descripcion` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
   `id_alumno` int(4) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
 
 --
 -- Volcado de datos para la tabla `incidencia`
 --
 
 INSERT INTO `incidencia` (`id`, `fecha`, `descripcion`, `id_alumno`) VALUES
-(5, '2014-02-06', 'aaaa', 4);
+(5, '2013-11-04', 'Piojos', 1);
 
 -- --------------------------------------------------------
 
@@ -168,7 +168,7 @@ CREATE TABLE IF NOT EXISTS `pago` (
   `pagado` varchar(12) COLLATE utf8_unicode_ci DEFAULT NULL,
   `cantidad` double DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=20 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=19 ;
 
 --
 -- Volcado de datos para la tabla `pago`
@@ -179,8 +179,7 @@ INSERT INTO `pago` (`id`, `id_curso`, `id_alumno`, `mes`, `pagado`, `cantidad`) 
 (15, 1, 6, 'Mayo', 'Parcialmente', 150),
 (16, 1, 2, 'Febrero', 'Si', 250),
 (17, 3, 7, 'Diciembre', 'Si', 250),
-(18, 3, 7, 'Junio', 'No', 0),
-(19, 2, 5, 'Agosto', 'No', 250);
+(18, 3, 7, 'Junio', 'No', 0);
 
 -- --------------------------------------------------------
 
@@ -190,10 +189,10 @@ INSERT INTO `pago` (`id`, `id_curso`, `id_alumno`, `mes`, `pagado`, `cantidad`) 
 
 CREATE TABLE IF NOT EXISTS `profesor` (
   `id` int(4) NOT NULL AUTO_INCREMENT,
-  `nif` varchar(10) DEFAULT NULL,
   `nombre` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `ape1` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `ape2` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `nif` varchar(10) DEFAULT NULL,
   `direccion` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `telefono` int(20) DEFAULT NULL,
   `email` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -206,12 +205,12 @@ CREATE TABLE IF NOT EXISTS `profesor` (
 -- Volcado de datos para la tabla `profesor`
 --
 
-INSERT INTO `profesor` (`id`, `nif`, `nombre`, `ape1`, `ape2`, `direccion`, `telefono`, `email`, `horario`, `id_grupo`) VALUES
-(1, '4556456J', 'Elena', 'Perez', 'Perez', 'baro de carcer', 699452135, 'elenaperez@gmail.com', 'ordinario', 1),
-(2, '45456414T', 'Susana', 'Lopez ', 'Lopez', 'blasco ibañez', 961124576, 'susanalopez@gmail.com', 'vespertino', 2),
-(3, '22233455', 'Pedro', 'Benito', 'Soria', 'tutia', 606060606, '', 'Ordinario', 4),
-(4, '98276351', 'Francisco', 'Gomez', 'Lopez', 'Quemasda', 666666666, '', 'Ordinario', 4),
-(5, '5698745', 'Ambrosio', 'Companys', 'Marquez', '9 de octubre', 69696969, '', 'Ordinario', 4);
+INSERT INTO `profesor` (`id`, `nombre`, `ape1`, `ape2`, `nif`, `direccion`, `telefono`, `email`, `horario`, `id_grupo`) VALUES
+(1, 'Elena', 'Perez', 'Perez', NULL, 'baro de carcer', 699452135, 'elenaperez@gmail.com', 'ordinario', 1),
+(2, 'Susana', 'Lopez ', 'Lopez', NULL, 'blasco ibañez', 961124576, 'susanalopez@gmail.com', 'vespertino', 2),
+(3, 'Pedro', 'Benito', 'Soria', NULL, 'tutia', 606060606, '', 'Ordinario', 4),
+(4, 'Francisco', 'Gomez', 'Lopez', NULL, 'Quemasda', 666666666, '', 'Ordinario', 4),
+(5, 'Ambrosio', 'Companys', 'Marquez', NULL, '9 de octubre', 69696969, '', 'Ordinario', 4);
 
 -- --------------------------------------------------------
 
@@ -221,34 +220,33 @@ INSERT INTO `profesor` (`id`, `nif`, `nombre`, `ape1`, `ape2`, `direccion`, `tel
 
 CREATE TABLE IF NOT EXISTS `tutor` (
   `id` int(4) NOT NULL AUTO_INCREMENT,
-  `nif` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `nombre` varchar(15) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `ape1` varchar(15) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `ape2` varchar(15) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `nif` varchar(10) DEFAULT NULL,
   `sexo` varchar(6) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `direccion` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `telefono` int(9) DEFAULT NULL,
   `email` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `id_alumno` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=18 ;
 
 --
 -- Volcado de datos para la tabla `tutor`
 --
 
-INSERT INTO `tutor` (`id`, `nif`, `nombre`, `ape1`, `ape2`, `sexo`, `direccion`, `telefono`, `email`, `id_alumno`) VALUES
-(1, '88888888', 'Antonio', 'Navarro', 'Garcia', 'Hombre', 'Mitia', 606606606, '', 1),
-(5, '6587423', 'Carlos', 'Bonet', 'Aparicio', '', 'Hola mi calle', 63214569, '', 2),
-(7, '598745632L', 'Luisa', 'Tárraga', 'Garcia', NULL, 'Francisco Quevedo', 963755757, 'luisa@gmail.com', 3),
-(8, '11111111', 'José Angel', 'Rodríguez', 'Rodríguez', NULL, '2 de mayo', 91919191, NULL, 4),
-(9, '3698521', 'Mariana', 'Laschuches', 'Laniña', NULL, 'Calle del facha', 15369742, 'facherio@facherio.es', 5),
-(10, '3685214Ñ', 'Ambrosio', 'Valenciano', 'Ferrer', NULL, 'Francisco Granados, 2', 78965412, NULL, 6),
-(11, '3698745', 'Pedro', 'Guerra', 'Ypaz', NULL, 'Gran Via, 2', 7896541, 'pedritodientes@hotmail.com', 7),
-(13, '658113247', 'Francisco', 'Camps', 'Lladre', NULL, 'Museo', 6521456, 'Gurtel@yahoo.es', 8),
-(14, '7888888', 'Adela', 'Paris', 'Benito', NULL, 'Isla de Troya, 5', 62111111, NULL, 9),
-(15, '999999999', 'Gustaf', 'Luxemburgo', 'Bismarck', NULL, 'Del Aleman, 1', 54444444, NULL, 10),
-(16, '666666654', 'Ladelino', 'Conde', 'Ladillas', NULL, 'Ole tu cucu', 78965412, 'otrofachilla@yahoo.es', 11);
+INSERT INTO `tutor` (`id`, `nombre`, `ape1`, `ape2`, `nif`, `sexo`, `direccion`, `telefono`, `email`) VALUES
+(1, 'Antonio', 'Navarro', 'Garcia', NULL, 'Hombre', 'Mitia', 606606606, ''),
+(5, 'Carlos', 'Bonet', 'Aparicio', NULL, '', 'Hola mi calle', 63214569, ''),
+(7, 'Luisa', 'Tárraga', 'Garcia', NULL, NULL, 'Francisco Quevedo', 963755757, 'luisa@gmail.com'),
+(8, 'José Angel', 'Rodríguez', 'Rodríguez', NULL, NULL, '2 de mayo', 91919191, NULL),
+(9, 'Mariana', 'Laschuches', 'Laniña', NULL, NULL, 'Calle del facha', 15369742, 'facherio@facherio.es'),
+(10, 'Ambrosio', 'Valenciano', 'Ferrer', NULL, NULL, 'Francisco Granados, 2', 78965412, NULL),
+(11, 'Pedro', 'Guerra', 'Ypaz', NULL, NULL, 'Gran Via, 2', 7896541, 'pedritodientes@hotmail.com'),
+(13, 'Francisco', 'Camps', 'Lladre', NULL, NULL, 'Museo', 6521456, 'Gurtel@yahoo.es'),
+(14, 'Adela', 'Paris', 'Benito', NULL, NULL, 'Isla de Troya, 5', 62111111, NULL),
+(15, 'Gustaf', 'Luxemburgo', 'Bismarck', NULL, NULL, 'Del Aleman, 1', 54444444, NULL),
+(16, 'Ladelino', 'Conde', 'Ladillas', NULL, NULL, 'Ole tu cucu', 78965412, 'otrofachilla@yahoo.es');
 
 -- --------------------------------------------------------
 
