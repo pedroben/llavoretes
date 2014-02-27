@@ -29,7 +29,7 @@
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
         <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
         <script src="./js/vendor/jquery.validate.min.js"></script>
-
+        <script src="js/vendor/bootstrap-dropdown.js"></script>
 
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
         <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
@@ -62,21 +62,19 @@
 
         <div class="container-fluid">
             <div class="row-fluid">
-                <%
+ 
+                 <%
                     if (user != null) {
-                        out.print("<div class=\"span2\">");
+                        out.print("<div class=\"span1\"></div>");
+                   }
                 %>
-                <jsp:include page="jsp/menuLateral.jsp" />
-                <%
-                        out.print("</div>");
-                    }
-                %>
+                
                 <%
                     if (user != null) {
                         out.print("<div class=\"span10\">");
                         out.print("<div id=\"indexContenido\"></div>");
                     } else {
-                        out.print("<div class=\"span12\">");
+                        out.print("<div class=\"span10\">");
                     }
                 %>
                 <div id="indexContenidoJsp">
@@ -84,7 +82,13 @@
                 </div>
                 <%
                     out.print("</div>");
-                %>    
+                %> 
+                
+                   <%
+                    if (user != null) {
+                        out.print("<div class=\"span1\"></div>");
+                   }
+                %>
                 <div class="row-fluid">
                     <div class="span12"><hr><footer><p>&copy; Javier Bonet / Pedro Benito (2014)</p></footer></div>   
                 </div>
