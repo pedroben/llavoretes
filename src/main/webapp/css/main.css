@@ -53,17 +53,17 @@ body {
 
 }
 .dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus, .dropdown-submenu:hover>a, .dropdown-submenu:focus>a {
-    background-color: grey;
+    background-color: white;
 }    
 .caret, .caret:hover {
     color:#08c;
 }
 .navbar-inverse .nav li.dropdown.open>.dropdown-toggle, .navbar-inverse .nav li.dropdown.active>.dropdown-toggle, .navbar-inverse .nav li.dropdown.open.active>.dropdown-toggle {
-    background-color: grey;
+    background-color: #2B6925;
     background-image: none;
 }     
 .dropdown-menu>li>a:hover {
-    background-color: grey;
+    background-color: #2B6925;;
     background-image: none;
 }
 .navbar-inverse .navbar-link:hover, .navbar-inverse .navbar-link:focus {
