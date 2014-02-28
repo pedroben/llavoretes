@@ -29,7 +29,7 @@
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
         <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
         <script src="./js/vendor/jquery.validate.min.js"></script>
-
+        <script src="js/vendor/bootstrap-dropdown.js"></script>
 
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
         <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
@@ -49,7 +49,8 @@
                         <span class="icon-bar"></span> 
                         <span class="icon-bar"></span>
                     </a> 
-                    <a class="brand" href="jsp">Llavoretes Gestio</a>                   
+                    <img class="brand" href="jsp" src="img/llavoretesgestio100.png"/>
+                    <!-- <a class="brand" href="jsp">Llavoretes Gestio</a>      -->             
                     <div class="nav-collapse collapse">
                         <%if (user != null) {%>
                         <jsp:include page="jsp/menuSuperior.jsp" />   
@@ -62,21 +63,19 @@
 
         <div class="container-fluid">
             <div class="row-fluid">
+
                 <%
                     if (user != null) {
-                        out.print("<div class=\"span2\">");
-                %>
-                <jsp:include page="jsp/menuLateral.jsp" />
-                <%
-                        out.print("</div>");
+                        out.print("<div class=\"span1\"></div>");
                     }
                 %>
+
                 <%
                     if (user != null) {
                         out.print("<div class=\"span10\">");
                         out.print("<div id=\"indexContenido\"></div>");
                     } else {
-                        out.print("<div class=\"span12\">");
+                        out.print("<div class=\"span10\">");
                     }
                 %>
                 <div id="indexContenidoJsp">
@@ -84,7 +83,13 @@
                 </div>
                 <%
                     out.print("</div>");
-                %>    
+                %> 
+
+                <%
+                    if (user != null) {
+                        out.print("<div class=\"span1\"></div>");
+                    }
+                %>
                 <div class="row-fluid">
                     <div class="span12"><hr><footer><p>&copy; Javier Bonet / Pedro Benito (2014)</p></footer></div>   
                 </div>
@@ -225,7 +230,7 @@
                     pagoControl.inicia(pagoView, 1, null, null, 10, null, null, null, null);
                     return false;
                 });
-                 $('#lnkIncidencia').unbind('click');
+                $('#lnkIncidencia').unbind('click');
                 $('#lnkIncidencia').click(function() {
                     var incidencia = objeto('incidencia', '<%=request.getContextPath()%>');
                     var incidenciaView = vista(incidencia, '<%=request.getContextPath()%>');
