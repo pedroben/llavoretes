@@ -1,7 +1,14 @@
 /* ==========================================================================
    APP custom styles. Javier Bonet y Pedro Benito
    ========================================================================== */
+
+@font-face { /*Insertamos la ruta donde se encuentra el archivo de la tipografia y el formato de la tipografia*/
+    font-family: "futuraStd";
+    src: url("fonts/futuraStd-Light.odt");
+}
+
 body {
+  font-family: futuraStd;
     background-color: #d0e9c6;
     padding-top: 60px;
     padding-bottom: 40px;
@@ -36,7 +43,7 @@ body {
     background-color: white;
 }
 .navbar-inverse .navbar-inner {
-    background-color:  #639939;
+    background-color: #000000;
     color: #111B0D;
     background-image: none;
     border-color: #2B6925;
@@ -56,7 +63,7 @@ body {
     background-color: white;
 }    
 .caret, .caret:hover {
-    color:#08c;
+    color:white;
 }
 .navbar-inverse .nav li.dropdown.open>.dropdown-toggle, .navbar-inverse .nav li.dropdown.active>.dropdown-toggle, .navbar-inverse .nav li.dropdown.open.active>.dropdown-toggle {
     background-color: #2B6925;
@@ -89,6 +96,15 @@ navbar-inverse .brand {
 color: white;
 }
 
-.navbar>a{
+.navbar-inverse .nav>li>a{
     color: white;
+}
+
+
+.navbar-inverse .navbar-text{
+    color: white;
+}
+
+.nav-collapse collapse{
+    padding-top: 150px;
 }

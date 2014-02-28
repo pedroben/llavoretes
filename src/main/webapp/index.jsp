@@ -49,7 +49,8 @@
                         <span class="icon-bar"></span> 
                         <span class="icon-bar"></span>
                     </a> 
-                    <a class="brand" href="jsp">Llavoretes Gestio</a>                   
+                    <img class="brand" href="jsp" src="img/llavoretesgestio100.png"/>
+                    <!-- <a class="brand" href="jsp">Llavoretes Gestio</a>      -->             
                     <div class="nav-collapse collapse">
                         <%if (user != null) {%>
                         <jsp:include page="jsp/menuSuperior.jsp" />   
@@ -62,13 +63,13 @@
 
         <div class="container-fluid">
             <div class="row-fluid">
- 
-                 <%
+
+                <%
                     if (user != null) {
                         out.print("<div class=\"span1\"></div>");
-                   }
+                    }
                 %>
-                
+
                 <%
                     if (user != null) {
                         out.print("<div class=\"span10\">");
@@ -83,11 +84,11 @@
                 <%
                     out.print("</div>");
                 %> 
-                
-                   <%
+
+                <%
                     if (user != null) {
                         out.print("<div class=\"span1\"></div>");
-                   }
+                    }
                 %>
                 <div class="row-fluid">
                     <div class="span12"><hr><footer><p>&copy; Javier Bonet / Pedro Benito (2014)</p></footer></div>   
@@ -229,7 +230,7 @@
                     pagoControl.inicia(pagoView, 1, null, null, 10, null, null, null, null);
                     return false;
                 });
-                 $('#lnkIncidencia').unbind('click');
+                $('#lnkIncidencia').unbind('click');
                 $('#lnkIncidencia').click(function() {
                     var incidencia = objeto('incidencia', '<%=request.getContextPath()%>');
                     var incidenciaView = vista(incidencia, '<%=request.getContextPath()%>');
