@@ -198,12 +198,45 @@ var vista = function(objeto, ContextPath) {
             return tabla;
         },
         getObjectTable: function(id) {
-            cabecera = objeto.getPrettyFieldNames();
+             cabecera = objeto.getPrettyFieldNames();
             datos = objeto.getOne(id);
             var tabla = "<table class=\"table table table-bordered table-condensed\">";
             $.each(objeto.getFieldNames(), function(index, valor) {
-                tabla += '<tr><td><strong>' + cabecera[index] + '</strong></td><td>' + datos[valor] + '</td></tr>';
+
+                tabla += '<tr><td><strong>' + cabecera[index] + '</strong></td>';
+                tabla += '<td>';
+                if (/id_/.test(valor)) {
+                    $.when(ajaxCallSync(ContextPath + '/json?ob=' + valor.split("_")[1].replace(/[0-9]*$/, "") + '&op=get&id=' + datos[valor], 'GET', '')).done(function(data) {
+                        contador = 0;
+                        add_tabla = "";
+                        for (key in data) {
+                            if (contador === 0)
+                                add_tabla = data[key];
+                            if (contador === 1)
+                                add_tabla = data[key] + ', <strong> id: </strong>' + datos[valor];
+                            contador++;
+                        }
+                        if (contador === 0) {
+                            add_tabla = datos[valor] + ' #error';
+                        }
+                        tabla += add_tabla;
+                    });
+                } else {
+                    switch (datos[valor]) {
+                        case true:
+                            tabla += '<i class="icon-ok"></i>';
+                            break;
+                        case false:
+                            tabla += '<i class="icon-remove"></i>';
+                            break;
+                        default:
+                            tabla += datos[valor];
+                    }
+                    tabla += '</td></tr>';
+                }
             });
+
+
             tabla += '</table>';
             return tabla;
         },
