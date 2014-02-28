@@ -51,6 +51,10 @@ var control_incidencia_list = function(path) {
             //$(prefijo_div + '#nombre').focus();
         }
         
+        
+        $(prefijo_div + '#id_alumno_desc').empty().html(objeto('alumno', path).getOne($(prefijo_div + '#id_alumno').val()).descripcion);
+        
+        
         //clave ajena Alumno
         cargaClaveAjena('#id_alumno', '#id_alumno_desc', 'alumno')
         $(prefijo_div + '#id_alumno_button').unbind('click');
