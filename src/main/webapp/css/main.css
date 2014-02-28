@@ -3,12 +3,12 @@
    ========================================================================== */
 
 @font-face { /*Insertamos la ruta donde se encuentra el archivo de la tipografia y el formato de la tipografia*/
-    font-family: "futuraStd";
-    src: url("fonts/futuraStd-Light.odt");
+    font-family: "Quicksand-Regular";
+    src: url("fonts/Quicksand-Regular.otf");
 }
 
 body {
-  font-family: futuraStd;
+    font-family: 'Quicksand-Regular', regular;
     background-color: #d0e9c6;
     padding-top: 60px;
     padding-bottom: 40px;
@@ -89,11 +89,11 @@ hr {
 }
 
 .navbar-inverse .navbar-link {
-color: white;
+    color: white;
 }
 
 navbar-inverse .brand {
-color: white;
+    color: white;
 }
 
 .navbar-inverse .nav>li>a{

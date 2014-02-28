@@ -30,9 +30,9 @@
         <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
         <script src="./js/vendor/jquery.validate.min.js"></script>
         <script src="js/vendor/bootstrap-dropdown.js"></script>
-
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
         <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+        <link href='http://fonts.googleapis.com/css?family=Oregano' rel='stylesheet' type='text/css'>
 
     </head>
     <body>
@@ -49,7 +49,7 @@
                         <span class="icon-bar"></span> 
                         <span class="icon-bar"></span>
                     </a> 
-                    <img class="brand" href="jsp" src="img/llavoretesgestio100.png"/>
+                    <img class="brand" href="jsp" src="img/llavoretesgestio150.png"/>
                     <!-- <a class="brand" href="jsp">Llavoretes Gestio</a>      -->             
                     <div class="nav-collapse collapse">
                         <%if (user != null) {%>
