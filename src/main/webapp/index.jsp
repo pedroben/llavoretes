@@ -66,16 +66,16 @@
 
                 <%
                     if (user != null) {
-                        out.print("<div class=\"span1\"></div>");
+                        out.print("<div class=\"span2\"></div>");
                     }
                 %>
 
                 <%
                     if (user != null) {
-                        out.print("<div class=\"span10\">");
+                        out.print("<div class=\"span8\">");
                         out.print("<div id=\"indexContenido\"></div>");
                     } else {
-                        out.print("<div class=\"span10\">");
+                        out.print("<div class=\"span12\">");
                     }
                 %>
                 <div id="indexContenidoJsp">
@@ -87,7 +87,7 @@
 
                 <%
                     if (user != null) {
-                        out.print("<div class=\"span1\"></div>");
+                        out.print("<div class=\"span2\"></div>");
                     }
                 %>
                 <div class="row-fluid">

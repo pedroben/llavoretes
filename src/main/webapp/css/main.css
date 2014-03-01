@@ -3,12 +3,12 @@
    ========================================================================== */
 
 @font-face { /*Insertamos la ruta donde se encuentra el archivo de la tipografia y el formato de la tipografia*/
-    font-family: "Quicksand-Regular";
-    src: url("fonts/Quicksand-Regular.otf");
+    font-family: "Century Gothic";
+    src: url("fonts/Century Gothic") format('opentype');
 }
 
 body {
-    font-family: 'Quicksand-Regular', regular;
+    font-family: 'Century Gothic';
     background-color: #d0e9c6;
     padding-top: 60px;
     padding-bottom: 40px;
@@ -73,9 +73,7 @@ body {
     background-color: #2B6925;;
     background-image: none;
 }
-.navbar-inverse .navbar-link:hover, .navbar-inverse .navbar-link:focus {
-    color: #F5FF00;
-}
+
 hr {    
     border-top:  2px solid #e5e5e5;;
     border-bottom: 2px solid #fff;
@@ -107,4 +105,31 @@ navbar-inverse .brand {
 
 .nav-collapse collapse{
     padding-top: 150px;
+}
+
+.destacado{
+    font-weight:bold;
+}
+
+#logogrande{
+    margin-bottom: 40px;
+}
+
+#datos{
+    background-color: white;
+}
+
+.modal-header, .modal-footer{
+    color: white;
+        background-color: #2B6925;
+
+}
+
+.modal-body{
+    background-color: #d0e9c6;
+}
+
+#modal02{
+    max-width: 70%;
+vertical-align: middle;
 }

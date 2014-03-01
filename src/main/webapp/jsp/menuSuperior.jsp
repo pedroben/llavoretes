@@ -19,13 +19,13 @@
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mantenimientos <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li><a id="lnkAlumnos" href="#">Alumnos</a></li>
-                    <li><a id="lnkProfesor" href="#">Profesor</a></li>
-                    <li><a id="lnkGrupo" href="#">Grupo</a></li>
-                    <li><a id="lnkTutor" href="#">Tutores</a></li>
-                    <li><a id="lnkCurso" href="#">Cursos</a></li>
-                    <li><a id="lnkPago" href="#">Pagos</a></li>
-                    <li><a id="lnkIncidencia" href="#">Incidencias</a></li>
+                    <li><a id="lnkAlumnos" href="jsp">Alumnos</a></li>
+                    <li><a id="lnkProfesor" href="jsp">Profesor</a></li>
+                    <li><a id="lnkGrupo" href="jsp">Grupo</a></li>
+                    <li><a id="lnkTutor" href="jsp">Tutores</a></li>
+                    <li><a id="lnkCurso" href="jsp">Cursos</a></li>
+                    <li><a id="lnkPago" href="jsp">Pagos</a></li>
+                    <li><a id="lnkIncidencia" href="jsp">Incidencias</a></li>
                 </ul>
             </li>
 
