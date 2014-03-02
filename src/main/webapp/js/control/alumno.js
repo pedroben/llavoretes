@@ -137,12 +137,6 @@ var control_alumno_list = function(path) {
                 ape2: {
                     required: true,
                     maxlength: 255
-                },
-               nif: {             
-                    maxlength: 9,
-                    caracteresespeciales: true,
-                    nifES: true
-
                 },  
                 id_tutor: {
                     required: true,
@@ -172,10 +166,6 @@ var control_alumno_list = function(path) {
                     required: "Introduce un segundo apellido",
                     maxlength: "Tiene que ser menos de 255 caracteres",
                     
-                },
-                nif: {                   
-                    maxlength: "Tiene que tener menos de 9 caracteres",
-                    nifES: "Introduce un dni valido"
                 },
                 id_tutor: {
                    required: "Selecciona un tutor",
