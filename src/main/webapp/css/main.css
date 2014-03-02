@@ -131,5 +131,8 @@ navbar-inverse .brand {
 
 #modal02{
     max-width: 70%;
-vertical-align: middle;
+}
+
+#datos{
+    max-width: 100%;
 }
