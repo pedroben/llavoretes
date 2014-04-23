@@ -9,15 +9,18 @@
             </div>
             <div class="row-fluid">
                 <p><span class="destacado">¿Qué es Llavoretes Gestió?</span>
-                Es una aplicación web destinada a realizar la gestión de la Escuela Infantil "Llavoretes".</p>
+                    Es una aplicación web destinada a realizar la gestión de la Escuela Infantil "Llavoretes".</p>
                 <p><span class="destacado">¿Para qué sirve?</span>
-                Para llevar un seguimiento y mantenimiento de todo lo relacionado con la Escuela Infantil "Llavoretes" (alumnos, profesores, cursos, pagos, etc.)</p>
+                    Para llevar un seguimiento y mantenimiento de todo lo relacionado con la Escuela Infantil "Llavoretes" (alumnos, profesores, cursos, pagos, etc.)</p>
                 <p><span class="destacado">¿Quién la ha desarrollado?</span>
-                Javier Bonet Cerezuela y Pedro J. Benito Soria</p>
+                    Javier Bonet Cerezuela y Pedro J. Benito Soria</p>
                 <p><span class="destacado">¿Qué licencia tiene?</span>
-                La hemos liberado con licencia <a href="http://www.gnu.org/licenses/fdl-1.3.html">GNU Free Documentation License 1.3</a></p>
-           </div>
+                    La hemos liberado con licencia <a href="http://www.gnu.org/licenses/fdl-1.3.html">GNU Free Documentation License 1.3</a></p>
+                <p><span class="destacado">Dirección del centro:</span>
+                    <a href="mailto:patriciagonza5122@hotmail.com">Patricia González</a> 
+            </div>
         </div>
     </div>
+</div>
 </div>
 
